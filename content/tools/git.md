@@ -4,13 +4,11 @@ Git
 Config
 ------
 
-Global config: in your home directory
-    
-    $ vim ~/.gitconfig
+Config file location:
 
-Local config: inside repository directory
-
-    $ vim .git/config
+* Global: ``~/.gitconfig``
+* System: ``/etc/gitconfig``
+* Local: ``/git/config``coding
 
 Set a name
 
@@ -18,6 +16,6 @@ Set a name
     $ git config --local user.name "Foo Bar"
  
 Show the name
-   
+
     $ git config --local user.name
     Foo Bar
