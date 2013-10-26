@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="nanoc 3.6.5"> 
+  </head>
+
+
+    <body>
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">xNotes</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            
+        
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9" id="main">
+          <h1 id="angularjs">Angular.js</h1>
+
+<h2 id="loading-data-in-a-service">Loading Data in a Service</h2>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript">angular.module(<span class="string"><span class="delimiter">'</span><span class="content">myModule</span><span class="delimiter">'</span></span>, []) 
+    .factory(<span class="string"><span class="delimiter">'</span><span class="content">myService</span><span class="delimiter">'</span></span>, [<span class="string"><span class="delimiter">'</span><span class="content">$http</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(<span class="predefined">$http</span>) {
+        <span class="keyword">var</span> item = {};
+        <span class="predefined">$http</span>.get(...).success(<span class="keyword">function</span>(data) {
+            item.foo = data;
+        });
+        <span class="keyword">return</span> item;
+    }])
+
+<span class="keyword">function</span> <span class="function">myController</span>(<span class="predefined">$scope</span>, myService) {
+    <span class="predefined">$scope</span>.item = myService.getItem();
+}</code></pre></div></div>
+
+<p>A few notes:</p>
+
+<ul>
+<li>There is no need to use promise( <code>$q</code> ) to load data “synchronously”, and there is no need to use $watch to monitor the data, if we are using <code>ng-repeat</code> or <code>ng-model</code> angular will automatically watch the changes. The returned value must be an object, not a primitive.</li>
+  <li>There is no need to parse the JSON file,  <code>$http</code> will do it for us, the data received in  success is already a JSON object if the file is json.</li>
+  <li>Do not understand why, but it only works if we append the data to a object( <code>item.foo = data;</code> ) but not if we assign the data directly to the item(this DOES NOT work:  <code>item = data</code> )</li>
+</ul><h2 id="reuse-bootstrap-modal">Reuse Bootstrap Modal</h2>
+
+<p>To reuse the same Modal for displaying different data, put the button and the Modal under the same controller, and use ng-click  to set the data.</p>
+
+<p>E.g. suppose in controller we have</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">function</span> <span class="function">myCtrl</span>(<span class="predefined">$scope</span>) {
+    <span class="predefined">$scope</span>.items = [ {...}, {...}, {...} ];
+}</code></pre></div></div>
+
+<p>in html</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-html"><span class="tag">&lt;div</span> <span class="attribute-name">ng-controller</span>=<span class="string"><span class="delimiter">"</span><span class="content">myCtrl</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">ng-click</span>=<span class="string"><span class="delimiter">"</span><span class="content">selected=0</span><span class="delimiter">"</span></span> <span class="attribute-name">data-target</span>=<span class="string"><span class="delimiter">"</span><span class="content">#myModal</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>Show Item 0<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">ng-click</span>=<span class="string"><span class="delimiter">"</span><span class="content">selected=1</span><span class="delimiter">"</span></span> <span class="attribute-name">data-target</span>=<span class="string"><span class="delimiter">"</span><span class="content">#myModal</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>Show Item 1<span class="tag">&lt;/button&gt;</span>
+    ...
+    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">modal fade</span><span class="delimiter">"</span></span> <span class="attribute-name">...</span><span class="tag">&gt;</span>
+        ...
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">model-body</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+            {{items[selected]}}
+        <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre></div></div>
+
+<p>A more complex example:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">function</span> <span class="function">myCtrl</span>(<span class="predefined">$scope</span>) {
+    <span class="predefined">$scope</span>.items = [ {
+        <span class="key">subList</span>: [{<span class="key">name</span>: <span class="string"><span class="delimiter">"</span><span class="content">foo</span><span class="delimiter">"</span></span>}, {<span class="key">name</span>:<span class="string"><span class="delimiter">"</span><span class="content">bar</span><span class="delimiter">"</span></span>],
+    }, {
+        <span class="key">subList</span>: [],
+    }, {
+        <span class="key">subList</span>: [],
+    }];
+}</code></pre></div></div>
+
+<p>then use <code>ng-repeat</code> to display the subList in the Modal</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">model-body</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">row</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-repeat</span>=<span class="string"><span class="delimiter">"</span><span class="content">subItem in items[selected].subList</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        {{subItem.name}}
+    <span class="tag">&lt;/div&gt;</span>    
+<span class="tag">&lt;/div&gt;</span></code></pre></div></div>
+
+<h2 id="add-listener-upon-ngview-loaded">Add Listener upon ngView Loaded</h2>
+
+<p>Add this to the controller:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="predefined">$scope</span>.<span class="predefined">$on</span>(<span class="string"><span class="delimiter">'</span><span class="content">$viewContentLoaded</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+    foo();
+})</code></pre></div></div>
+
+<p><code>$viewContentLoaded</code> is the event that “Emitted every time the ngView content is reloaded.”</p>
+
+<p>One use case is to resize the components after the view is loaded.</p>
+        </div>
+        <div class="col-md-3">
+        </div>
+        
+      </div>
+    </div>
+
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/coderay.css">
+</html>

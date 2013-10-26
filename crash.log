@@ -1,0 +1,123 @@
+Crashlog created at 2013-10-25 22:44:47 -0700
+
+===== MESSAGE:
+
+RuntimeError: The file 'content/index.html' appears to start with a metadata section (three or five dashes at the top) but it does not seem to be in the correct format.
+
+===== COMPILATION STACK:
+
+  (empty)
+
+===== STACK TRACE:
+
+  0. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/data_sources/filesystem.rb:257:in `parse'
+  1. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/data_sources/filesystem.rb:89:in `block in load_objects'
+  2. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/data_sources/filesystem.rb:78:in `each'
+  3. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/data_sources/filesystem.rb:78:in `map'
+  4. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/data_sources/filesystem.rb:78:in `load_objects'
+  5. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/data_sources/filesystem.rb:37:in `items'
+  6. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/base/source_data/site.rb:325:in `block in load_items'
+  7. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/base/source_data/site.rb:324:in `each'
+  8. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/base/source_data/site.rb:324:in `load_items'
+  9. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/base/source_data/site.rb:243:in `load'
+  10. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/base/source_data/site.rb:127:in `layouts'
+  11. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/base/compilation/compiler.rb:187:in `dependency_tracker'
+  12. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/base/memoization.rb:56:in `block in memoize'
+  13. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/base/compilation/compiler.rb:457:in `stores'
+  14. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/base/compilation/compiler.rb:146:in `unload'
+  15. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/base/source_data/site.rb:274:in `unload'
+  16. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/base/source_data/site.rb:254:in `rescue in load'
+  17. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/base/source_data/site.rb:258:in `load'
+  18. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/cli/command_runner.rb:63:in `load_site'
+  19. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/cli/commands/compile.rb:358:in `run'
+  20. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/cli/command_runner.rb:14:in `block in call'
+  21. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/cli/error_handler.rb:70:in `handle_while'
+  22. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/cli/error_handler.rb:26:in `handle_while'
+  23. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/cli/command_runner.rb:13:in `call'
+  24. /Library/Ruby/Gems/2.0.0/gems/cri-2.4.0/lib/cri/command_dsl.rb:185:in `block in runner'
+  25. /Library/Ruby/Gems/2.0.0/gems/cri-2.4.0/lib/cri/command.rb:296:in `call'
+  26. /Library/Ruby/Gems/2.0.0/gems/cri-2.4.0/lib/cri/command.rb:296:in `run_this'
+  27. /Library/Ruby/Gems/2.0.0/gems/cri-2.4.0/lib/cri/command.rb:249:in `run'
+  28. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/cli/commands/nanoc.rb:39:in `block in define'
+  29. /Library/Ruby/Gems/2.0.0/gems/cri-2.4.0/lib/cri/command.rb:296:in `call'
+  30. /Library/Ruby/Gems/2.0.0/gems/cri-2.4.0/lib/cri/command.rb:296:in `run_this'
+  31. /Library/Ruby/Gems/2.0.0/gems/cri-2.4.0/lib/cri/command.rb:249:in `run'
+  32. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/cli.rb:52:in `block in run'
+  33. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/cli/error_handler.rb:70:in `handle_while'
+  34. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/cli/error_handler.rb:26:in `handle_while'
+  35. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib/nanoc/cli.rb:50:in `run'
+  36. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/bin/nanoc:19:in `<top (required)>'
+  37. /usr/bin/nanoc:23:in `load'
+  ... 40 more lines omitted. See full crash log for details.
+
+===== VERSION INFORMATION:
+
+nanoc 3.6.5 © 2007-2013 Denis Defreyne.
+Running ruby 2.0.0 (2013-06-27) on universal.x86_64-darwin13 with RubyGems 2.0.3.
+
+===== SYSTEM INFORMATION:
+
+Darwin LM-SJN-00713584 13.0.0 Darwin Kernel Version 13.0.0: Thu Sep 19 22:22:27 PDT 2013; root:xnu-2422.1.72~6/RELEASE_X86_64 x86_64
+
+===== INSTALLED GEMS:
+
+  CFPropertyList 2.2.0
+  coderay 1.1.0
+  colored 1.2
+  cri 2.4.0
+  kramdown 1.2.0
+  libxml-ruby 2.6.0
+  mini_portile 0.5.2
+  nanoc 3.6.5
+  nokogiri 1.5.6, 1.6.0
+  sqlite3 1.3.7
+
+===== ENVIRONMENT:
+
+Apple_PubSub_Socket_Render => "/tmp/launch-0Czjj0/Render"
+CLICOLOR => "1"
+HADOOP_HOME => "/Users/xinzhong/lib/hadoop-2.0.0-cdh4.3.0"
+HOME => "/Users/xinzhong"
+JAVA_HOME => "/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home"
+LANG => "en_US.UTF-8"
+LOGNAME => "xinzhong"
+LSCOLORS => "ExFxCxDxBxegedabagacad"
+MONGO_HOME => "/Users/xinzhong/lib/mongodb-osx-x86_64-2.2.2"
+OLDPWD => "/Users/xinzhong/Dropbox/projects/xNotes/content"
+PATH => "/usr/local/heroku/bin:/Users/xinzhong/Documents/workspace/vBaseTrainer/target/vBaseTrainer-1.1.6-SNAPSHOT/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/texbin:/Users/xinzhong/Workplace/lib/pig-0.9.2/bin:/usr/local/lib:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/bin:/Users/xinzhong/lib/pig-0.11.0/bin:/Users/xinzhong/lib/hadoop-2.0.0-cdh4.3.0/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/xinzhong/lib/play-2.1.3:/Users/xinzhong/lib/mongodb-osx-x86_64-2.2.2/bin"
+PIG_HOME => "/Users/xinzhong/lib/pig-0.11.0"
+PLAY_HOME => "/Users/xinzhong/lib/play-2.1.3"
+PWD => "/Users/xinzhong/Dropbox/projects/xNotes"
+SECURITYSESSIONID => "186a6"
+SHELL => "/bin/sh"
+SHLVL => "1"
+SSH_AUTH_SOCK => "/tmp/launch-E9CUmV/Listeners"
+TERM => "xterm-256color"
+TERM_PROGRAM => "Apple_Terminal"
+TERM_PROGRAM_VERSION => "326"
+TERM_SESSION_ID => "32AF9306-BEE7-47BE-B3FF-0CA3B7395513"
+TMPDIR => "/var/folders/v6/20fdtzg52hncpsqv58yxjvgr38z77s/T/"
+USER => "xinzhong"
+VBASE_HOME => "/Users/xinzhong/Documents/workspace/vBaseTrainer/target/vBaseTrainer-1.1.6-SNAPSHOT"
+XCODE => "/Applications/Xcode.app/Contents/Developer/usr/bin"
+_ => "/usr/bin/nanoc"
+__CF_USER_TEXT_ENCODING => "0x68F9CF9:0:0"
+__CHECKFIX1436934 => "1"
+
+===== LOAD PATHS:
+
+  0. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib
+  1. /Library/Ruby/Gems/2.0.0/gems/colored-1.2/lib
+  2. /Library/Ruby/Gems/2.0.0/gems/cri-2.4.0/lib
+  3. /Library/Ruby/Gems/2.0.0/gems/nanoc-3.6.5/lib
+  4. /Library/Ruby/Site/2.0.0
+  5. /Library/Ruby/Site/2.0.0/x86_64-darwin13
+  6. /Library/Ruby/Site/2.0.0/universal-darwin13
+  7. /Library/Ruby/Site
+  8. /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/vendor_ruby/2.0.0
+  9. /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/vendor_ruby/2.0.0/x86_64-darwin13
+  10. /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/vendor_ruby/2.0.0/universal-darwin13
+  11. /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/vendor_ruby
+  12. /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0
+  13. /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/x86_64-darwin13
+  14. /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13
