@@ -2,6 +2,8 @@
 *.rbc
 .bundle
 .config
+.swp
+.*.swp
 coverage
 InstalledFiles
 lib/bundler/man

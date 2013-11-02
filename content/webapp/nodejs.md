@@ -24,6 +24,37 @@ Or use ``http``
         path: '/search.json?' + qs.stringify({ q: search }) 
     }, function (res) {}
 
+If plain text
+
+    #!javascript
+    http.get(url, function(res){
+        var buffer = [];
+        res.on('data', function(data) {
+            buffer.push(data);
+        }).on("end", function() {
+            parsePage(buffer.join(''));
+        })
+    });
+
+If gziped
+
+    #!javascript
+
+    var zlib = require('zlib');
+
+    http.get(url, function(res){
+      
+        var buffer = [];
+        var gunzip = zlib.createGunzip();            
+        res.pipe(gunzip);
+
+        gunzip.on('data', function(data) {
+            buffer.push(data);
+        }).on("end", function() {
+            parsePage(buffer.join(''));
+        })
+    });
+
 
 File Upload
 -----------
