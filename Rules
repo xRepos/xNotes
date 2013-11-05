@@ -25,6 +25,7 @@ compile '*' do
   filter :kramdown
   filter :colorize_syntax
   layout 'default'
+  filter :add_toc
 end
 
 #compile '*' do

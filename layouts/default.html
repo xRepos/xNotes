@@ -6,6 +6,9 @@
     
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
     <!-- you don't need to keep this, but it's cool for stats! -->
     <meta name="generator" content="nanoc <%= Nanoc::VERSION %>"> 
   </head>
@@ -37,6 +40,10 @@
           <%= yield %>
         </div>
         <div class="col-md-3">
+          <div id="side">
+              <h1><%= @item[:title] %></h1>
+            {{TOC}}
+            </div>
         </div>
         
       </div>

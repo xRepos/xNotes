@@ -37,12 +37,18 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="main">
-          <h1 id="jquery">jQuery</h1>
+          <h1 id="heroku">Heroku</h1>
+
+<h2 id="resource-not-found">Resource not found</h2>
+
+<p>The second time I create a heroku app, I skipped the step-by-step tutorial. After adding the remote to git, pushing code to the repository, there was simply no web dyno showing up in the dashboard but the error message in <code>heroku logs</code>: <code>at=error code=H14 desc="No web processes running</code>, and <code>heroku ps:scale web=1</code> returns <code>!    Resource not found</code>.</p>
+
+<p>Finally I realized the problem is a missing <code>Procfile</code>. Add <code>web: node app</code> to <code>Procfile</code> solves the problem.</p>
         </div>
         <div class="col-md-3">
           <div id="side">
               <h1></h1>
-            
+            <ul class="toc"><li><a href="#resource-not-found">Resource not found</a></li></ul>
             </div>
         </div>
         

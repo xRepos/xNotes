@@ -6,6 +6,9 @@
     
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
     <!-- you don't need to keep this, but it's cool for stats! -->
     <meta name="generator" content="nanoc 3.6.5"> 
   </head>
@@ -56,6 +59,34 @@ request(url, <span class="keyword">function</span>(err, res, body){
     <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/search.json?</span><span class="delimiter">'</span></span> + qs.stringify({ <span class="key">q</span>: search }) 
 }, <span class="keyword">function</span> (res) {}</code></pre></div></div>
 
+<p>If plain text</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript">http.get(url, <span class="keyword">function</span>(res){
+    <span class="keyword">var</span> buffer = [];
+    res.on(<span class="string"><span class="delimiter">'</span><span class="content">data</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(data) {
+        buffer.push(data);
+    }).on(<span class="string"><span class="delimiter">"</span><span class="content">end</span><span class="delimiter">"</span></span>, <span class="keyword">function</span>() {
+        parsePage(buffer.join(<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>));
+    })
+});</code></pre></div></div>
+
+<p>If gziped</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> zlib = require(<span class="string"><span class="delimiter">'</span><span class="content">zlib</span><span class="delimiter">'</span></span>);
+
+http.get(url, <span class="keyword">function</span>(res){
+  
+    <span class="keyword">var</span> buffer = [];
+    <span class="keyword">var</span> gunzip = zlib.createGunzip();            
+    res.pipe(gunzip);
+
+    gunzip.on(<span class="string"><span class="delimiter">'</span><span class="content">data</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(data) {
+        buffer.push(data);
+    }).on(<span class="string"><span class="delimiter">"</span><span class="content">end</span><span class="delimiter">"</span></span>, <span class="keyword">function</span>() {
+        parsePage(buffer.join(<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>));
+    })
+});</code></pre></div></div>
+
 <h2 id="file-upload">File Upload</h2>
 
 <p>HTML</p>
@@ -98,8 +129,28 @@ request(url, <span class="keyword">function</span>(err, res, body){
 <p>To get the file from the <code>&lt;input&gt;</code>, use <code>$('#file-upload')[0].files[0]</code></p>
 
 <p>The success callback will receive whatever the server returned.</p>
+
+<h2 id="readwrite-json-file">Read/Write JSON File</h2>
+
+<p>Read file, <code>fs.readFile</code> will read file as binary</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> data = fs.readFileSync(<span class="string"><span class="delimiter">'</span><span class="content">data.json</span><span class="delimiter">'</span></span>);
+console.log(data);
+<span class="error">#</span> &lt;Buffer <span class="integer">7</span>b <span class="integer">22</span> <span class="integer">32</span> <span class="integer">30</span> <span class="integer">30</span> <span class="integer">30</span> <span class="integer">22</span> <span class="integer">3</span>a <span class="integer">5</span>b <span class="integer">7</span>b <span class="integer">22</span> <span class="integer">52</span> <span class="integer">61</span> <span class="integer">6</span>e <span class="integer">6</span>b <span class="integer">22</span> <span class="integer">3</span>a <span class="integer">31</span> <span class="integer">2</span>c <span class="integer">22</span> <span class="integer">41</span> <span class="integer">69</span> <span class="integer">72</span> <span class="integer">70</span> <span class="float">6f</span> <span class="integer">72</span> <span class="integer">74</span> <span class="integer">22</span> <span class="integer">3</span>a <span class="integer">22</span> <span class="integer">20</span> <span class="integer">48</span> <span class="integer">61</span> <span class="integer">72</span> <span class="integer">74</span> <span class="integer">73</span> <span class="integer">66</span> <span class="integer">69</span> <span class="integer">65</span> <span class="integer">6</span>c <span class="integer">64</span> <span class="integer">2</span>d <span class="integer">4</span>a <span class="integer">61</span> <span class="integer">63</span> <span class="integer">6</span>b <span class="integer">73</span> <span class="float">6f</span> <span class="integer">6</span>e <span class="integer">20</span> <span class="integer">41</span> ...&gt;</code></pre></div></div>
+
+<p>Use <code>JSON.parse()</code> to get JSON</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> data = JSON.parse(fs.readFileSync(<span class="string"><span class="delimiter">'</span><span class="content">data.json</span><span class="delimiter">'</span></span>));</code></pre></div></div>
+
+<p>Write file, use <code>JSON.stringify()</code></p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript">fs.writeFile(<span class="string"><span class="delimiter">"</span><span class="content">filename.json</span><span class="delimiter">"</span></span>, JSON.stringify(data));</code></pre></div></div>
         </div>
         <div class="col-md-3">
+          <div id="side">
+              <h1></h1>
+            <ul class="toc"><li><a href="#web-crawling-and-parsing">Web Crawling and Parsing</a></li><li><a href="#file-upload">File Upload</a></li><li><a href="#readwrite-json-file">Read/Write JSON File</a></li></ul>
+            </div>
         </div>
         
       </div>
