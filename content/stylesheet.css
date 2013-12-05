@@ -19,6 +19,37 @@ body {
 
 }
 
+
+
+
+.confusion-matrix  th {
+  background-color: #888;
+  color: #EEE;
+  width: 33%;
+  text-align: center;
+}
+
+.confusion-matrix td {
+  text-align: center;
+}
+
+#confusionmat-illustration {
+  background-color: #F5F5F5;
+  padding: 10px;
+  border: 1px solid #CCC;
+}
+
+.illustration-button {
+  border: 1px solid #666;
+  background-color: steelblue;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  color: white;
+
+}
+
+
 .navbar {
   font-size: 18px;
   border-radius: 0px;
