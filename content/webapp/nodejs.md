@@ -122,9 +122,44 @@ Write file, use ``JSON.stringify()``
     #!javascript
     fs.writeFile("filename.json", JSON.stringify(data));
 
+Route
+-----
+
+In ``app.js``
+
+    #!javascript
+    var routes = require('./routes');
+
+    app.get('/loadData/:name', routes.loadData);
+
+In ``routes/index.js``
+
+    #!javascript
+    exports.loadData = function(req, res) {
+        console.log(req.route.params.name)
+    }
+
+In browser
+
+    http://127.0.0.1:3000/loaddata/foo
+
+In terminal
+
+    foo
 
 
+Req Lookup
+----------
 
+    req.route.params.<param_name>
+
+Uploaded files
+
+    req.files.<file_name>.path
+
+Other uploaded data
+
+    req.body.<data_name>
 
 
 

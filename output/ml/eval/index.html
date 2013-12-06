@@ -120,12 +120,25 @@
 
 <h2 id="curves">Curves</h2>
 
-<p>Receiver Operating Characteristic (ROC)</p>
+<h3 id="receiver-operating-characteristic-roc">Receiver Operating Characteristic (ROC)</h3>
 
 <ul>
 <li>x-Axis: FPR</li>
   <li>y-Axis: TPR</li>
-</ul><script>
+</ul><h3 id="precision-recall-pr">Precision-Recall (PR)</h3>
+
+<ul>
+<li>x-Axis: Recall</li>
+  <li>y-Axis: Precision</li>
+</ul><h3 id="lift">Lift</h3>
+
+<ul>
+<li>model vs random = current TP vs current Total * bad Rate</li>
+</ul><h3 id="gain">Gain</h3>
+
+<p>current TP / # bad</p>
+
+<script>
 
 var activeColor = "steelblue",
     defaultColor = "white",

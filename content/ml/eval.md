@@ -103,10 +103,23 @@ $$ ActionRate = {ActionRecords \over AllRecords} = {TP+FP \over AllRecords}$$
 Curves
 ------
 
-Receiver Operating Characteristic (ROC)
+### Receiver Operating Characteristic (ROC)
 
 * x-Axis: FPR
 * y-Axis: TPR
+
+### Precision-Recall (PR)
+
+* x-Axis: Recall
+* y-Axis: Precision
+
+### Lift
+
+* model vs random = current TP vs current Total * bad Rate
+
+### Gain
+
+ current TP / # bad
 
 
 

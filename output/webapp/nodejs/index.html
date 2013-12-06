@@ -146,11 +146,50 @@ console.log(data);
 <p>Write file, use <code>JSON.stringify()</code></p>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript">fs.writeFile(<span class="string"><span class="delimiter">"</span><span class="content">filename.json</span><span class="delimiter">"</span></span>, JSON.stringify(data));</code></pre></div></div>
+
+<h2 id="route">Route</h2>
+
+<p>In <code>app.js</code></p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> routes = require(<span class="string"><span class="delimiter">'</span><span class="content">./routes</span><span class="delimiter">'</span></span>);
+
+app.get(<span class="string"><span class="delimiter">'</span><span class="content">/loadData/:name</span><span class="delimiter">'</span></span>, routes.loadData);</code></pre></div></div>
+
+<p>In <code>routes/index.js</code></p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript">exports.<span class="function">loadData</span> = <span class="keyword">function</span>(req, res) {
+    console.log(req.route.params.name)
+}</code></pre></div></div>
+
+<p>In browser</p>
+
+<pre><code>http://127.0.0.1:3000/loaddata/foo
+</code></pre>
+
+<p>In terminal</p>
+
+<pre><code>foo
+</code></pre>
+
+<h2 id="req-lookup">Req Lookup</h2>
+
+<pre><code>req.route.params.&lt;param_name&gt;
+</code></pre>
+
+<p>Uploaded files</p>
+
+<pre><code>req.files.&lt;file_name&gt;.path
+</code></pre>
+
+<p>Other uploaded data</p>
+
+<pre><code>req.body.&lt;data_name&gt;
+</code></pre>
         </div>
         <div class="col-md-3">
           <div id="side">
               <h1></h1>
-            <ul class="toc"><li><a href="#web-crawling-and-parsing">Web Crawling and Parsing</a></li><li><a href="#file-upload">File Upload</a></li><li><a href="#readwrite-json-file">Read/Write JSON File</a></li></ul>
+            <ul class="toc"><li><a href="#web-crawling-and-parsing">Web Crawling and Parsing</a></li><li><a href="#file-upload">File Upload</a></li><li><a href="#readwrite-json-file">Read/Write JSON File</a></li><li><a href="#route">Route</a></li><li><a href="#req-lookup">Req Lookup</a></li></ul>
             </div>
         </div>
         
