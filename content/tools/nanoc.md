@@ -1,3 +1,8 @@
+---
+title: Nanoc
+description: Nanoc solutions
+---
+
 Nanoc
 =====
 
@@ -29,3 +34,24 @@ Also the route
     end
 
 Finally add ``#!language`` to the first line of the code block
+
+Math in Browsers
+----------------
+
+Add to layout
+
+    #!javascript
+    <script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+
+Change style
+
+    #!css
+    .MathJax_Display {
+      background-color: ...
+      padding: 20px;
+      border: 1px solid #DDD;
+    }
+
+Check [``MathJax``](http://www.mathjax.org/) for more info
+

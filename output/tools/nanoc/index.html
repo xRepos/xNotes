@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Nanoc</title>
+    <meta name="description" content="Nanoc solutions">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -66,15 +67,34 @@
 <span class="keyword">end</span></code></pre></div></div>
 
 <p>Finally add <code>#!language</code> to the first line of the code block</p>
+
+<h2 id="math-in-browsers">Math in Browsers</h2>
+
+<p>Add to layout</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript">&lt;script type=<span class="string"><span class="delimiter">"</span><span class="content">text/javascript</span><span class="delimiter">"</span></span>   src=<span class="string"><span class="delimiter">"</span><span class="content">http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</span><span class="delimiter">"</span></span>&gt;</code></pre></div></div>
+
+<p>Change style</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-css"><span class="class">.MathJax_Display</span> {
+  <span class="key">background-color</span>: ...
+  <span class="value">padding</span>: <span class="float">20px</span>;
+  <span class="key">border</span>: <span class="float">1px</span> <span class="value">solid</span> <span class="color">#DDD</span>;
+}</code></pre></div></div>
+
+<p>Check <a href="http://www.mathjax.org/"><code>MathJax</code></a> for more info</p>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-sm-0">
           <div id="side">
-              <h1></h1>
-            <ul class="toc"><li><a href="#code-syntax-highlighting">Code Syntax Highlighting</a></li></ul>
+              <h1>Nanoc</h1>
+            <ul class="toc"><li><a href="#code-syntax-highlighting">Code Syntax Highlighting</a></li><li><a href="#math-in-browsers">Math in Browsers</a></li></ul>
             </div>
         </div>
         
       </div>
+    </div>
+
+    <div class="footer">
     </div>
 
     <link rel="stylesheet" href="/style.css">
