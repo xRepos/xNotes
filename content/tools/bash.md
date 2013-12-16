@@ -14,6 +14,59 @@ Quote from Wikipedia: nohup is a POSIX command to ignore the HUP (hangup) signal
 
 to print the last few lines of the output.
 
+Always Search Current Folder First
+----------------------------------
+
+Add to ``~/.bashrc`` or ``~/.bash_profile``
+
+    export PATH=`pwd`:$PATH
+
+
+Style Your Prompt
+-----------------
+
+Add to ``~/.bashrc`` or ``~/.bash_profile``
+
+    #!bash
+    function prompt {
+      local       BLACK="\[\033[0;30m\]"
+      local         RED="\[\033[0;31m\]"
+      local   LIGHT_RED="\[\033[1;31m\]"
+      local       GREEN="\[\033[0;32m\]"
+      local LIGHT_GREEN="\[\033[1;32m\]"
+      local      YELLOW="\[\033[0;33m\]"
+      local        BLUE="\[\033[0;34m\]"
+      local     MAGENTA="\[\033[0;35m\]"
+      local        CYAN="\[\033[0;36m\]"
+      local       WHITE="\[\033[1;37m\]"
+      local  LIGHT_GRAY="\[\033[0;37m\]"
+
+      PS1="\n${RED}\u@\h: ${GREEN}\w ${BLACK}\n\$ "
+      
+    }
+    prompt
+
+It should look like:
+
+    <user(red)>@<host(green)>: <working folder>
+    $ 
+
+Show Current Git Branch
+-----------------------
+
+Add to ``~/.bashrc`` or ``~/.bash_profile``
+
+    #!bash
+    function parse_git_branch {
+      git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+    }
+
+Then change the last line in ``prompt`` function to
+
+    #!bash
+    PS1="\n${RED}\u@\h:${BLUE}\$(parse_git_branch) ${GREEN}\w ${BLACK}\n\$ "
+
+
 Start and Stop Daemons
 ----------------------
 

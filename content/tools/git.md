@@ -19,3 +19,8 @@ Show the name
 
     $ git config --local user.name
     Foo Bar
+
+Checkout a Remote Branch
+------------------------
+
+    $ git checkout -b <branch> --track <remote>/<branch>

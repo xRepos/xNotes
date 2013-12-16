@@ -55,6 +55,53 @@
 
 <p>to print the last few lines of the output.</p>
 
+<h2 id="always-search-current-folder-first">Always Search Current Folder First</h2>
+
+<p>Add to <code>~/.bashrc</code> or <code>~/.bash_profile</code></p>
+
+<pre><code>export PATH=`pwd`:$PATH
+</code></pre>
+
+<h2 id="style-your-prompt">Style Your Prompt</h2>
+
+<p>Add to <code>~/.bashrc</code> or <code>~/.bash_profile</code></p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-bash">function prompt {
+  local       BLACK="\[\033[0;30m\]"
+  local         RED="\[\033[0;31m\]"
+  local   LIGHT_RED="\[\033[1;31m\]"
+  local       GREEN="\[\033[0;32m\]"
+  local LIGHT_GREEN="\[\033[1;32m\]"
+  local      YELLOW="\[\033[0;33m\]"
+  local        BLUE="\[\033[0;34m\]"
+  local     MAGENTA="\[\033[0;35m\]"
+  local        CYAN="\[\033[0;36m\]"
+  local       WHITE="\[\033[1;37m\]"
+  local  LIGHT_GRAY="\[\033[0;37m\]"
+
+  PS1="\n${RED}\u@\h: ${GREEN}\w ${BLACK}\n\$ "
+  
+}
+prompt</code></pre></div></div>
+
+<p>It should look like:</p>
+
+<pre><code>&lt;user(red)&gt;@&lt;host(green)&gt;: &lt;working folder&gt;
+$ 
+</code></pre>
+
+<h2 id="show-current-git-branch">Show Current Git Branch</h2>
+
+<p>Add to <code>~/.bashrc</code> or <code>~/.bash_profile</code></p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-bash">function parse_git_branch {
+  git branch --no-color 2&gt; /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}</code></pre></div></div>
+
+<p>Then change the last line in <code>prompt</code> function to</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-bash">PS1="\n${RED}\u@\h:${BLUE}\$(parse_git_branch) ${GREEN}\w ${BLACK}\n\$ "</code></pre></div></div>
+
 <h2 id="start-and-stop-daemons">Start and Stop Daemons</h2>
 
 <h3 id="pattern">Pattern</h3>
@@ -168,7 +215,7 @@ fi</code></pre></div></div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1></h1>
-            <ul class="toc"><li><a href="#nohup">Nohup</a></li><li><a href="#start-and-stop-daemons">Start and Stop Daemons</a></li></ul>
+            <ul class="toc"><li><a href="#nohup">Nohup</a></li><li><a href="#always-search-current-folder-first">Always Search Current Folder First</a></li><li><a href="#style-your-prompt">Style Your Prompt</a></li><li><a href="#show-current-git-branch">Show Current Git Branch</a></li><li><a href="#start-and-stop-daemons">Start and Stop Daemons</a></li></ul>
             </div>
         </div>
         

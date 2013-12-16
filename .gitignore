@@ -1,4 +1,5 @@
 *.gem
+crash.log
 *.rbc
 .bundle
 .config
