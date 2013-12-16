@@ -1,3 +1,9 @@
+---
+title: Bash
+description: A few tips on bash scripts or commands
+---
+
+
 Bash
 ====
 
