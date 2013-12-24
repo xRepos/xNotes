@@ -1,9 +1,36 @@
+---
+title: Heroku Notes
+description: Heroku Notes
+---
+
 Heroku
 ======
 
-Resource not found
-------------------
+Deploy A New App
+----------------
 
-The second time I create a heroku app, I skipped the step-by-step tutorial. After adding the remote to git, pushing code to the repository, there was simply no web dyno showing up in the dashboard but the error message in ``heroku logs``: ``at=error code=H14 desc="No web processes running``, and ``heroku ps:scale web=1`` returns ``!    Resource not found``.
+Step 1: Create a new app in Heroku Dashboard.
 
-Finally I realized the problem is a missing ``Procfile``. Add ``web: node app`` to ``Procfile`` solves the problem.
+Step 2: Create a ``Procfile`` in your app folder, add this line to the file(illustrated as a node app)
+
+
+    web: node app    
+
+
+Step 3: Git as usual
+
+    $ git init
+    $ git remote add heroku git@heroku.com:<app-name>.git
+    $ git add .
+    $ git commit -m "init commit"
+    $ git push heroku master
+
+
+**Note**: if you skip the ``Procfile`` you might see the error message in ``heroku logs``
+    
+    at=error code=H14 desc="No web processes running
+
+And if you call ``$ heroku ps:scale web=1`` it may return:
+
+    !    Resource not found
+

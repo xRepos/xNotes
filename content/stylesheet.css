@@ -110,9 +110,16 @@ a:hover {
   text-decoration: none;
 }
 
+.CodeRay {
+  border: 0;
+}
+
 code {
   color: #104E8B;
   background-color:#EEE;
+  border: 1px solid #DDD;
+  border-radius: 0;
+  font-size: 14px;
 }
 
 #content {

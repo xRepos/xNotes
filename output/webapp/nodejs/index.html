@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
+    <title>Node.js</title>
+    <meta name="description" content="Node.js Notes">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -56,7 +56,8 @@ request(url, <span class="keyword">function</span>(err, res, body){
 
 <p>Or use <code>http</code></p>
 
-<div class="CodeRay"><div class="code"><pre><code class="language-javascript">http.request({    
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> http = require(<span class="string"><span class="delimiter">'</span><span class="content">http</span><span class="delimiter">'</span></span>);
+http.request({    
     <span class="key">host</span>: <span class="string"><span class="delimiter">'</span><span class="content">search.twitter.com</span><span class="delimiter">'</span></span>, 
     <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/search.json?</span><span class="delimiter">'</span></span> + qs.stringify({ <span class="key">q</span>: search }) 
 }, <span class="keyword">function</span> (res) {}</code></pre></div></div>
@@ -88,6 +89,22 @@ http.get(url, <span class="keyword">function</span>(res){
         parsePage(buffer.join(<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>));
     })
 });</code></pre></div></div>
+
+<h2 id="commandline-arguments">Commandline Arguments</h2>
+
+<p>Commandline arguments are stored in <code>process.argv</code>. Try</p>
+
+<pre><code># test.js
+console.log(process.argv)
+</code></pre>
+
+<p>from commandline</p>
+
+<pre><code>$ node test.js foo
+[ 'node',
+  '/path/to/test.js',
+  'foo' ]
+</code></pre>
 
 <h2 id="file-upload">File Upload</h2>
 
@@ -153,7 +170,6 @@ console.log(data);
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript">fs.writeFile(<span class="string"><span class="delimiter">"</span><span class="content">filename.json</span><span class="delimiter">"</span></span>, JSON.stringify(data));</code></pre></div></div>
 
 <h2 id="route">Route</h2>
-
 <p>In <code>app.js</code></p>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> routes = require(<span class="string"><span class="delimiter">'</span><span class="content">./routes</span><span class="delimiter">'</span></span>);
@@ -190,11 +206,34 @@ app.get(<span class="string"><span class="delimiter">'</span><span class="conten
 
 <pre><code>req.body.&lt;data_name&gt;
 </code></pre>
+
+<h2 id="module">Module</h2>
+
+<h3 id="load-a-module">Load a module:</h3>
+
+<p>Search from <code>node_modules</code>:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript">require(<span class="string"><span class="delimiter">"</span><span class="content">module_name</span><span class="delimiter">"</span></span>);</code></pre></div></div>
+
+<p>Search from file:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript">require(<span class="string"><span class="delimiter">"</span><span class="content">./module_name</span><span class="delimiter">"</span></span>);
+require(<span class="string"><span class="delimiter">"</span><span class="content">/path/to/model_name</span><span class="delimiter">"</span></span>);</code></pre></div></div>
+
+<h3 id="write-a-module-use-exports">Write a module, use <code>exports</code>
+</h3>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="comment">// in module</span>
+exports.foo = <span class="integer">10</span>
+
+<span class="comment">// outside module</span>
+<span class="keyword">var</span> bar = require(<span class="string"><span class="delimiter">"</span><span class="content">./module_name</span><span class="delimiter">"</span></span>);
+console.log(bar.foo); <span class="comment">// 10</span></code></pre></div></div>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
-              <h1></h1>
-            <ul class="toc"><li><a href="#web-crawling-and-parsing">Web Crawling and Parsing</a></li><li><a href="#file-upload">File Upload</a></li><li><a href="#readwrite-file">Read/Write File</a></li><li><a href="#route">Route</a></li><li><a href="#req-lookup">Req Lookup</a></li></ul>
+              <h1>Node.js</h1>
+            <ul class="toc"><li><a href="#web-crawling-and-parsing">Web Crawling and Parsing</a></li><li><a href="#commandline-arguments">Commandline Arguments</a></li><li><a href="#file-upload">File Upload</a></li><li><a href="#readwrite-file">Read/Write File</a></li><li><a href="#route">Route</a></li><li><a href="#req-lookup">Req Lookup</a></li><li><a href="#module">Module</a></li></ul>
             </div>
         </div>
         
@@ -204,8 +243,9 @@ app.get(<span class="string"><span class="delimiter">'</span><span class="conten
     <div class="footer">
     </div>
 
-    <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/coderay.css">
+    <link rel="stylesheet" href="/style.css">
+    
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
