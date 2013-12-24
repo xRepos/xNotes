@@ -49,6 +49,9 @@ $$FPR=1-Specificity= {FP \over AllNeg}= {FP\over TN+FP}$$
 
 $$ ActionRate = {ActionRecords \over AllRecords} = {TP+FP \over AllRecords}$$
 
+* F-measure / F1 Score
+
+$$ F_1 = 2\cdot {Precision \cdot Recall \over Precision + Recall}$$
 
 ### Illustration
 <div id="confusionmat-illustration">

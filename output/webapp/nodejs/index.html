@@ -132,13 +132,17 @@ http.get(url, <span class="keyword">function</span>(res){
 
 <p>The success callback will receive whatever the server returned.</p>
 
-<h2 id="readwrite-json-file">Read/Write JSON File</h2>
+<h2 id="readwrite-file">Read/Write File</h2>
 
 <p>Read file, <code>fs.readFile</code> will read file as binary</p>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> data = fs.readFileSync(<span class="string"><span class="delimiter">'</span><span class="content">data.json</span><span class="delimiter">'</span></span>);
 console.log(data);
 <span class="error">#</span> &lt;Buffer <span class="integer">7</span>b <span class="integer">22</span> <span class="integer">32</span> <span class="integer">30</span> <span class="integer">30</span> <span class="integer">30</span> <span class="integer">22</span> <span class="integer">3</span>a <span class="integer">5</span>b <span class="integer">7</span>b <span class="integer">22</span> <span class="integer">52</span> <span class="integer">61</span> <span class="integer">6</span>e <span class="integer">6</span>b <span class="integer">22</span> <span class="integer">3</span>a <span class="integer">31</span> <span class="integer">2</span>c <span class="integer">22</span> <span class="integer">41</span> <span class="integer">69</span> <span class="integer">72</span> <span class="integer">70</span> <span class="float">6f</span> <span class="integer">72</span> <span class="integer">74</span> <span class="integer">22</span> <span class="integer">3</span>a <span class="integer">22</span> <span class="integer">20</span> <span class="integer">48</span> <span class="integer">61</span> <span class="integer">72</span> <span class="integer">74</span> <span class="integer">73</span> <span class="integer">66</span> <span class="integer">69</span> <span class="integer">65</span> <span class="integer">6</span>c <span class="integer">64</span> <span class="integer">2</span>d <span class="integer">4</span>a <span class="integer">61</span> <span class="integer">63</span> <span class="integer">6</span>b <span class="integer">73</span> <span class="float">6f</span> <span class="integer">6</span>e <span class="integer">20</span> <span class="integer">41</span> ...&gt;</code></pre></div></div>
+
+<p>Use <code>.toString()</code> to get String</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> str = fs.readFileSync(<span class="string"><span class="delimiter">'</span><span class="content">data.txt</span><span class="delimiter">'</span></span>).toString();</code></pre></div></div>
 
 <p>Use <code>JSON.parse()</code> to get JSON</p>
 
@@ -190,7 +194,7 @@ app.get(<span class="string"><span class="delimiter">'</span><span class="conten
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1></h1>
-            <ul class="toc"><li><a href="#web-crawling-and-parsing">Web Crawling and Parsing</a></li><li><a href="#file-upload">File Upload</a></li><li><a href="#readwrite-json-file">Read/Write JSON File</a></li><li><a href="#route">Route</a></li><li><a href="#req-lookup">Req Lookup</a></li></ul>
+            <ul class="toc"><li><a href="#web-crawling-and-parsing">Web Crawling and Parsing</a></li><li><a href="#file-upload">File Upload</a></li><li><a href="#readwrite-file">Read/Write File</a></li><li><a href="#route">Route</a></li><li><a href="#req-lookup">Req Lookup</a></li></ul>
             </div>
         </div>
         

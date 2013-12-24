@@ -1,3 +1,8 @@
+---
+title: Node.js
+description: Node.js Notes
+---
+
 Node.js
 =======
 
@@ -19,6 +24,7 @@ Here is a quick way for crawling and parsing. Use ``request`` to get the raw htm
 Or use ``http``
 
     #!javascript
+    var http = require('http');
     http.request({    
         host: 'search.twitter.com', 
         path: '/search.json?' + qs.stringify({ q: search }) 
@@ -54,6 +60,21 @@ If gziped
             parsePage(buffer.join(''));
         })
     });
+
+Commandline Arguments
+---------------------
+
+Commandline arguments are stored in ``process.argv``. Try
+
+    # test.js
+    console.log(process.argv)
+
+from commandline
+
+    $ node test.js foo
+    [ 'node',
+      '/path/to/test.js',
+      'foo' ]
 
 
 File Upload
@@ -102,7 +123,7 @@ To get the file from the ``<input>``, use ``$('#file-upload')[0].files[0]``
 
 The success callback will receive whatever the server returned.
 
-Read/Write JSON File
+Read/Write File
 ---------------
 
 Read file, ``fs.readFile`` will read file as binary
@@ -111,6 +132,11 @@ Read file, ``fs.readFile`` will read file as binary
     var data = fs.readFileSync('data.json');
     console.log(data);
     # <Buffer 7b 22 32 30 30 30 22 3a 5b 7b 22 52 61 6e 6b 22 3a 31 2c 22 41 69 72 70 6f 72 74 22 3a 22 20 48 61 72 74 73 66 69 65 6c 64 2d 4a 61 63 6b 73 6f 6e 20 41 ...>
+
+Use ``.toString()`` to get String
+
+    #!javascript
+    var str = fs.readFileSync('data.txt').toString();
 
 Use ``JSON.parse()`` to get JSON
 
@@ -162,5 +188,29 @@ Other uploaded data
     req.body.<data_name>
 
 
+Module
+------
 
+### Load a module:
+
+Search from ``node_modules``:
+
+    #!javascript
+    require("module_name");
+
+Search from file:
+
+    #!javascript
+    require("./module_name");
+    require("/path/to/model_name");
+
+### Write a module, use ``exports``
+
+    #!javascript
+    // in module
+    exports.foo = 10
+
+    // outside module
+    var bar = require("./module_name");
+    console.log(bar.foo); // 10
 
