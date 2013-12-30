@@ -57,26 +57,77 @@
 <li>
 <code>in</code>: check prototype chain, all inherited properties will be included.</li>
   <li>
-    <p><code>hasOwnProperty()</code>: only check its own properties.</p>
+<code>hasOwnProperty()</code>: only check its own properties.</li>
+</ul><h2 id="merge-options-with-default">Merge Options with Default</h2>
 
-    <p>function applyDefaults(params, defaults) {
-  var settings = params || {};</p>
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> <span class="function">getMergedOptions</span> = <span class="keyword">function</span>(options, defaults) {
+    <span class="keyword">var</span> options = options || {}, 
+        option;
 
-    <p>for(var setting in defaults) {
-    if(defaults.hasOwnProperty(setting) &amp;&amp; !settings[setting]) {
-      settings[setting] = defaults[setting];
+    <span class="keyword">for</span>(option <span class="keyword">in</span> defaults) {
+        <span class="keyword">if</span>(defaults.hasOwnProperty(option) &amp;&amp; !options[option]) {
+            options[option] = defaults[option];
+        }
     }
-  }</p>
 
-    <p>return settings;
-}</p>
-  </li>
+    <span class="keyword">return</span> options;
+}</code></pre></div></div>
+
+<h2 id="regular-expression">Regular Expression</h2>
+
+<h3 id="literal-vs-constructor">Literal vs. Constructor</h3>
+
+<ul>
+<li>Literal: <code>re = /.../g</code>
+</li>
+  <li>Constructor: <code>re = new RegExp("...")</code>
+    <ul>
+<li>can use string concat: <code>re = new RegExp("..." + some_variable + "...")</code>
+</li>
+    </ul>
+</li>
+</ul><h3 id="local-vs-global">Local vs. Global</h3>
+
+<ul>
+<li>
+<code>re = /.../</code>: <code>re.match(str)</code> will return a list of captures of the FIRST match</li>
+  <li>
+<code>re = /.../g</code>: <code>re.match(str)</code> will return a list of matches but NOT captures</li>
+</ul><h3 id="match-vs-exec">match vs. exec</h3>
+
+<ul>
+<li>
+<code>match</code>: as stated above</li>
+  <li>
+<code>exec</code>: return captures, exec multiple times</li>
+</ul><p>Example</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> match;
+<span class="keyword">while</span> ((match = re.exec(str)) !== <span class="predefined-constant">null</span>) {
+
+}</code></pre></div></div>
+
+<h3 id="use-jquery">Use jQuery</h3>
+
+<ul>
+<li>Match Text: 
+    <ul>
+<li><code>re.exec($(selector).text())</code></li>
+      <li><code>$(selector).text().match(re)</code></li>
+    </ul>
+</li>
+  <li>Match HTML:
+    <ul>
+<li><code>re.exec($(selector).html())</code></li>
+      <li><code>$(selector).html().match(re)</code></li>
+    </ul>
+</li>
 </ul>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1>Javascript</h1>
-            <ul class="toc"><li><a href="#set-default-value-inside-function">Set default value inside function</a></li><li><a href="#get-object-keys">Get Object keys</a></li><li><a href="#in-vs-hasownproperty">in vs. hasOwnProperty()</a></li></ul>
+            <ul class="toc"><li><a href="#set-default-value-inside-function">Set default value inside function</a></li><li><a href="#get-object-keys">Get Object keys</a></li><li><a href="#in-vs-hasownproperty">in vs. hasOwnProperty()</a></li><li><a href="#merge-options-with-default">Merge Options with Default</a></li><li><a href="#regular-expression">Regular Expression</a></li></ul>
             </div>
         </div>
         

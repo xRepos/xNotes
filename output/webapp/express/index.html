@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
+    <title>Express.js</title>
+    <meta name="description" content="Express.js Notes">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -42,11 +42,26 @@
           <h1 id="express">Express</h1>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="predefined">$</span> express --sessions --css less --ejs &lt;myapp&gt;</code></pre></div></div>
+
+<h2 id="enable-cors">Enable CORS</h2>
+
+<p>If you see error like: </p>
+
+<pre><code>XMLHttpRequest cannot load &lt;some_url&gt;. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin '&lt;origin_url&gt;' is therefore not allowed access.
+</code></pre>
+
+<p>Add the followings to the <code>app.js</code>:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript">app.all(<span class="string"><span class="delimiter">'</span><span class="content">*</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(req, res, next) {
+    res.header(<span class="string"><span class="delimiter">"</span><span class="content">Access-Control-Allow-Origin</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">*</span><span class="delimiter">"</span></span>);
+    res.header(<span class="string"><span class="delimiter">"</span><span class="content">Access-Control-Allow-Headers</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">X-Requested-With</span><span class="delimiter">"</span></span>);
+    next();
+});</code></pre></div></div>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
-              <h1></h1>
-            
+              <h1>Express.js</h1>
+            <ul class="toc"><li><a href="#enable-cors">Enable CORS</a></li></ul>
             </div>
         </div>
         

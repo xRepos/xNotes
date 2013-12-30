@@ -60,11 +60,19 @@
 <h2 id="input-detect-typing">Input Detect Typing</h2>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#foo</span><span class="delimiter">'</span></span>).keyup()</code></pre></div></div>
+
+<h2 id="window-resize">Window Resize</h2>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">function</span> <span class="function">windowResize</span>() {
+    <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#map_canvas</span><span class="delimiter">'</span></span>).css(<span class="string"><span class="delimiter">'</span><span class="content">height</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {<span class="keyword">return</span> <span class="predefined">$</span>(window).height() - <span class="integer">50</span>});
+}
+
+<span class="predefined">$</span>(window).resize(windowResize);</code></pre></div></div>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1></h1>
-            <ul class="toc"><li><a href="#select-on-change">Select on Change</a></li><li><a href="#disable-form">Disable Form</a></li><li><a href="#input-detect-typing">Input Detect Typing</a></li></ul>
+            <ul class="toc"><li><a href="#select-on-change">Select on Change</a></li><li><a href="#disable-form">Disable Form</a></li><li><a href="#input-detect-typing">Input Detect Typing</a></li><li><a href="#window-resize">Window Resize</a></li></ul>
             </div>
         </div>
         

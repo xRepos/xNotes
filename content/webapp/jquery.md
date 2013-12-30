@@ -27,3 +27,13 @@ Input Detect Typing
 
     #!javascript
     $('#foo').keyup()
+
+Window Resize
+-------------
+
+    #!javascript
+    function windowResize() {
+        $('#map_canvas').css('height', function() {return $(window).height() - 50});
+    }
+
+    $(window).resize(windowResize);
