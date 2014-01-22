@@ -1,3 +1,8 @@
+---
+title: Angular.js
+description: Angular.js Notes
+---
+
 Angular.js
 ==========
 
@@ -86,3 +91,33 @@ Add this to the controller:
 ``$viewContentLoaded`` is the event that "Emitted every time the ngView content is reloaded."
 
 One use case is to resize the components after the view is loaded.
+
+
+$location
+---------
+There are two modes of $location in Angularjs. If not set correctly the result might be unexpected.
+
+* HTML5: ``http://foo.com/bar?baz=23#qux``
+* Hashbang: ``http://foo.com/#!/bar?baz=23#qux``
+
+The result should be:
+
+* $location.path(): /bar
+* $location.search(): baz=23#
+* $location.hash(): qux
+
+To use HTML5 model:
+
+    #!javascript
+    $locationProvider.html5Mode(true);
+
+For example:
+
+    #!javascript
+    angular.module('Foo', ['ngRoute'])
+        .config(['$routeProvider','$locationProvider', function($routeProvider, $locationProvider) {
+            $routeProvider...
+            $locationProvider.html5Mode(true);
+        }) 
+        ...
+    
