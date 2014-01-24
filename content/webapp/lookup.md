@@ -13,3 +13,7 @@ D3
 jQuery
     
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+Google Maps 
+
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>

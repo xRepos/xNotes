@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
+    <title>Angular.js</title>
+    <meta name="description" content="Angular.js Notes">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -117,11 +117,112 @@
 <p><code>$viewContentLoaded</code> is the event that “Emitted every time the ngView content is reloaded.”</p>
 
 <p>One use case is to resize the components after the view is loaded.</p>
+
+<h2 id="location">$location</h2>
+<p>There are two modes of $location in Angularjs. If not set correctly the result might be unexpected.</p>
+
+<ul>
+<li>HTML5: <code>http://foo.com/bar?baz=23#qux</code>
+</li>
+  <li>Hashbang: <code>http://foo.com/#!/bar?baz=23#qux</code>
+</li>
+</ul><p>The result should be:</p>
+
+<ul>
+<li>$location.path(): /bar</li>
+  <li>$location.search(): baz=23#</li>
+  <li>$location.hash(): qux</li>
+</ul><p>To use HTML5 model:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="predefined">$locationProvider</span>.html5Mode(<span class="predefined-constant">true</span>);</code></pre></div></div>
+
+<p>For example:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript">angular.module(<span class="string"><span class="delimiter">'</span><span class="content">Foo</span><span class="delimiter">'</span></span>, [<span class="string"><span class="delimiter">'</span><span class="content">ngRoute</span><span class="delimiter">'</span></span>])
+    .config([<span class="string"><span class="delimiter">'</span><span class="content">$routeProvider</span><span class="delimiter">'</span></span>,<span class="string"><span class="delimiter">'</span><span class="content">$locationProvider</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(<span class="predefined">$routeProvider</span>, <span class="predefined">$locationProvider</span>) {
+        <span class="predefined">$routeProvider</span>...
+        <span class="predefined">$locationProvider</span>.html5Mode(<span class="predefined-constant">true</span>);
+    }) 
+    ...</code></pre></div></div>
+
+<h2 id="apply">$apply</h2>
+
+<p>Use <code>$scope.$apply</code> to update bindings:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="predefined">$</span>.ajax({
+    <span class="key">url</span>: <span class="string"><span class="delimiter">'</span><span class="content">/upload</span><span class="delimiter">'</span></span>,
+    <span class="key">type</span>: <span class="string"><span class="delimiter">'</span><span class="content">POST</span><span class="delimiter">'</span></span>,
+    <span class="function">success</span>: <span class="keyword">function</span>(d) {
+       
+        <span class="predefined">$scope</span>.<span class="predefined">$apply</span>(<span class="keyword">function</span>() {
+            <span class="predefined">$scope</span>.data = d;
+        })
+   
+    },
+    ...
+});</code></pre></div></div>
+
+<h2 id="tabs">Tabs</h2>
+
+<h3 id="step-1-model">Step 1: Model</h3>
+
+<p>Use one model(<code>activeTab</code>) to control the active tab in controller:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">function</span> <span class="function">MyCtrl</span>(<span class="predefined">$scope</span>) {
+    <span class="predefined">$scope</span>.activeTab = <span class="string"><span class="delimiter">"</span><span class="content">tabName1</span><span class="delimiter">"</span></span>;
+}</code></pre></div></div>
+
+<h3 id="step-2-tab">Step 2: Tab</h3>
+<p>Add controls to the tabs:</p>
+
+<ul>
+<li>class(<code>ng-class</code>) set to <code>active</code> only if the <code>activeTab</code> is the current tab</li>
+  <li>upon click(<code>ng-click</code>), set the <code>activeTab</code> to the current tab</li>
+</ul><p>Code:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-html"><span class="tag">&lt;li</span> <span class="attribute-name">ng-class</span>=<span class="string"><span class="delimiter">"</span><span class="content">{'active':activeTab=='tabName1'}</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">#</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-click</span>=<span class="string"><span class="delimiter">"</span><span class="content">activeTab='tabName1'</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>tabName1<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;/li&gt;</span></code></pre></div></div>
+
+<h3 id="step-3-tab-content">Step 3: Tab Content</h3>
+
+<p>Add controls to the tab content, use <code>ng-switch</code> and <code>ng-switch-when</code>:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">tab-content</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">container</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-switch</span>=<span class="string"><span class="delimiter">"</span><span class="content">activeTab</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attribute-name">ng-switch-when</span>=<span class="string"><span class="delimiter">"</span><span class="content">tabName1</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+            asdf
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attribute-name">ng-switch-when</span>=<span class="string"><span class="delimiter">"</span><span class="content">tabName2</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+            qwer
+        <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre></div></div>
+
+<p>Put everything together:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">container</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-controller</span>=<span class="string"><span class="delimiter">"</span><span class="content">MyCtrl</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">nav nav-tabs nav-justified</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;li</span> <span class="attribute-name">ng-class</span>=<span class="string"><span class="delimiter">"</span><span class="content">{'active':activeTab=='tabName1'}</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">#</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-click</span>=<span class="string"><span class="delimiter">"</span><span class="content">activeTab='tabName1'</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>tabName1<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+        <span class="tag">&lt;li</span> <span class="attribute-name">ng-class</span>=<span class="string"><span class="delimiter">"</span><span class="content">{'active':activeTab=='tabName2'}</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">#</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-click</span>=<span class="string"><span class="delimiter">"</span><span class="content">activeTab='tabName2'</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>tabName2<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+        ...
+    <span class="tag">&lt;/ul&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">tab-content</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">container</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-switch</span>=<span class="string"><span class="delimiter">"</span><span class="content">activeTab</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attribute-name">ng-switch-when</span>=<span class="string"><span class="delimiter">"</span><span class="content">tabName1</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+                asdf
+            <span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attribute-name">ng-switch-when</span>=<span class="string"><span class="delimiter">"</span><span class="content">tabName2</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+                qwer
+            <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre></div></div>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
-              <h1></h1>
-            <ul class="toc"><li><a href="#loading-data-in-a-service">Loading Data in a Service</a></li><li><a href="#reuse-bootstrap-modal">Reuse Bootstrap Modal</a></li><li><a href="#add-listener-upon-ngview-loaded">Add Listener upon ngView Loaded</a></li></ul>
+              <h1>Angular.js</h1>
+            <ul class="toc"><li><a href="#loading-data-in-a-service">Loading Data in a Service</a></li><li><a href="#reuse-bootstrap-modal">Reuse Bootstrap Modal</a></li><li><a href="#add-listener-upon-ngview-loaded">Add Listener upon ngView Loaded</a></li><li><a href="#location">$location</a></li><li><a href="#apply">$apply</a></li><li><a href="#tabs">Tabs</a></li></ul>
             </div>
         </div>
         

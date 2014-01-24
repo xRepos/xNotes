@@ -120,4 +120,86 @@ For example:
             $locationProvider.html5Mode(true);
         }) 
         ...
-    
+
+$apply
+------
+
+Use ``$scope.$apply`` to update bindings:
+
+    #!javascript
+    $.ajax({
+        url: '/upload',
+        type: 'POST',
+        success: function(d) {
+           
+            $scope.$apply(function() {
+                $scope.data = d;
+            })
+   
+        },
+        ...
+    }); 
+
+Tabs
+----
+
+### Step 1: Model
+
+Use one model(``activeTab``) to control the active tab in controller:
+
+    #!javascript
+    function MyCtrl($scope) {
+        $scope.activeTab = "tabName1";
+    }
+
+### Step 2: Tab
+Add controls to the tabs:
+
+* class(``ng-class``) set to ``active`` only if the ``activeTab`` is the current tab
+* upon click(``ng-click``), set the ``activeTab`` to the current tab
+
+Code:
+
+    #!html
+    <li ng-class="{'active':activeTab=='tabName1'}">
+        <a href="#" ng-click="activeTab='tabName1'">tabName1</a>
+    </li>
+
+### Step 3: Tab Content
+
+Add controls to the tab content, use ``ng-switch`` and ``ng-switch-when``:
+
+    #!html
+    <div class="tab-content">
+        <div class="container" ng-switch="activeTab">
+            <div ng-switch-when="tabName1">
+                asdf
+            </div>
+            <div ng-switch-when="tabName2">
+                qwer
+            </div>
+        </div>
+    </div>
+
+
+Put everything together:
+
+    #!html
+    <div class="container" ng-controller="MyCtrl">
+        <ul class="nav nav-tabs nav-justified">
+            <li ng-class="{'active':activeTab=='tabName1'}"><a href="#" ng-click="activeTab='tabName1'">tabName1</a></li>
+            <li ng-class="{'active':activeTab=='tabName2'}"><a href="#" ng-click="activeTab='tabName2'">tabName2</a></li>
+            ...
+        </ul>
+        <div class="tab-content">
+            <div class="container" ng-switch="activeTab">
+                <div ng-switch-when="tabName1">
+                    asdf
+                </div>
+                <div ng-switch-when="tabName2">
+                    qwer
+                </div>
+            </div>
+        </div>
+    </div>
+

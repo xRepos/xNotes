@@ -187,6 +187,14 @@ Other uploaded data
 
     req.body.<data_name>
 
+Global Object
+-------------
+
+* Browser: ``window``
+* Server: ``process``
+    * ``process.env``: env defined and exported in ``~/.bash_profile`` or ``~/.bashrc``
+
+
 
 Module
 ------
@@ -214,3 +222,23 @@ Search from file:
     var bar = require("./module_name");
     console.log(bar.foo); // 10
 
+
+npm install
+-----------
+
+Save to ``package.json`` - ``dependencies`` section: 
+
+    $ npm install --save <package-name>
+
+Save to ``package.json`` - ``devDependencies`` section: 
+
+    $ npm install --save-dev <package-name>
+
+
+Quick Lookup
+------------
+
+Get num of CPUs:
+
+    #!javascript
+    var numCPUs = require('os').cpus().length;

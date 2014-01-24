@@ -80,7 +80,7 @@ table.CodeRay td { padding: 2px 4px; vertical-align: top; }
 .CodeRay .key { color: #606 }
 .CodeRay .key .char { color: #60f }
 .CodeRay .key .delimiter { color: #404 }
-.CodeRay .keyword { color:#CD853F; font-weight:bold }
+.CodeRay .keyword { color:#080; font-weight:bold }
 .CodeRay .label { color:#970; font-weight:bold }
 .CodeRay .local-variable { color:#950 }
 .CodeRay .map .content { color:#808 }
@@ -91,7 +91,7 @@ table.CodeRay td { padding: 2px 4px; vertical-align: top; }
 .CodeRay .operator { }
 .CodeRay .predefined { color:#369; font-weight:bold }
 .CodeRay .predefined-constant { color:#069 }
-.CodeRay .predefined-type { color:#36648B; font-weight:bold }
+.CodeRay .predefined-type { color:#0a8; font-weight:bold }
 .CodeRay .preprocessor { color:#579 }
 .CodeRay .pseudo-class { color:#00C; font-weight:bold }
 .CodeRay .regexp { background-color:hsla(300,100%,50%,0.06); }
@@ -102,16 +102,16 @@ table.CodeRay td { padding: 2px 4px; vertical-align: top; }
 .CodeRay .shell { background-color:hsla(120,100%,50%,0.06); }
 .CodeRay .shell .content { color:#2B2 }
 .CodeRay .shell .delimiter { color:#161 }
-.CodeRay .string {  }
-.CodeRay .string .char { color: #008B00 }
-.CodeRay .string .content { color: #71C671 }
-.CodeRay .string .delimiter { color: #008B00 }
+.CodeRay .string { background-color:hsla(0,100%,50%,0.05); }
+.CodeRay .string .char { color: #b0b }
+.CodeRay .string .content { color: #D20 }
+.CodeRay .string .delimiter { color: #710 }
 .CodeRay .string .modifier { color: #E40 }
 .CodeRay .symbol { color:#A60 }
 .CodeRay .symbol .content { color:#A60 }
 .CodeRay .symbol .delimiter { color:#740 }
-.CodeRay .tag { color:#36648B; font-weight:bold }
-.CodeRay .type { color:#36648B; font-weight:bold }
+.CodeRay .tag { color:#070; font-weight:bold }
+.CodeRay .type { color:#339; font-weight:bold }
 .CodeRay .value { color: #088 }
 .CodeRay .variable { color:#037 }
 
