@@ -131,7 +131,7 @@ Read file, ``fs.readFile`` will read file as binary
     #!javascript
     var data = fs.readFileSync('data.json');
     console.log(data);
-    # <Buffer 7b 22 32 30 30 30 22 3a 5b 7b 22 52 61 6e 6b 22 3a 31 2c 22 41 69 72 70 6f 72 74 22 3a 22 20 48 61 72 74 73 66 69 65 6c 64 2d 4a 61 63 6b 73 6f 6e 20 41 ...>
+    //<Buffer 7b 22 32 30 30 30 22 3a 5b 7b 22 52 61 6e 6b 22 3a 31 2c 22 41 69 72 70 6f 72 74 22 3a 22 20 48 61 72 74 73 66 69 65 6c 64 2d 4a 61 63 6b 73 6f 6e 20 41 ...>
 
 Use ``.toString()`` to get String
 
@@ -177,15 +177,44 @@ In terminal
 Req Lookup
 ----------
 
+### Params
+
+Params are stored as
+
+    #!javascript
     req.route.params.<param_name>
+
+E.g. in ``app.js``:
+
+    #!javascript
+    app.get('/foo/:name', ...)
+
+A request to ``/foo/bar`` will generate
+
+    #!javascript
+    req.route.params.name == 'bar'
+
+### File Upload
 
 Uploaded files
 
+    #!javascript
     req.files.<file_name>.path
 
-Other uploaded data
+### Data Upload
 
+Uploaded data
+
+    #!javascript
     req.body.<data_name>
+
+``req.files`` and ``req.body`` are available for POST requests, but not GET requests
+
+E.g. use ``Angular.js``:
+
+    #!javascript
+    $http.get('/someUrl').success(successCallback);
+    $http.post('/someUrl', data).success(successCallback);
 
 Global Object
 -------------

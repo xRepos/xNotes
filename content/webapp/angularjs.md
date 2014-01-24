@@ -102,9 +102,9 @@ There are two modes of $location in Angularjs. If not set correctly the result m
 
 The result should be:
 
-* $location.path(): /bar
-* $location.search(): baz=23#
-* $location.hash(): qux
+* ``$location.path()``: /bar
+* ``$location.search()``: baz=23#
+* ``$location.hash()``: qux
 
 To use HTML5 model:
 
@@ -187,8 +187,12 @@ Put everything together:
     #!html
     <div class="container" ng-controller="MyCtrl">
         <ul class="nav nav-tabs nav-justified">
-            <li ng-class="{'active':activeTab=='tabName1'}"><a href="#" ng-click="activeTab='tabName1'">tabName1</a></li>
-            <li ng-class="{'active':activeTab=='tabName2'}"><a href="#" ng-click="activeTab='tabName2'">tabName2</a></li>
+            <li ng-class="{'active':activeTab=='tabName1'}">
+                <a href="#" ng-click="activeTab='tabName1'">tabName1</a>
+            </li>
+            <li ng-class="{'active':activeTab=='tabName2'}">
+                <a href="#" ng-click="activeTab='tabName2'">tabName2</a>
+            </li>
             ...
         </ul>
         <div class="tab-content">
@@ -203,3 +207,10 @@ Put everything together:
         </div>
     </div>
 
+Beautiful Print Object as JSON
+------------------------------
+
+Use ``json`` filter to convert a javascript object to correctly quoted JSON string, and use ``<pre>`` tag to keep the format:
+
+    #!javascript
+    <pre>{{myObject | json}}</pre>

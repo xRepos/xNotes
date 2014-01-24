@@ -129,9 +129,12 @@
 </ul><p>The result should be:</p>
 
 <ul>
-<li>$location.path(): /bar</li>
-  <li>$location.search(): baz=23#</li>
-  <li>$location.hash(): qux</li>
+<li>
+<code>$location.path()</code>: /bar</li>
+  <li>
+<code>$location.search()</code>: baz=23#</li>
+  <li>
+<code>$location.hash()</code>: qux</li>
 </ul><p>To use HTML5 model:</p>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="predefined">$locationProvider</span>.html5Mode(<span class="predefined-constant">true</span>);</code></pre></div></div>
@@ -203,8 +206,12 @@
 
 <div class="CodeRay"><div class="code"><pre><code class="language-html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">container</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-controller</span>=<span class="string"><span class="delimiter">"</span><span class="content">MyCtrl</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
     <span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">nav nav-tabs nav-justified</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
-        <span class="tag">&lt;li</span> <span class="attribute-name">ng-class</span>=<span class="string"><span class="delimiter">"</span><span class="content">{'active':activeTab=='tabName1'}</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">#</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-click</span>=<span class="string"><span class="delimiter">"</span><span class="content">activeTab='tabName1'</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>tabName1<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
-        <span class="tag">&lt;li</span> <span class="attribute-name">ng-class</span>=<span class="string"><span class="delimiter">"</span><span class="content">{'active':activeTab=='tabName2'}</span><span class="delimiter">"</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">#</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-click</span>=<span class="string"><span class="delimiter">"</span><span class="content">activeTab='tabName2'</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>tabName2<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+        <span class="tag">&lt;li</span> <span class="attribute-name">ng-class</span>=<span class="string"><span class="delimiter">"</span><span class="content">{'active':activeTab=='tabName1'}</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">#</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-click</span>=<span class="string"><span class="delimiter">"</span><span class="content">activeTab='tabName1'</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>tabName1<span class="tag">&lt;/a&gt;</span>
+        <span class="tag">&lt;/li&gt;</span>
+        <span class="tag">&lt;li</span> <span class="attribute-name">ng-class</span>=<span class="string"><span class="delimiter">"</span><span class="content">{'active':activeTab=='tabName2'}</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">#</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-click</span>=<span class="string"><span class="delimiter">"</span><span class="content">activeTab='tabName2'</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>tabName2<span class="tag">&lt;/a&gt;</span>
+        <span class="tag">&lt;/li&gt;</span>
         ...
     <span class="tag">&lt;/ul&gt;</span>
     <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">tab-content</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
@@ -218,11 +225,17 @@
         <span class="tag">&lt;/div&gt;</span>
     <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span></code></pre></div></div>
+
+<h2 id="beautiful-print-object-as-json">Beautiful Print Object as JSON</h2>
+
+<p>Use <code>json</code> filter to convert a javascript object to correctly quoted JSON string, and use <code>&lt;pre&gt;</code> tag to keep the format:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="tag">&lt;pre&gt;</span>{{myObject | json}}<span class="tag">&lt;/pre&gt;</span></code></pre></div></div>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1>Angular.js</h1>
-            <ul class="toc"><li><a href="#loading-data-in-a-service">Loading Data in a Service</a></li><li><a href="#reuse-bootstrap-modal">Reuse Bootstrap Modal</a></li><li><a href="#add-listener-upon-ngview-loaded">Add Listener upon ngView Loaded</a></li><li><a href="#location">$location</a></li><li><a href="#apply">$apply</a></li><li><a href="#tabs">Tabs</a></li></ul>
+            <ul class="toc"><li><a href="#loading-data-in-a-service">Loading Data in a Service</a></li><li><a href="#reuse-bootstrap-modal">Reuse Bootstrap Modal</a></li><li><a href="#add-listener-upon-ngview-loaded">Add Listener upon ngView Loaded</a></li><li><a href="#location">$location</a></li><li><a href="#apply">$apply</a></li><li><a href="#tabs">Tabs</a></li><li><a href="#beautiful-print-object-as-json">Beautiful Print Object as JSON</a></li></ul>
             </div>
         </div>
         
