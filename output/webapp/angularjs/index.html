@@ -148,7 +148,9 @@
     }) 
     ...</code></pre></div></div>
 
-<h2 id="apply">$apply</h2>
+<h2 id="apply-and-watch">$apply and $watch</h2>
+
+<h3 id="apply">$apply</h3>
 
 <p>Use <code>$scope.$apply</code> to update bindings:</p>
 
@@ -164,6 +166,30 @@
     },
     ...
 });</code></pre></div></div>
+
+<p>the <code>$scope.data</code> in the controller and the references in html (<code>{{data}}</code>) should be updated.</p>
+
+<h3 id="watch">$watch</h3>
+
+<p>Use <code>$scope.$watch</code> to monitor the changes of models.</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="predefined">$scope</span>.<span class="predefined">$watch</span>(<span class="string"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(newVal, oldVal) {
+    ...
+});</code></pre></div></div>
+
+<p>Or by function(when <code>foo</code> is in parent’s scope for example)</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="predefined">$scope</span>.<span class="predefined">$watch</span>(<span class="keyword">function</span>() {<span class="keyword">return</span> <span class="predefined">$scope</span>.foo;}, <span class="keyword">function</span>(newVal, oldVal) {
+    ...
+});</code></pre></div></div>
+
+<p>For example, <code>foo</code> is loaded from async file read in a parent controller, <code>bar</code> is a part of <code>foo</code>, <code>bar = foo[key]</code>, and used in the child controller; however <code>foo</code> is not available at the very beginning, use <code>$watch</code> to monitor <code>foo</code>, and update <code>bar</code> when <code>foo</code> is available:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="predefined">$scope</span>.<span class="predefined">$watch</span>(<span class="keyword">function</span>() {<span class="keyword">return</span> <span class="predefined">$scope</span>.foo;}, <span class="keyword">function</span>(newVal, oldVal) {
+    <span class="keyword">if</span> (<span class="predefined">$scope</span>.key <span class="keyword">in</span> newVal ) {
+        <span class="predefined">$scope</span>.bar = newVal[<span class="predefined">$scope</span>.key];
+    }
+})</code></pre></div></div>
 
 <h2 id="tabs">Tabs</h2>
 
@@ -235,7 +261,7 @@
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1>Angular.js</h1>
-            <ul class="toc"><li><a href="#loading-data-in-a-service">Loading Data in a Service</a></li><li><a href="#reuse-bootstrap-modal">Reuse Bootstrap Modal</a></li><li><a href="#add-listener-upon-ngview-loaded">Add Listener upon ngView Loaded</a></li><li><a href="#location">$location</a></li><li><a href="#apply">$apply</a></li><li><a href="#tabs">Tabs</a></li><li><a href="#beautiful-print-object-as-json">Beautiful Print Object as JSON</a></li></ul>
+            <ul class="toc"><li><a href="#loading-data-in-a-service">Loading Data in a Service</a></li><li><a href="#reuse-bootstrap-modal">Reuse Bootstrap Modal</a></li><li><a href="#add-listener-upon-ngview-loaded">Add Listener upon ngView Loaded</a></li><li><a href="#location">$location</a></li><li><a href="#apply-and-watch">$apply and $watch</a></li><li><a href="#tabs">Tabs</a></li><li><a href="#beautiful-print-object-as-json">Beautiful Print Object as JSON</a></li></ul>
             </div>
         </div>
         

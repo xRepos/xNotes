@@ -121,8 +121,10 @@ For example:
         }) 
         ...
 
-$apply
-------
+$apply and $watch
+-----------------
+
+### $apply
 
 Use ``$scope.$apply`` to update bindings:
 
@@ -139,6 +141,33 @@ Use ``$scope.$apply`` to update bindings:
         },
         ...
     }); 
+
+the ``$scope.data`` in the controller and the references in html (``{{data}}``) should be updated.
+
+### $watch
+
+Use ``$scope.$watch`` to monitor the changes of models.
+
+    #!javascript
+    $scope.$watch('foo', function(newVal, oldVal) {
+        ...
+    });
+
+Or by function(when ``foo`` is in parent's scope for example)
+
+    #!javascript
+    $scope.$watch(function() {return $scope.foo;}, function(newVal, oldVal) {
+        ...
+    });
+
+For example, ``foo`` is loaded from async file read in a parent controller, ``bar`` is a part of ``foo``, ``bar = foo[key]``, and used in the child controller; however ``foo`` is not available at the very beginning, use ``$watch`` to monitor ``foo``, and update ``bar`` when ``foo`` is available:
+
+    #!javascript
+    $scope.$watch(function() {return $scope.foo;}, function(newVal, oldVal) {
+        if ($scope.key in newVal ) {
+            $scope.bar = newVal[$scope.key];
+        }
+    })
 
 Tabs
 ----
