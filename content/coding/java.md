@@ -1,3 +1,8 @@
+---
+title: xNotes - Java
+description: Java Notes
+---
+
 Java
 ====
 

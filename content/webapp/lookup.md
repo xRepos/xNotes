@@ -1,3 +1,7 @@
+---
+title: xNotes - Lookup
+---
+
 Quick Lookup
 ============
 
@@ -17,3 +21,7 @@ jQuery
 Google Maps 
 
     <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+Google Chart API
+
+    <script src="https://www.google.com/jsapi"></script>

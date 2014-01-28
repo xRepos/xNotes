@@ -1,3 +1,8 @@
+---
+title: xNotes - Pig
+description: Pig Notes
+---
+
 Apache Pig
 ==========
 
