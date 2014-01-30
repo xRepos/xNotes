@@ -15,8 +15,8 @@ Two mistakes:
 
 2. I saw the error message
 
-    env: node: No such file or directory
+        env: node: No such file or directory
 
-The solution is add PATH=/usr/local/bin to ``Environment variables`` in FileWatcher
+The solution is add ``PATH=/usr/local/bin`` to ``Environment variables`` in FileWatcher
 
 Extra note about the FileWatcher: in command line we use ``lessc style.less > style.css`` to write to file. In FileWatcher, set only ``style.less`` in Arguments , and leave ``style.css`` in  ``Output paths to refresh``

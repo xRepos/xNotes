@@ -169,6 +169,58 @@ For example, ``foo`` is loaded from async file read in a parent controller, ``ba
         }
     })
 
+Directives
+----------
+
+This code fails to verify the path.
+
+    #!javascript
+    .directive('uniquePath', function() {
+        return {
+            require: 'ngModel',
+            link: function(scope, element, attrs, ctrl) {
+                scope.$watch(attrs.ngModel, function() {            
+                    socket.emit('reqVerifyPath', {path: scope[attrs.ngModel]});
+                    socket.on('resVerifyPath', function(exists) { 
+                        if (exists) {
+                            ctrl.$setValidity('unique', false);
+                        } else {
+                            ctrl.$setValidity('unique', true);
+                        }
+                    })
+
+                })
+            }
+        }
+    });
+
+Problem is this part of the code:
+
+    #!javascript
+    socket.on('resVerifyPath', function(exists) { 
+        if (exists) {
+            ctrl.$setValidity('unique', false);
+        } else {
+            ctrl.$setValidity('unique', true);
+        }
+    })
+
+Even though it receives the ``exists`` and update validity successfully, it is not digested, instead it is updated in the next loop. To force the update, use ``scope.$apply()``
+
+    #!javascript
+    socket.on('resVerifyPath', function(exists) {
+        scope.$apply(function() {
+            if (exists) {
+                ctrl.$setValidity('unique', false);
+            } else {
+                ctrl.$setValidity('unique', true);
+            }
+        })
+
+    })
+
+ 
+
 Tabs
 ----
 

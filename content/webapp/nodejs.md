@@ -6,6 +6,14 @@ description: Node.js Notes
 Node.js
 =======
 
+Stringify
+---------
+
+To pretty print(indent by 4 spaces):
+
+    #!javascript
+    JSON.stringify(data, null, "    ")
+
 Web Crawling and Parsing
 ------------------------
 

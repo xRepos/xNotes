@@ -210,11 +210,18 @@ Wait before it is up:</p>
 else
     echo No mongod Server to stop ...
 fi</code></pre></div></div>
+
+<h2 id="count-number-of-columns">Count Number of Columns</h2>
+
+<p>Use <code>awk</code>:</p>
+
+<pre><code>$ cat file | head -1 | awk -F"," '{print NF}'
+</code></pre>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1>Bash</h1>
-            <ul class="toc"><li><a href="#nohup">Nohup</a></li><li><a href="#always-search-current-folder-first">Always Search Current Folder First</a></li><li><a href="#style-your-prompt">Style Your Prompt</a></li><li><a href="#show-current-git-branch">Show Current Git Branch</a></li><li><a href="#start-and-stop-daemons">Start and Stop Daemons</a></li></ul>
+            <ul class="toc"><li><a href="#nohup">Nohup</a></li><li><a href="#always-search-current-folder-first">Always Search Current Folder First</a></li><li><a href="#style-your-prompt">Style Your Prompt</a></li><li><a href="#show-current-git-branch">Show Current Git Branch</a></li><li><a href="#start-and-stop-daemons">Start and Stop Daemons</a></li><li><a href="#count-number-of-columns">Count Number of Columns</a></li></ul>
             </div>
         </div>
         

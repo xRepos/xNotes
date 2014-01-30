@@ -191,6 +191,52 @@
     }
 })</code></pre></div></div>
 
+<h2 id="directives">Directives</h2>
+
+<p>This code fails to verify the path.</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript">.directive(<span class="string"><span class="delimiter">'</span><span class="content">uniquePath</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+    <span class="keyword">return</span> {
+        <span class="key">require</span>: <span class="string"><span class="delimiter">'</span><span class="content">ngModel</span><span class="delimiter">'</span></span>,
+        <span class="function">link</span>: <span class="keyword">function</span>(scope, element, attrs, ctrl) {
+            scope.<span class="predefined">$watch</span>(attrs.ngModel, <span class="keyword">function</span>() {            
+                socket.emit(<span class="string"><span class="delimiter">'</span><span class="content">reqVerifyPath</span><span class="delimiter">'</span></span>, {<span class="key">path</span>: scope[attrs.ngModel]});
+                socket.on(<span class="string"><span class="delimiter">'</span><span class="content">resVerifyPath</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(exists) { 
+                    <span class="keyword">if</span> (exists) {
+                        ctrl.<span class="predefined">$setValidity</span>(<span class="string"><span class="delimiter">'</span><span class="content">unique</span><span class="delimiter">'</span></span>, <span class="predefined-constant">false</span>);
+                    } <span class="keyword">else</span> {
+                        ctrl.<span class="predefined">$setValidity</span>(<span class="string"><span class="delimiter">'</span><span class="content">unique</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
+                    }
+                })
+
+            })
+        }
+    }
+});</code></pre></div></div>
+
+<p>Problem is this part of the code:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript">socket.on(<span class="string"><span class="delimiter">'</span><span class="content">resVerifyPath</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(exists) { 
+    <span class="keyword">if</span> (exists) {
+        ctrl.<span class="predefined">$setValidity</span>(<span class="string"><span class="delimiter">'</span><span class="content">unique</span><span class="delimiter">'</span></span>, <span class="predefined-constant">false</span>);
+    } <span class="keyword">else</span> {
+        ctrl.<span class="predefined">$setValidity</span>(<span class="string"><span class="delimiter">'</span><span class="content">unique</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
+    }
+})</code></pre></div></div>
+
+<p>Even though it receives the <code>exists</code> and update validity successfully, it is not digested, instead it is updated in the next loop. To force the update, use <code>scope.$apply()</code></p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript">socket.on(<span class="string"><span class="delimiter">'</span><span class="content">resVerifyPath</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(exists) {
+    scope.<span class="predefined">$apply</span>(<span class="keyword">function</span>() {
+        <span class="keyword">if</span> (exists) {
+            ctrl.<span class="predefined">$setValidity</span>(<span class="string"><span class="delimiter">'</span><span class="content">unique</span><span class="delimiter">'</span></span>, <span class="predefined-constant">false</span>);
+        } <span class="keyword">else</span> {
+            ctrl.<span class="predefined">$setValidity</span>(<span class="string"><span class="delimiter">'</span><span class="content">unique</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
+        }
+    })
+
+})</code></pre></div></div>
+
 <h2 id="tabs">Tabs</h2>
 
 <h3 id="step-1-model">Step 1: Model</h3>
@@ -261,7 +307,7 @@
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1>Angular.js</h1>
-            <ul class="toc"><li><a href="#loading-data-in-a-service">Loading Data in a Service</a></li><li><a href="#reuse-bootstrap-modal">Reuse Bootstrap Modal</a></li><li><a href="#add-listener-upon-ngview-loaded">Add Listener upon ngView Loaded</a></li><li><a href="#location">$location</a></li><li><a href="#apply-and-watch">$apply and $watch</a></li><li><a href="#tabs">Tabs</a></li><li><a href="#beautiful-print-object-as-json">Beautiful Print Object as JSON</a></li></ul>
+            <ul class="toc"><li><a href="#loading-data-in-a-service">Loading Data in a Service</a></li><li><a href="#reuse-bootstrap-modal">Reuse Bootstrap Modal</a></li><li><a href="#add-listener-upon-ngview-loaded">Add Listener upon ngView Loaded</a></li><li><a href="#location">$location</a></li><li><a href="#apply-and-watch">$apply and $watch</a></li><li><a href="#directives">Directives</a></li><li><a href="#tabs">Tabs</a></li><li><a href="#beautiful-print-object-as-json">Beautiful Print Object as JSON</a></li></ul>
             </div>
         </div>
         

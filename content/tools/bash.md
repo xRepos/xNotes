@@ -172,3 +172,10 @@ Similar to the previous section.
     else
         echo No mongod Server to stop ...
     fi
+
+Count Number of Columns
+-----------------------
+
+Use `awk`:
+
+    $ cat file | head -1 | awk -F"," '{print NF}'
