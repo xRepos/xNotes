@@ -31,9 +31,22 @@ Input Detect Typing
 Window Resize
 -------------
 
+To resize any part of the page upon window resize:
+
     #!javascript
     function windowResize() {
-        $('#map_canvas').css('height', function() {return $(window).height() - 50});
+        $('#map').height($(window).height() - 50);
+    }
+    $(window).resize(windowResize);
+
+Or
+
+    #!javascript
+    function windowResize() {
+        $('#map').css('height', function() {return $(window).height() - 50});
     }
 
     $(window).resize(windowResize);
+
+
+

@@ -116,20 +116,27 @@ Curves
 ### Receiver Operating Characteristic (ROC)
 
 * x-Axis: FPR
-* y-Axis: TPR
+* y-Axis: TPR(CatchRate)
 
 ### Precision-Recall (PR)
 
-* x-Axis: Recall
-* y-Axis: Precision
+* x-Axis: Recall(CatchRate)
+* y-Axis: Precision(HitRate)
 
 ### Lift
 
-* model vs random = current TP vs current Total * bad Rate
+* x-Axis: ActionRate(% Total)
+* y-Axis: Lift
+
+Random: (AllPositive / Total) * Action = (TP + FN) / (TP + FP + TN + FN) * (TP + FP)
+UseModel: TP
+
+Lift = UseModel / Random = TP / ((TP + FN) / (TP + FP + TN + FN) * (TP + FP))
 
 ### Gain
 
- current TP / # bad
+* x-Axis: ActionRate(% Total)
+* y-Axis: CatchRate(% Positive)
 
 
 

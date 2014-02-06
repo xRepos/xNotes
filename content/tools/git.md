@@ -24,3 +24,10 @@ Checkout a Remote Branch
 ------------------------
 
     $ git checkout -b <branch> --track <remote>/<branch>
+
+Add All
+-------
+
+To add everything to stage, including additions and removals, use 
+
+    $ git add -A
