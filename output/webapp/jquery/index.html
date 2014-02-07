@@ -64,8 +64,17 @@
 
 <h2 id="window-resize">Window Resize</h2>
 
+<p>To resize any part of the page upon window resize:</p>
+
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">function</span> <span class="function">windowResize</span>() {
-    <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#map_canvas</span><span class="delimiter">'</span></span>).css(<span class="string"><span class="delimiter">'</span><span class="content">height</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {<span class="keyword">return</span> <span class="predefined">$</span>(window).height() - <span class="integer">50</span>});
+    <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#map</span><span class="delimiter">'</span></span>).height(<span class="predefined">$</span>(window).height() - <span class="integer">50</span>);
+}
+<span class="predefined">$</span>(window).resize(windowResize);</code></pre></div></div>
+
+<p>Or</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">function</span> <span class="function">windowResize</span>() {
+    <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#map</span><span class="delimiter">'</span></span>).css(<span class="string"><span class="delimiter">'</span><span class="content">height</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {<span class="keyword">return</span> <span class="predefined">$</span>(window).height() - <span class="integer">50</span>});
 }
 
 <span class="predefined">$</span>(window).resize(windowResize);</code></pre></div></div>

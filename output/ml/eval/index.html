@@ -128,21 +128,28 @@
 
 <ul>
 <li>x-Axis: FPR</li>
-  <li>y-Axis: TPR</li>
+  <li>y-Axis: TPR(CatchRate)</li>
 </ul><h3 id="precision-recall-pr">Precision-Recall (PR)</h3>
 
 <ul>
-<li>x-Axis: Recall</li>
-  <li>y-Axis: Precision</li>
+<li>x-Axis: Recall(CatchRate)</li>
+  <li>y-Axis: Precision(HitRate)</li>
 </ul><h3 id="lift">Lift</h3>
 
 <ul>
-<li>model vs random = current TP vs current Total * bad Rate</li>
-</ul><h3 id="gain">Gain</h3>
+<li>x-Axis: ActionRate(% Total)</li>
+  <li>y-Axis: Lift</li>
+</ul><p>Random: (AllPositive / Total) * Action = (TP + FN) / (TP + FP + TN + FN) * (TP + FP)
+UseModel: TP</p>
 
-<p>current TP / # bad</p>
+<p>Lift = UseModel / Random = TP / ((TP + FN) / (TP + FP + TN + FN) * (TP + FP))</p>
 
-<script>
+<h3 id="gain">Gain</h3>
+
+<ul>
+<li>x-Axis: ActionRate(% Total)</li>
+  <li>y-Axis: CatchRate(% Positive)</li>
+</ul><script>
 
 var activeColor = "steelblue",
     defaultColor = "white",

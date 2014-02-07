@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>vim</title>
     <meta name="description" content="">
     <meta name="msvalidate.01" content="E902E175A677AB76CA7F4DA627124A62" />
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -40,58 +40,24 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="main">
-          <h1 id="git">Git</h1>
+          <h1 id="vim">Vim</h1>
 
-<h2 id="config">Config</h2>
+<h2 id="refreshreload-file">Refresh/Reload File</h2>
 
-<p>Config file location:</p>
+<p>To refresh/reload a file without close and reopen, use </p>
 
-<ul>
-<li>Global: <code>~/.gitconfig</code>
-</li>
-  <li>System: <code>/etc/gitconfig</code>
-</li>
-  <li>Local: <code>/git/config</code>coding</li>
-</ul><p>Set a name</p>
-
-<pre><code>$ git config --global user.name "My Name"
-$ git config --local user.name "Foo Bar"
+<pre><code>:e
 </code></pre>
 
-<p>Show the name</p>
+<p>to force reload with changes:</p>
 
-<pre><code>$ git config --local user.name
-Foo Bar
-</code></pre>
-
-<h2 id="checkout-a-remote-branch">Checkout a Remote Branch</h2>
-
-<pre><code>$ git checkout -b &lt;branch&gt; --track &lt;remote&gt;/&lt;branch&gt;
-</code></pre>
-
-<h2 id="tags">Tags</h2>
-
-<p>List all tags:</p>
-
-<pre><code>$ git tag -l
-</code></pre>
-
-<p>Checkout a tag:</p>
-
-<pre><code>$ git checkout tags/&lt;tag_name&gt;
-</code></pre>
-
-<h2 id="add-all">Add All</h2>
-
-<p>To add everything to stage, including additions and removals, use </p>
-
-<pre><code>$ git add -A
+<pre><code>:e!
 </code></pre>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
-              <h1></h1>
-            <ul class="toc"><li><a href="#config">Config</a></li><li><a href="#checkout-a-remote-branch">Checkout a Remote Branch</a></li><li><a href="#tags">Tags</a></li><li><a href="#add-all">Add All</a></li></ul>
+              <h1>vim</h1>
+            <ul class="toc"><li><a href="#refreshreload-file">Refresh/Reload File</a></li></ul>
             </div>
         </div>
         
