@@ -21,6 +21,15 @@ Get Object keys
     #!javascript
     Object.keys(obj)
 
+Get Max/Min of an Array
+-----------------------
+
+``Math.max`` and ``Math.min`` do not work on arrays, for example ``Math.max(1,2,3,4)``. To get the max/min of an array, use ``apply`` 
+
+    #!javascript
+    Math.max.apply(Math, [1,2,3,4])
+    Math.min.apply(Math, [1,2,3,4])
+
 in vs. hasOwnProperty()
 -----------------------
 
@@ -80,3 +89,21 @@ Example
 * Match HTML:
     * ``re.exec($(selector).html())``
     * ``$(selector).html().match(re)``
+
+Date
+----
+
+    #!javascript
+    var date = new Date();
+
+    // date
+    date.getDate();
+
+    // month(0-11)
+    date.getMonth() + 1;
+
+    // year(201x)
+    date.getFullYear();
+
+    // get previous day 
+    date.setDate(date.getDate() - 1)

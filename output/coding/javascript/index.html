@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Javascript</title>
     <meta name="description" content="Tips on programming javascript">
+    <link rel="icon" type="image/png" href="/images/H.png">
     <meta name="msvalidate.01" content="E902E175A677AB76CA7F4DA627124A62" />
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
@@ -51,6 +52,13 @@
 <h2 id="get-object-keys">Get Object keys</h2>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript">Object.keys(obj)</code></pre></div></div>
+
+<h2 id="get-maxmin-of-an-array">Get Max/Min of an Array</h2>
+
+<p><code>Math.max</code> and <code>Math.min</code> do not work on arrays, for example <code>Math.max(1,2,3,4)</code>. To get the max/min of an array, use <code>apply</code> </p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript">Math.max.apply(Math, [<span class="integer">1</span>,<span class="integer">2</span>,<span class="integer">3</span>,<span class="integer">4</span>])
+Math.min.apply(Math, [<span class="integer">1</span>,<span class="integer">2</span>,<span class="integer">3</span>,<span class="integer">4</span>])</code></pre></div></div>
 
 <h2 id="in-vs-hasownproperty">in vs. hasOwnProperty()</h2>
 
@@ -123,12 +131,26 @@
       <li><code>$(selector).html().match(re)</code></li>
     </ul>
 </li>
-</ul>
+</ul><h2 id="date">Date</h2>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> date = <span class="keyword">new</span> Date();
+
+<span class="comment">// date</span>
+date.getDate();
+
+<span class="comment">// month(0-11)</span>
+date.getMonth() + <span class="integer">1</span>;
+
+<span class="comment">// year(201x)</span>
+date.getFullYear();
+
+<span class="comment">// get previous day </span>
+date.setDate(date.getDate() - <span class="integer">1</span>)</code></pre></div></div>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1>Javascript</h1>
-            <ul class="toc"><li><a href="#set-default-value-inside-function">Set default value inside function</a></li><li><a href="#get-object-keys">Get Object keys</a></li><li><a href="#in-vs-hasownproperty">in vs. hasOwnProperty()</a></li><li><a href="#merge-options-with-default">Merge Options with Default</a></li><li><a href="#regular-expression">Regular Expression</a></li></ul>
+            <ul class="toc"><li><a href="#set-default-value-inside-function">Set default value inside function</a></li><li><a href="#get-object-keys">Get Object keys</a></li><li><a href="#get-maxmin-of-an-array">Get Max/Min of an Array</a></li><li><a href="#in-vs-hasownproperty">in vs. hasOwnProperty()</a></li><li><a href="#merge-options-with-default">Merge Options with Default</a></li><li><a href="#regular-expression">Regular Expression</a></li><li><a href="#date">Date</a></li></ul>
             </div>
         </div>
         

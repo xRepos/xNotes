@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Node.js</title>
     <meta name="description" content="Node.js Notes">
+    <link rel="icon" type="image/png" href="/images/H.png">
     <meta name="msvalidate.01" content="E902E175A677AB76CA7F4DA627124A62" />
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
@@ -187,6 +188,8 @@ app.get(<span class="string"><span class="delimiter">'</span><span class="conten
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript">exports.<span class="function">loadData</span> = <span class="keyword">function</span>(req, res) {
     console.log(req.route.params.name)
+    <span class="comment">// or</span>
+    console.log(req.params.name)
 }</code></pre></div></div>
 
 <p>In browser</p>

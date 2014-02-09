@@ -28,3 +28,9 @@ Add code block
 
 Language Options: (use lang-):
 "bsh", "c", "cc", "cpp", "cs", "csh", "cyc", "cv", "htm", "html", "java", "js", "m", "mxml", "perl", "pl", "pm", "py", "rb", "sh", "xhtml", "xml", "xsl"
+
+Open Link in New Tab
+--------------------
+
+    #!html
+    <a href="..." target="_blank">...</a>

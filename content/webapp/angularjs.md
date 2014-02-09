@@ -295,3 +295,8 @@ Use ``json`` filter to convert a javascript object to correctly quoted JSON stri
 
     #!javascript
     <pre>{{myObject | json}}</pre>
+
+Exit Program
+------------
+
+    process.exit()

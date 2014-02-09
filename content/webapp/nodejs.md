@@ -171,6 +171,8 @@ In ``routes/index.js``
     #!javascript
     exports.loadData = function(req, res) {
         console.log(req.route.params.name)
+        // or
+        console.log(req.params.name)
     }
 
 In browser

@@ -24,10 +24,14 @@ compile '/coderay/' do
 end
 
 compile '*' do
-  filter :kramdown
-  filter :colorize_syntax
-  layout 'default'
-  filter :add_toc
+  if item.binary?
+    # don’t filter binary items
+  else
+    filter :kramdown
+    filter :colorize_syntax
+    layout 'default'
+    filter :add_toc
+  end
 end
 
 #compile '*' do
