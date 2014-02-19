@@ -310,11 +310,55 @@
 
 <pre><code>process.exit()
 </code></pre>
+
+<h2 id="ngshow-vs-ngif">ngShow vs ngIf</h2>
+
+<p>They have similar effects: show/hide upon specific conditions. Difference is that ngShow div will be in html, just hidden; ngIf will not be in html at all, so bindings may fail.</p>
+
+<h2 id="nginclude">ngInclude</h2>
+
+<p>If use url string, the string needs to be quoted, which result in a nested quote</p>
+
+<pre><code>ng-include="'/templates/foo'"
+</code></pre>
+
+<h2 id="form-controls">Form Controls</h2>
+
+<h3 id="checkbox">Checkbox</h3>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-html"><span class="tag">&lt;label</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">btn btn-primary form-control</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">checkbox</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-model</span>=<span class="string"><span class="delimiter">"</span><span class="content">isChecked</span><span class="delimiter">"</span></span><span class="tag">&gt;</span> Check Whatever
+<span class="tag">&lt;/label&gt;</span></code></pre></div></div>
+
+<h3 id="radio">Radio</h3>
+
+<p>A button group of radio buttons</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">btn-group btn-group-justified </span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;label</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">btn btn-default</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">radio</span><span class="delimiter">"</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">"</span><span class="content">pax</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-model</span>=<span class="string"><span class="delimiter">"</span><span class="content">biz</span><span class="delimiter">"</span></span><span class="tag">&gt;</span> Passenger
+    <span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;label</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">btn btn-default</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">"</span><span class="content">radio</span><span class="delimiter">"</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">"</span><span class="content">cgo</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-model</span>=<span class="string"><span class="delimiter">"</span><span class="content">biz</span><span class="delimiter">"</span></span><span class="tag">&gt;</span> Cargo
+    <span class="tag">&lt;/label&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre></div></div>
+
+<h3 id="select">Select</h3>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-html"><span class="tag">&lt;select</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">"</span><span class="content">form-control</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-model</span>=<span class="string"><span class="delimiter">"</span><span class="content">foo</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-change</span>=<span class="string"><span class="delimiter">"</span><span class="content">update()</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">"</span><span class="content">op1</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>op1<span class="tag">&lt;/option&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">"</span><span class="content">op2</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>op2<span class="tag">&lt;/option&gt;</span>
+<span class="tag">&lt;/select&gt;</span></code></pre></div></div>
+
+<h2 id="http">$http</h2>
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="predefined">$http</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">/data.json</span><span class="delimiter">'</span></span>).success(<span class="keyword">function</span>(data, status) {
+
+});</code></pre></div></div>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1>Angular.js</h1>
-            <ul class="toc"><li><a href="#loading-data-in-a-service">Loading Data in a Service</a></li><li><a href="#reuse-bootstrap-modal">Reuse Bootstrap Modal</a></li><li><a href="#add-listener-upon-ngview-loaded">Add Listener upon ngView Loaded</a></li><li><a href="#location">$location</a></li><li><a href="#apply-and-watch">$apply and $watch</a></li><li><a href="#directives">Directives</a></li><li><a href="#tabs">Tabs</a></li><li><a href="#beautiful-print-object-as-json">Beautiful Print Object as JSON</a></li><li><a href="#exit-program">Exit Program</a></li></ul>
+            <ul class="toc"><li><a href="#loading-data-in-a-service">Loading Data in a Service</a></li><li><a href="#reuse-bootstrap-modal">Reuse Bootstrap Modal</a></li><li><a href="#add-listener-upon-ngview-loaded">Add Listener upon ngView Loaded</a></li><li><a href="#location">$location</a></li><li><a href="#apply-and-watch">$apply and $watch</a></li><li><a href="#directives">Directives</a></li><li><a href="#tabs">Tabs</a></li><li><a href="#beautiful-print-object-as-json">Beautiful Print Object as JSON</a></li><li><a href="#exit-program">Exit Program</a></li><li><a href="#ngshow-vs-ngif">ngShow vs ngIf</a></li><li><a href="#nginclude">ngInclude</a></li><li><a href="#form-controls">Form Controls</a></li><li><a href="#http">$http</a></li></ul>
             </div>
         </div>
         

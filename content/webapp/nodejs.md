@@ -3,8 +3,10 @@ title: Node.js
 description: Node.js Notes
 ---
 
-Node.js
-=======
+Node.js Index
+=============
+
+[Node.js + MongoDB](mongodb)
 
 Stringify
 ---------
@@ -281,3 +283,4 @@ Get num of CPUs:
 
     #!javascript
     var numCPUs = require('os').cpus().length;
+

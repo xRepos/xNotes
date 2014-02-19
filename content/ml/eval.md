@@ -36,13 +36,13 @@ Confusion Matrix
 Derivations
 -----------
 
-* Precision, HitRate
+* Precision
 
-$$Precision = HitRate = {TP \over ActionRecords} = {TP \over TP+FP}$$
+$$Precision =  = {TP \over ActionRecords} = {TP \over TP+FP}$$
 
-*  True Positive Rate(TPR), Sensitivity, Recall, CatchRate,
+*  True Positive Rate(TPR), Sensitivity, Recall, HitRate,
 
-$$TPR=Sensitivity=Recall=CatchRate= {TP \over AllPos} = {TP \over TP+FN}$$
+$$TPR=Sensitivity=Recall=HitRate= {TP \over AllPos} = {TP \over TP+FN}$$
 
 * Specificity
 
@@ -68,7 +68,7 @@ $$ F_1 = 2\cdot {Precision \cdot Recall \over Precision + Recall}$$
         <div class="illustration-button" id="fpr">FPR</div>
         <div class="illustration-button" id="precision">Precision</div>
         <div class="illustration-button" id="recall">Recall</div>
-        <div class="illustration-button" id="cr">CatchRate</div>
+        
         <div class="illustration-button" id="hr">HitRate</div>
         <div class="illustration-button" id="ar">ActionRate</div>
     </div>
@@ -120,8 +120,8 @@ Curves
 
 ### Precision-Recall (PR)
 
-* x-Axis: Recall(CatchRate)
-* y-Axis: Precision(HitRate)
+* x-Axis: Recall(HitRate)
+* y-Axis: Precision
 
 ### Lift
 
@@ -136,7 +136,7 @@ Lift = UseModel / Random = TP / ((TP + FN) / (TP + FP + TN + FN) * (TP + FP))
 ### Gain
 
 * x-Axis: ActionRate(% Total)
-* y-Axis: CatchRate(% Positive)
+* y-Axis: HitRate(% Positive)
 
 
 
@@ -218,9 +218,9 @@ function ar_mouseover() {
 }
 
 $(document).ready(function() {
-    $('#tpr, #recall, #cr').mouseover(tpr_mouseover);
+    $('#tpr, #recall, #cr, #hr').mouseover(tpr_mouseover);
     $('#fpr').mouseover(fpr_mouseover); 
-    $('#precision, #hr').mouseover(precision_mouseover);
+    $('#precision').mouseover(precision_mouseover);
     $('#ar').mouseover(ar_mouseover);    
     
 })

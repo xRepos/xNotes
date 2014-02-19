@@ -48,5 +48,18 @@ Or
 
     $(window).resize(windowResize);
 
+Copy an Object
+--------------
 
+The easiest way to make a copy is to use ``$.extend()``.
+
+Shallow copy
+
+    #!javascript
+    var aCopy = $.extend({}, object);
+
+Deep copy
+
+    #!javascript
+    var aDeepCopy = $.extend(true, {}, object);
 

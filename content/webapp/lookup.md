@@ -7,8 +7,8 @@ Quick Lookup
 
 Bootstrap
 
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
 D3
 
@@ -25,3 +25,9 @@ Google Maps
 Google Chart API
 
     <script src="https://www.google.com/jsapi"></script>
+
+AngularJS
+
+    <script src="http://code.angularjs.org/1.2.x/angular.min.js"></script>
+    <script src="http://code.angularjs.org/1.2.x/angular-route.min.js"></script>
+    <script src="http://code.angularjs.org/1.2.x/angular-resource.min.js"></script>

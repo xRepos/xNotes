@@ -179,3 +179,10 @@ Count Number of Columns
 Use `awk`:
 
     $ cat file | head -1 | awk -F"," '{print NF}'
+
+Create Symbolic Link
+--------------------
+
+    $ ln -s 0.1.0-SNAPSHOT/ snapshot
+    $ ls -l
+    ... snapshot -> 0.1.0-SNAPSHOT/

@@ -219,11 +219,18 @@ fi</code></pre></div></div>
 
 <pre><code>$ cat file | head -1 | awk -F"," '{print NF}'
 </code></pre>
+
+<h2 id="create-symbolic-link">Create Symbolic Link</h2>
+
+<pre><code>$ ln -s 0.1.0-SNAPSHOT/ snapshot
+$ ls -l
+... snapshot -&gt; 0.1.0-SNAPSHOT/
+</code></pre>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1>Bash</h1>
-            <ul class="toc"><li><a href="#nohup">Nohup</a></li><li><a href="#always-search-current-folder-first">Always Search Current Folder First</a></li><li><a href="#style-your-prompt">Style Your Prompt</a></li><li><a href="#show-current-git-branch">Show Current Git Branch</a></li><li><a href="#start-and-stop-daemons">Start and Stop Daemons</a></li><li><a href="#count-number-of-columns">Count Number of Columns</a></li></ul>
+            <ul class="toc"><li><a href="#nohup">Nohup</a></li><li><a href="#always-search-current-folder-first">Always Search Current Folder First</a></li><li><a href="#style-your-prompt">Style Your Prompt</a></li><li><a href="#show-current-git-branch">Show Current Git Branch</a></li><li><a href="#start-and-stop-daemons">Start and Stop Daemons</a></li><li><a href="#count-number-of-columns">Count Number of Columns</a></li><li><a href="#create-symbolic-link">Create Symbolic Link</a></li></ul>
             </div>
         </div>
         

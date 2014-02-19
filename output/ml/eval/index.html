@@ -66,10 +66,10 @@
 </table><h2 id="derivations">Derivations</h2>
 
 <ul>
-<li>Precision, HitRate</li>
-</ul><script type="math/tex; mode=display">Precision = HitRate = {TP \over ActionRecords} = {TP \over TP+FP}</script><ul>
-<li>True Positive Rate(TPR), Sensitivity, Recall, CatchRate,</li>
-</ul><script type="math/tex; mode=display">TPR=Sensitivity=Recall=CatchRate= {TP \over AllPos} = {TP \over TP+FN}</script><ul>
+<li>Precision</li>
+</ul><script type="math/tex; mode=display">Precision =  = {TP \over ActionRecords} = {TP \over TP+FP}</script><ul>
+<li>True Positive Rate(TPR), Sensitivity, Recall, HitRate,</li>
+</ul><script type="math/tex; mode=display">TPR=Sensitivity=Recall=HitRate= {TP \over AllPos} = {TP \over TP+FN}</script><ul>
 <li>Specificity</li>
 </ul><script type="math/tex; mode=display">Specificity= {TN \over AllNeg}= {TN\over TN+FP}</script><ul>
 <li>False Positive Rate(FPR)</li>
@@ -85,7 +85,7 @@
         <div class="illustration-button" id="fpr">FPR</div>
         <div class="illustration-button" id="precision">Precision</div>
         <div class="illustration-button" id="recall">Recall</div>
-        <div class="illustration-button" id="cr">CatchRate</div>
+        
         <div class="illustration-button" id="hr">HitRate</div>
         <div class="illustration-button" id="ar">ActionRate</div>
     </div>
@@ -133,8 +133,8 @@
 </ul><h3 id="precision-recall-pr">Precision-Recall (PR)</h3>
 
 <ul>
-<li>x-Axis: Recall(CatchRate)</li>
-  <li>y-Axis: Precision(HitRate)</li>
+<li>x-Axis: Recall(HitRate)</li>
+  <li>y-Axis: Precision</li>
 </ul><h3 id="lift">Lift</h3>
 
 <ul>
@@ -149,7 +149,7 @@ UseModel: TP</p>
 
 <ul>
 <li>x-Axis: ActionRate(% Total)</li>
-  <li>y-Axis: CatchRate(% Positive)</li>
+  <li>y-Axis: HitRate(% Positive)</li>
 </ul><script>
 
 var activeColor = "steelblue",
@@ -228,9 +228,9 @@ function ar_mouseover() {
 }
 
 $(document).ready(function() {
-    $('#tpr, #recall, #cr').mouseover(tpr_mouseover);
+    $('#tpr, #recall, #cr, #hr').mouseover(tpr_mouseover);
     $('#fpr').mouseover(fpr_mouseover); 
-    $('#precision, #hr').mouseover(precision_mouseover);
+    $('#precision').mouseover(precision_mouseover);
     $('#ar').mouseover(ar_mouseover);    
     
 })

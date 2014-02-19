@@ -300,3 +300,57 @@ Exit Program
 ------------
 
     process.exit()
+
+ngShow vs ngIf
+--------------
+
+
+
+They have similar effects: show/hide upon specific conditions. Difference is that ngShow div will be in html, just hidden; ngIf will not be in html at all, so bindings may fail.
+
+ngInclude
+---------
+
+If use url string, the string needs to be quoted, which result in a nested quote
+
+    ng-include="'/templates/foo'"
+
+Form Controls
+-------------
+
+### Checkbox
+
+    #!html
+    <label class="btn btn-primary form-control">
+        <input type="checkbox" ng-model="isChecked"> Check Whatever
+    </label>
+
+### Radio
+
+A button group of radio buttons
+
+    #!html
+    <div class="btn-group btn-group-justified ">
+        <label class="btn btn-default">
+            <input type="radio" value="pax" ng-model="biz"> Passenger
+        </label>
+        <label class="btn btn-default">
+            <input type="radio" value="cgo" ng-model="biz"> Cargo
+        </label>
+    </div>
+
+### Select
+
+    #!html
+    <select class="form-control" ng-model="foo" ng-change="update()">
+        <option value="op1">op1</option>
+        <option value="op2">op2</option>
+    </select>
+
+$http
+-----
+
+    #!javascript
+    $http.get('/data.json').success(function(data, status) {
+
+    });

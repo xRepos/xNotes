@@ -79,11 +79,23 @@
 }
 
 <span class="predefined">$</span>(window).resize(windowResize);</code></pre></div></div>
+
+<h2 id="copy-an-object">Copy an Object</h2>
+
+<p>The easiest way to make a copy is to use <code>$.extend()</code>.</p>
+
+<p>Shallow copy</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> aCopy = <span class="predefined">$</span>.extend({}, object);</code></pre></div></div>
+
+<p>Deep copy</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> aDeepCopy = <span class="predefined">$</span>.extend(<span class="predefined-constant">true</span>, {}, object);</code></pre></div></div>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1></h1>
-            <ul class="toc"><li><a href="#select-on-change">Select on Change</a></li><li><a href="#disable-form">Disable Form</a></li><li><a href="#input-detect-typing">Input Detect Typing</a></li><li><a href="#window-resize">Window Resize</a></li></ul>
+            <ul class="toc"><li><a href="#select-on-change">Select on Change</a></li><li><a href="#disable-form">Disable Form</a></li><li><a href="#input-detect-typing">Input Detect Typing</a></li><li><a href="#window-resize">Window Resize</a></li><li><a href="#copy-an-object">Copy an Object</a></li></ul>
             </div>
         </div>
         
