@@ -58,11 +58,22 @@
     </ul>
 </li>
 </ul><p>And here is the magic: if you do not specify which private key file to use(“-i”), ssh will look for the file <code>~/.ssh/id_rsa</code>!</p>
+
+<h2 id="specify-identityfile-for-host">Specify IdentityFile for Host</h2>
+
+<p>To specify an IdentityFile other than the default, edit <code>~/.ssh/config</code></p>
+
+<pre><code>Host heroku.com
+    HostName heroku.com
+    IdentityFile /path/to/another/private-key
+</code></pre>
+
+<p>when you use git to talk to the remote repository <code>git@heroku.com:myapp.git</code>, it will use the specified key instead.</p>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1></h1>
-            <ul class="toc"><li><a href="#the-so-called-password-less-ssh">The So-called Password-less SSH</a></li></ul>
+            <ul class="toc"><li><a href="#the-so-called-password-less-ssh">The So-called Password-less SSH</a></li><li><a href="#specify-identityfile-for-host">Specify IdentityFile for Host</a></li></ul>
             </div>
         </div>
         

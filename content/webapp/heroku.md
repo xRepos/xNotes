@@ -34,3 +34,9 @@ And if you call ``$ heroku ps:scale web=1`` it may return:
 
     !    Resource not found
 
+Change User
+-----------
+
+Each Heroku account can only create 5 apps; to change to another account, use 
+
+    $ heroku login

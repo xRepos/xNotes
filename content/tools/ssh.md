@@ -14,3 +14,14 @@ The key concept here is the ``Keypair``, it is called a "pair" so there must be 
     * if you are using ``ssh-keygen``, 2 files will be generated, the one without ``.pub`` is the private key
 
 And here is the magic: if you do not specify which private key file to use("-i"), ssh will look for the file ``~/.ssh/id_rsa``!
+
+Specify IdentityFile for Host
+-----------------------------
+
+To specify an IdentityFile other than the default, edit ``~/.ssh/config``
+
+    Host heroku.com
+        HostName heroku.com
+        IdentityFile /path/to/another/private-key
+
+when you use git to talk to the remote repository ``git@heroku.com:myapp.git``, it will use the specified key instead.
