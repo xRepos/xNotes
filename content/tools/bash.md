@@ -186,3 +186,36 @@ Create Symbolic Link
     $ ln -s 0.1.0-SNAPSHOT/ snapshot
     $ ls -l
     ... snapshot -> 0.1.0-SNAPSHOT/
+
+Cron
+----
+
+``/etc/crontab`` schedules ``/etc/cron.hourly``, ``/etc/cron.daily``, ``/etc/cron.weekly``, ``/etc/cron.monthly``.
+
+Scripts in those folders will be executed.
+
+By default cron jobs logs can be found in ``/var/log/syslog``
+
+    $ grep CRON /var/log/syslog
+
+Add Timestamp to Filename
+-------------------------
+
+To show timestamp in a specific format, use the format string like ``+"%Y%m%d"``
+
+    $ date +"%Y%m%d"
+    20140220
+
+For more format strings, check ``$ date --help``. To use timestamp in a filename:
+
+    $ echo "hello" > `date +"%Y%m%d"`.log
+    $ cat 20140220.log
+    hello
+
+Redirect StdErr to StdOut
+-------------------------
+
+    $ do whatever > /home/ubuntu/`date +"%Y%m%d"`.log 2>&1
+
+2>&1 indicates that the standard error (2>) is redirected to the same file descriptor that is pointed by standard output (&1).
+

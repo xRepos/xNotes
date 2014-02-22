@@ -226,11 +226,44 @@ fi</code></pre></div></div>
 $ ls -l
 ... snapshot -&gt; 0.1.0-SNAPSHOT/
 </code></pre>
+
+<h2 id="cron">Cron</h2>
+
+<p><code>/etc/crontab</code> schedules <code>/etc/cron.hourly</code>, <code>/etc/cron.daily</code>, <code>/etc/cron.weekly</code>, <code>/etc/cron.monthly</code>.</p>
+
+<p>Scripts in those folders will be executed.</p>
+
+<p>By default cron jobs logs can be found in <code>/var/log/syslog</code></p>
+
+<pre><code>$ grep CRON /var/log/syslog
+</code></pre>
+
+<h2 id="add-timestamp-to-filename">Add Timestamp to Filename</h2>
+
+<p>To show timestamp in a specific format, use the format string like <code>+"%Y%m%d"</code></p>
+
+<pre><code>$ date +"%Y%m%d"
+20140220
+</code></pre>
+
+<p>For more format strings, check <code>$ date --help</code>. To use timestamp in a filename:</p>
+
+<pre><code>$ echo "hello" &gt; `date +"%Y%m%d"`.log
+$ cat 20140220.log
+hello
+</code></pre>
+
+<h2 id="redirect-stderr-to-stdout">Redirect StdErr to StdOut</h2>
+
+<pre><code>$ do whatever &gt; /home/ubuntu/`date +"%Y%m%d"`.log 2&gt;&amp;1
+</code></pre>
+
+<p>2&gt;&amp;1 indicates that the standard error (2&gt;) is redirected to the same file descriptor that is pointed by standard output (&amp;1).</p>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1>Bash</h1>
-            <ul class="toc"><li><a href="#nohup">Nohup</a></li><li><a href="#always-search-current-folder-first">Always Search Current Folder First</a></li><li><a href="#style-your-prompt">Style Your Prompt</a></li><li><a href="#show-current-git-branch">Show Current Git Branch</a></li><li><a href="#start-and-stop-daemons">Start and Stop Daemons</a></li><li><a href="#count-number-of-columns">Count Number of Columns</a></li><li><a href="#create-symbolic-link">Create Symbolic Link</a></li></ul>
+            <ul class="toc"><li><a href="#nohup">Nohup</a></li><li><a href="#always-search-current-folder-first">Always Search Current Folder First</a></li><li><a href="#style-your-prompt">Style Your Prompt</a></li><li><a href="#show-current-git-branch">Show Current Git Branch</a></li><li><a href="#start-and-stop-daemons">Start and Stop Daemons</a></li><li><a href="#count-number-of-columns">Count Number of Columns</a></li><li><a href="#create-symbolic-link">Create Symbolic Link</a></li><li><a href="#cron">Cron</a></li><li><a href="#add-timestamp-to-filename">Add Timestamp to Filename</a></li><li><a href="#redirect-stderr-to-stdout">Redirect StdErr to StdOut</a></li></ul>
             </div>
         </div>
         
