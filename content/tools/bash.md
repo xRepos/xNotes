@@ -7,6 +7,19 @@ description: A few tips on bash scripts or commands
 Bash
 ====
 
+which vs whereis
+----------------
+
+* ``which``: based on PATH
+
+        $ which hadoop
+        /Users/myname/lib/hadoop
+
+* ``whereis``: based on standard binary directories
+
+        $ whereis hadoop
+        hadoop: /usr/bin/hadoop /etc/hadoop /usr/lib/hadoop /usr/share/man/man1/hadoop.1.gz
+
 Nohup
 -----
 

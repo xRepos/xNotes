@@ -6,7 +6,8 @@ description: Node.js Notes
 Node.js Index
 =============
 
-[Node.js + MongoDB](mongodb)
+* [Node.js + MongoDB](mongodb)
+* [Node.js + Socket.io](socketio)
 
 Stringify
 ---------
@@ -15,6 +16,11 @@ To pretty print(indent by 4 spaces):
 
     #!javascript
     JSON.stringify(data, null, "    ")
+
+or 
+
+    #!javascript
+    JSON.stringify(data, null, 4)
 
 Web Crawling and Parsing
 ------------------------

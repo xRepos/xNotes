@@ -115,6 +115,8 @@ Curves
 
 ### Receiver Operating Characteristic (ROC)
 
+One point in ROC space is superior to another if it is to the northwest of the first
+
 * x-Axis: FPR
 * y-Axis: TPR(CatchRate)
 

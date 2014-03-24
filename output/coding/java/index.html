@@ -43,6 +43,28 @@
         <div class="col-md-9" id="main">
           <h1 id="java">Java</h1>
 
+<h2 id="show-env-and-properties">Show env and Properties</h2>
+
+<p>Create a file <code>Test.java</code></p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Test</span> {
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> main(<span class="predefined-type">String</span><span class="type">[]</span> args) {
+        <span class="keyword">for</span> (<span class="predefined-type">Object</span> entry: <span class="predefined-type">System</span>.getenv().entrySet()) {
+            <span class="predefined-type">System</span>.out.println(entry.toString());
+        }
+
+        <span class="keyword">for</span> (<span class="predefined-type">Object</span> entry: <span class="predefined-type">System</span>.getProperties().entrySet()) {
+            <span class="predefined-type">System</span>.out.println(entry.toString());
+        }
+    }
+}</code></pre></div></div>
+
+<p>Execute</p>
+
+<pre><code>$ javac Test.java; java Test
+</code></pre>
+
 <h2 id="details">Details</h2>
 
 <h3 id="parsedouble-vs-valueof">parseDouble vs valueOf</h3>
@@ -147,7 +169,7 @@ Solution: add</p>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1>xNotes - Java</h1>
-            <ul class="toc"><li><a href="#details">Details</a></li><li><a href="#error-log">Error Log</a></li><li><a href="#maven">Maven</a></li></ul>
+            <ul class="toc"><li><a href="#show-env-and-properties">Show env and Properties</a></li><li><a href="#details">Details</a></li><li><a href="#error-log">Error Log</a></li><li><a href="#maven">Maven</a></li></ul>
             </div>
         </div>
         

@@ -43,7 +43,24 @@
         <div class="col-md-9" id="main">
           <h1 id="bash">Bash</h1>
 
-<h2 id="nohup">Nohup</h2>
+<h2 id="which-vs-whereis">which vs whereis</h2>
+
+<ul>
+<li>
+    <p><code>which</code>: based on PATH</p>
+
+    <pre><code>  $ which hadoop
+  /Users/myname/lib/hadoop
+</code></pre>
+  </li>
+  <li>
+    <p><code>whereis</code>: based on standard binary directories</p>
+
+    <pre><code>  $ whereis hadoop
+  hadoop: /usr/bin/hadoop /etc/hadoop /usr/lib/hadoop /usr/share/man/man1/hadoop.1.gz
+</code></pre>
+  </li>
+</ul><h2 id="nohup">Nohup</h2>
 <p>Run command in background and redirect output to file.</p>
 
 <pre><code>nohup command &gt; output &amp; 
@@ -263,7 +280,7 @@ hello
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1>Bash</h1>
-            <ul class="toc"><li><a href="#nohup">Nohup</a></li><li><a href="#always-search-current-folder-first">Always Search Current Folder First</a></li><li><a href="#style-your-prompt">Style Your Prompt</a></li><li><a href="#show-current-git-branch">Show Current Git Branch</a></li><li><a href="#start-and-stop-daemons">Start and Stop Daemons</a></li><li><a href="#count-number-of-columns">Count Number of Columns</a></li><li><a href="#create-symbolic-link">Create Symbolic Link</a></li><li><a href="#cron">Cron</a></li><li><a href="#add-timestamp-to-filename">Add Timestamp to Filename</a></li><li><a href="#redirect-stderr-to-stdout">Redirect StdErr to StdOut</a></li></ul>
+            <ul class="toc"><li><a href="#which-vs-whereis">which vs whereis</a></li><li><a href="#nohup">Nohup</a></li><li><a href="#always-search-current-folder-first">Always Search Current Folder First</a></li><li><a href="#style-your-prompt">Style Your Prompt</a></li><li><a href="#show-current-git-branch">Show Current Git Branch</a></li><li><a href="#start-and-stop-daemons">Start and Stop Daemons</a></li><li><a href="#count-number-of-columns">Count Number of Columns</a></li><li><a href="#create-symbolic-link">Create Symbolic Link</a></li><li><a href="#cron">Cron</a></li><li><a href="#add-timestamp-to-filename">Add Timestamp to Filename</a></li><li><a href="#redirect-stderr-to-stdout">Redirect StdErr to StdOut</a></li></ul>
             </div>
         </div>
         

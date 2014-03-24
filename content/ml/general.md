@@ -18,3 +18,5 @@ Database Querying vs. Data Mining
 
 * Database Querying: "What data satisfies this pattern (query)?"
 * Data Mining: "What patterns satisfy this data?"
+
+

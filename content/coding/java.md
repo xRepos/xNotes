@@ -6,6 +6,30 @@ description: Java Notes
 Java
 ====
 
+Show env and Properties
+-----------------------
+
+Create a file ``Test.java``
+
+    #!java
+
+    public class Test {
+
+        public static void main(String[] args) {
+            for (Object entry: System.getenv().entrySet()) {
+                System.out.println(entry.toString());
+            }
+
+            for (Object entry: System.getProperties().entrySet()) {
+                System.out.println(entry.toString());
+            }
+        }
+    }
+
+Execute
+
+    $ javac Test.java; java Test
+
 Details
 -------
 

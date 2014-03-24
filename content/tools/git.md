@@ -43,3 +43,10 @@ To add everything to stage, including additions and removals, use
 
     $ git add -A
 
+
+Abandon Changes
+---------------
+
+Abandon changes and revert your tree to the "clean" state of your current branch. Don't use 'git revert', use:
+
+    $ git reset --hard HEAD 
