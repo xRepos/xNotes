@@ -165,11 +165,30 @@ Solution: add</p>
     -DgroupId=&lt;group-id&gt; -DartifactId=&lt;artifact-id&gt; 
     hadoophadoop-Dversion=&lt;version&gt; -Dpackaging=&lt;packaging&gt;
 </code></pre>
+
+<h2 id="initialize-arraylist">Initialize Array/List</h2>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-java"><span class="predefined-type">Arrays</span>.asList(<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>)
+<span class="keyword">new</span> <span class="predefined-type">Integer</span><span class="type">[]</span>{<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>, <span class="integer">4</span>, <span class="integer">5</span>}</code></pre></div></div>
+
+<h2 id="re-parse-json-object">Re-parse JSON Object</h2>
+
+<p>Suppose <code>oldObject</code> is a <code>HashMap</code>, to cast it to a specific class:</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-java">ObjectMapper jsonMapper = <span class="keyword">new</span> ObjectMapper();
+jsonMapper.readValue(jsonMapper.writeValueAsString(oldObject), NewClass.class);</code></pre></div></div>
+
+<h2 id="useful-function-from-guava">Useful function from Guava</h2>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-java"><span class="keyword">import</span> <span class="include">com.google.common.base.Splitter</span>;
+
+Joiner.on(<span class="string"><span class="delimiter">"</span><span class="content">,</span><span class="delimiter">"</span></span>).join(arr);
+Splitter.on(delimiter).split(line);</code></pre></div></div>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1>xNotes - Java</h1>
-            <ul class="toc"><li><a href="#show-env-and-properties">Show env and Properties</a></li><li><a href="#details">Details</a></li><li><a href="#error-log">Error Log</a></li><li><a href="#maven">Maven</a></li></ul>
+            <ul class="toc"><li><a href="#show-env-and-properties">Show env and Properties</a></li><li><a href="#details">Details</a></li><li><a href="#error-log">Error Log</a></li><li><a href="#maven">Maven</a></li><li><a href="#initialize-arraylist">Initialize Array/List</a></li><li><a href="#re-parse-json-object">Re-parse JSON Object</a></li><li><a href="#useful-function-from-guava">Useful function from Guava</a></li></ul>
             </div>
         </div>
         

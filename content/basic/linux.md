@@ -10,3 +10,11 @@ Linux
 * /var/log (contains log files), 
 * /var/run (contains PIDs and other system information that is valid until the system is booted again) and 
 * /var/spool (contains mail, news and printer queues).
+
+/usr vs /usr/local
+------------------
+
+/usr is for software built elsewhere and then installed on the machine (mostly from your distributions package management system) 
+
+
+/usr/local is for software built locally 

@@ -41,54 +41,57 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="main">
-          <h1 id="data">Data</h1>
+          <h1 id="mongodb">MongoDB</h1>
 
-<h2 id="airport--route-query">Airport / Route Query</h2>
+<pre><code>var mongoose = require('mongoose');
+var passport = require('passport');
+var Account = require('./models/account');
 
-<h3 id="airport">Airport</h3>
+// ...
+// app.use(express.session());
+app.use(passport.initialize());
+app.use(passport.session());
+// app.use(app.router);
+// ...
 
-<p>To get raw data</p>
+passport.use(Account.createStrategy());
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 
-<pre><code>http://data.hivetrix.com/raw/airports.geojson
-</code></pre>
+mongoose.connect('mongodb://127.0.0.1/resume');
 
-<p>To query an airport, use</p>
+app.get('/register', function(req, res) {
+    res.render('register', { });
+});
 
-<pre><code>http://data.hivetrix.com/airport?q=&lt;IATA&gt;[,&lt;IATA&gt;]
-</code></pre>
+app.post('/register', function(req, res) {
+    Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
+        if (err) {
+            return res.render('register', { account : account });
+        }
 
-<p>for example</p>
+        res.redirect('/');
+    });
+});
 
-<pre><code>http://data.hivetrix.com/airport?q=SFO
-http://data.hivetrix.com/airport?q=SFO,LAX
-</code></pre>
+app.get('/login', function(req, res) {
+    res.render('login', { user : req.user });
+});
 
-<h3 id="route">Route</h3>
+app.post('/login', passport.authenticate('local'), function(req, res) {
+    res.redirect('/');
+});
 
-<p>To query a route, use</p>
-
-<pre><code>http://data.hivetrix.com/route?q=(&lt;IATA&gt;,&lt;IATA&gt;[,&lt;IATA&gt;])[,(&lt;IATA&gt;,&lt;IATA&gt;[,&lt;IATA&gt;])]
-
-http://data.hivetrix.com/route?q=(SFO,LAX)
-http://data.hivetrix.com/route?q=(SFO,LAX),(SFO,DEN)
-</code></pre>
-
-<h2 id="map">Map</h2>
-
-<h3 id="world-map">World Map</h3>
-
-<pre><code>http://data.hivetrix.com/raw/world-50m.json
-</code></pre>
-
-<h3 id="us">US</h3>
-
-<pre><code>http://data.hivetrix.com/raw/us-states.json
+app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
+});
 </code></pre>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1></h1>
-            <ul class="toc"><li><a href="#airport--route-query">Airport / Route Query</a></li><li><a href="#map">Map</a></li></ul>
+            
             </div>
         </div>
         

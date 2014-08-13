@@ -73,6 +73,10 @@ Data Mining vs. Database Querying
 * Database Querying: "What data satisfies this pattern (query)?" 
 * Data Mining: "What patterns satisfy this data?"
 
+MO
+--
+
+MO: http://en.wikipedia.org/wiki/Modus_operandi
 
 TO LEARN
 --------

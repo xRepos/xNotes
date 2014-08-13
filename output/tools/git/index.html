@@ -67,6 +67,12 @@ Foo Bar
 
 <h2 id="checkout-a-remote-branch">Checkout a Remote Branch</h2>
 
+<pre><code>$ git fetch
+$ git checkout test
+</code></pre>
+
+<p>or </p>
+
 <pre><code>$ git checkout -b &lt;branch&gt; --track &lt;remote&gt;/&lt;branch&gt;
 </code></pre>
 
@@ -82,6 +88,16 @@ Foo Bar
 <pre><code>$ git checkout tags/&lt;tag_name&gt;
 </code></pre>
 
+<p>Remove a remote tag:</p>
+
+<pre><code>$ git push origin :refs/tags/&lt;tag_name&gt;
+</code></pre>
+
+<p>Remove a local tag:</p>
+
+<pre><code>$ git tag -d &lt;tag_name&gt;
+</code></pre>
+
 <h2 id="add-all">Add All</h2>
 
 <p>To add everything to stage, including additions and removals, use </p>
@@ -95,11 +111,58 @@ Foo Bar
 
 <pre><code>$ git reset --hard HEAD 
 </code></pre>
+
+<p>Reset to a remote branch</p>
+
+<pre><code>$ git fetch origin
+$ git reset --hard origin/master
+</code></pre>
+
+<h2 id="mac-os-x-uses-wrong-git-account">Mac OS X Uses Wrong Git Account</h2>
+
+<p>If multiple GitHub accounts are logged in using Mac OS X, the account info might be stroed by Keychain Access. Maven release plugin may fails for using wrong Github account.</p>
+
+<pre><code>[ERROR] Provider message:
+[ERROR] The git-push command failed.
+[ERROR] Command output:
+[ERROR] remote: Permission to &lt;...&gt;/&lt;...&gt;.git denied to &lt;...&gt;.
+[ERROR] fatal: unable to access 'https://github.com/&lt;...&gt;/&lt;...&gt;.git/': The requested URL returned error: 403
+</code></pre>
+
+<p>Solution: find Keychain Access in spotlight or by</p>
+
+<pre><code>Applications-&gt;Utilities-&gt;Keychain Access.app
+</code></pre>
+
+<p>Search for <code>github</code> and remove the records. </p>
+
+<h2 id="upstream-remote">Upstream Remote</h2>
+
+<p>Add your own fork as <code>origin</code> remote</p>
+
+<pre><code>$ git remote add origin https://github.com/&lt;your_fork&gt;/&lt;project_name&gt;.git
+</code></pre>
+
+<p>Add the central repo as <code>upstream</code> remote</p>
+
+<pre><code>$ git remote add upstream https://github.com/&lt;central_repo&gt;/&lt;project_name&gt;.git
+</code></pre>
+
+<p>To sync up with <code>upstream</code></p>
+
+<pre><code>$ git fetch upstream
+$ git merge upstream/develop 
+</code></pre>
+
+<p>Or </p>
+
+<pre><code>$ git pull upstream develop
+</code></pre>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1></h1>
-            <ul class="toc"><li><a href="#config">Config</a></li><li><a href="#checkout-a-remote-branch">Checkout a Remote Branch</a></li><li><a href="#tags">Tags</a></li><li><a href="#add-all">Add All</a></li><li><a href="#abandon-changes">Abandon Changes</a></li></ul>
+            <ul class="toc"><li><a href="#config">Config</a></li><li><a href="#checkout-a-remote-branch">Checkout a Remote Branch</a></li><li><a href="#tags">Tags</a></li><li><a href="#add-all">Add All</a></li><li><a href="#abandon-changes">Abandon Changes</a></li><li><a href="#mac-os-x-uses-wrong-git-account">Mac OS X Uses Wrong Git Account</a></li><li><a href="#upstream-remote">Upstream Remote</a></li></ul>
             </div>
         </div>
         

@@ -55,6 +55,29 @@ Set Main-Class
         </plugins>
     </build>
 
+Copy Dependencies
+-----------------
+
+    #!xml
+    <build>        
+        <plugins>          
+            <plugin>            
+                <artifactId>maven-dependency-plugin</artifactId>            
+                <executions>              
+                    <execution>                
+                        <phase>install</phase>                
+                        <goals>                     
+                            <goal>copy-dependencies</goal>                
+                        </goals>                
+                        <configuration>                  
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>                
+                        </configuration]]>              
+                    </execution>            
+                </executions>          
+            </plugin>        
+        </plugins>      
+    </build>
+
 maven-assembly-plugin
 ---------------------
 
@@ -64,6 +87,32 @@ If the following descriptor is set, the final jar will be ProjectName-Version-ja
     <descriptorRefs>
         <descriptorRef>jar-with-dependencies</descriptorRef>
     </descriptorRefs>
+
+Full example:
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 To set the final name: 
 
@@ -140,3 +189,16 @@ Multiple Excution
             </plugin>
         </plugins>
     </build>
+
+Set Dependency As Optional
+--------------------------
+
+Assume Project-A depends on ``slf4j``, ``Project-B`` depends on ``Project-A``, then ``slf4j`` will not be treated as dependency in ``Project-B``; ``slf4j`` must be added to ``Project-B``'s pom in order to be used 
+
+    #!xml
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.7.7</version>
+        <optional>true</optional>
+    </dependency>

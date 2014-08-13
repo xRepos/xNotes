@@ -143,3 +143,28 @@ Maven
         -DgroupId=<group-id> -DartifactId=<artifact-id> 
         hadoophadoop-Dversion=<version> -Dpackaging=<packaging>
 
+Initialize Array/List
+---------------------
+
+    #!java
+    Arrays.asList(1, 2, 3, 4, 5)
+    new Integer[]{1, 2, 3, 4, 5}
+
+Re-parse JSON Object
+--------------------
+
+Suppose ``oldObject`` is a ``HashMap``, to cast it to a specific class:
+
+    #!java
+    ObjectMapper jsonMapper = new ObjectMapper();
+    jsonMapper.readValue(jsonMapper.writeValueAsString(oldObject), NewClass.class);
+
+Useful function from Guava
+--------------------------
+
+    #!java
+    import com.google.common.base.Splitter;
+    
+    Joiner.on(",").join(arr);
+    Splitter.on(delimiter).split(line);
+    
