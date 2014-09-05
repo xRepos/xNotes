@@ -11,6 +11,7 @@ travis-ci: continuous integration
 git: version control
 mvn: build
 
+coderay: code highlight
 
 nanoc: markdown to html compiler
 

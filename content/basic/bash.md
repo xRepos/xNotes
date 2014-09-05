@@ -232,3 +232,16 @@ Redirect StdErr to StdOut
 
 2>&1 indicates that the standard error (2>) is redirected to the same file descriptor that is pointed by standard output (&1).
 
+Check If Command Exists
+-----------------------
+
+    $ command -v foo >/dev/null 2>&1
+    $ type foo >/dev/null 2>&1
+    $ hash foo 2>/dev/null
+
+Example: add HADOOP_CLASSPATH if ``hadoop`` exists
+
+    command -v hadoop > /dev/null && {
+        HADOOP_CLASSPATH=`hadoop classpath`
+        CLASSPATH=$HADOOP_CLASSPATH:$CLASSPATH
+    }

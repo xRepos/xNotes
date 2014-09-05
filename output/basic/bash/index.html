@@ -14,7 +14,7 @@
 </script>
 
     <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc 3.6.5"> 
+    <meta name="generator" content="nanoc 3.7.1"> 
   </head>
 
 
@@ -276,11 +276,26 @@ hello
 </code></pre>
 
 <p>2&gt;&amp;1 indicates that the standard error (2&gt;) is redirected to the same file descriptor that is pointed by standard output (&amp;1).</p>
+
+<h2 id="check-if-command-exists">Check If Command Exists</h2>
+
+<pre><code>$ command -v foo &gt;/dev/null 2&gt;&amp;1
+$ type foo &gt;/dev/null 2&gt;&amp;1
+$ hash foo 2&gt;/dev/null
+</code></pre>
+
+<p>Example: add HADOOP_CLASSPATH if <code>hadoop</code> exists</p>
+
+<pre><code>command -v hadoop &gt; /dev/null &amp;&amp; {
+    HADOOP_CLASSPATH=`hadoop classpath`
+    CLASSPATH=$HADOOP_CLASSPATH:$CLASSPATH
+}
+</code></pre>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1>Bash</h1>
-            <ul class="toc"><li><a href="#which-vs-whereis">which vs whereis</a></li><li><a href="#nohup">Nohup</a></li><li><a href="#always-search-current-folder-first">Always Search Current Folder First</a></li><li><a href="#style-your-prompt">Style Your Prompt</a></li><li><a href="#show-current-git-branch">Show Current Git Branch</a></li><li><a href="#start-and-stop-daemons">Start and Stop Daemons</a></li><li><a href="#count-number-of-columns">Count Number of Columns</a></li><li><a href="#create-symbolic-link">Create Symbolic Link</a></li><li><a href="#cron">Cron</a></li><li><a href="#add-timestamp-to-filename">Add Timestamp to Filename</a></li><li><a href="#redirect-stderr-to-stdout">Redirect StdErr to StdOut</a></li></ul>
+            <ul class="toc"><li><a href="#which-vs-whereis">which vs whereis</a></li><li><a href="#nohup">Nohup</a></li><li><a href="#always-search-current-folder-first">Always Search Current Folder First</a></li><li><a href="#style-your-prompt">Style Your Prompt</a></li><li><a href="#show-current-git-branch">Show Current Git Branch</a></li><li><a href="#start-and-stop-daemons">Start and Stop Daemons</a></li><li><a href="#count-number-of-columns">Count Number of Columns</a></li><li><a href="#create-symbolic-link">Create Symbolic Link</a></li><li><a href="#cron">Cron</a></li><li><a href="#add-timestamp-to-filename">Add Timestamp to Filename</a></li><li><a href="#redirect-stderr-to-stdout">Redirect StdErr to StdOut</a></li><li><a href="#check-if-command-exists">Check If Command Exists</a></li></ul>
             </div>
         </div>
         
