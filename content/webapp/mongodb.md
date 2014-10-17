@@ -1,6 +1,86 @@
 MongoDB
 =======
 
+Configuration File:
+
+    /etc/mongod.conf
+
+Start, stop and restart ``mongod``
+
+    $ sudo service mongod start
+    $ sudo service mongod stop
+    $ sudo service mongod restart
+
+
+Check Stats
+-----------
+
+
+    > db.stats()
+    {
+        "db" : "alertdb",
+        "collections" : 10,
+        "objects" : 1680137,
+        "avgObjSize" : 74.17910801321558,
+        "dataSize" : 124631064,
+        "storageSize" : 221507584,
+        "numExtents" : 44,
+        "indexes" : 16,
+        "indexSize" : 223229328,
+        "fileSize" : 1006632960,
+        "nsSizeMB" : 16,
+        "dataFileVersion" : {
+            "major" : 4,
+            "minor" : 5
+        },
+        "ok" : 1
+    }
+
+This method returns the size in bytes for the collection.
+
+    > db.<collection_name>.dataSize()
+
+
+This method returns the allocation size in bytes, including unused space.
+ 
+   > db.<collection_name>.storageSize()
+
+This method returns the data size, plus the index size in bytes.
+ 
+   > db.<collection_name>.totalSize()
+
+This method returns the index size in bytes.
+ 
+   > db.<collection_name>.totalIndexSize()
+
+
+
+
+
+
+
+Remove Database and Collection
+------------------------------
+
+Remove Database:
+
+    > use <database>;
+    > db.dropDatabase();
+
+Remove Collection:
+
+    > db.<collection>.remove({})
+
+
+Count Documents
+---------------
+
+    > db.runCommand( { count: '<collection>' } )
+
+Mongoose
+--------
+
+
     var mongoose = require('mongoose');
     var passport = require('passport');
     var Account = require('./models/account');

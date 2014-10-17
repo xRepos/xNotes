@@ -8,6 +8,7 @@ Node.js Index
 
 * [Node.js + MongoDB](mongodb)
 * [Node.js + Socket.io](socketio)
+* [Moment.js](moment)
 
 Stringify
 ---------

@@ -43,6 +43,84 @@
         <div class="col-md-9" id="main">
           <h1 id="mongodb">MongoDB</h1>
 
+<p>Configuration File:</p>
+
+<pre><code>/etc/mongod.conf
+</code></pre>
+
+<p>Start, stop and restart <code>mongod</code></p>
+
+<pre><code>$ sudo service mongod start
+$ sudo service mongod stop
+$ sudo service mongod restart
+</code></pre>
+
+<h2 id="check-stats">Check Stats</h2>
+
+<pre><code>&gt; db.stats()
+{
+    "db" : "alertdb",
+    "collections" : 10,
+    "objects" : 1680137,
+    "avgObjSize" : 74.17910801321558,
+    "dataSize" : 124631064,
+    "storageSize" : 221507584,
+    "numExtents" : 44,
+    "indexes" : 16,
+    "indexSize" : 223229328,
+    "fileSize" : 1006632960,
+    "nsSizeMB" : 16,
+    "dataFileVersion" : {
+        "major" : 4,
+        "minor" : 5
+    },
+    "ok" : 1
+}
+</code></pre>
+
+<p>This method returns the size in bytes for the collection.</p>
+
+<pre><code>&gt; db.&lt;collection_name&gt;.dataSize()
+</code></pre>
+
+<p>This method returns the allocation size in bytes, including unused space.</p>
+
+<blockquote>
+  <p>db.<collection_name>.storageSize()</collection_name></p>
+</blockquote>
+
+<p>This method returns the data size, plus the index size in bytes.</p>
+
+<blockquote>
+  <p>db.<collection_name>.totalSize()</collection_name></p>
+</blockquote>
+
+<p>This method returns the index size in bytes.</p>
+
+<blockquote>
+  <p>db.<collection_name>.totalIndexSize()</collection_name></p>
+</blockquote>
+
+<h2 id="remove-database-and-collection">Remove Database and Collection</h2>
+
+<p>Remove Database:</p>
+
+<pre><code>&gt; use &lt;database&gt;;
+&gt; db.dropDatabase();
+</code></pre>
+
+<p>Remove Collection:</p>
+
+<pre><code>&gt; db.&lt;collection&gt;.remove({})
+</code></pre>
+
+<h2 id="count-documents">Count Documents</h2>
+
+<pre><code>&gt; db.runCommand( { count: '&lt;collection&gt;' } )
+</code></pre>
+
+<h2 id="mongoose">Mongoose</h2>
+
 <pre><code>var mongoose = require('mongoose');
 var passport = require('passport');
 var Account = require('./models/account');
@@ -91,7 +169,7 @@ app.get('/logout', function(req, res) {
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1></h1>
-            
+            <ul class="toc"><li><a href="#check-stats">Check Stats</a></li><li><a href="#remove-database-and-collection">Remove Database and Collection</a></li><li><a href="#count-documents">Count Documents</a></li><li><a href="#mongoose">Mongoose</a></li></ul>
             </div>
         </div>
         

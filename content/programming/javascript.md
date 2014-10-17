@@ -107,3 +107,25 @@ Date
 
     // get previous day 
     date.setDate(date.getDate() - 1)
+
+    // get epoch
+    new Date() - new Date(0)
+
+Queue
+-----
+
+insert, front   
+
+    array.unshift() 
+
+insert, back
+
+    array.push() 
+
+delete, back
+
+    array.pop() 
+
+delete, front
+
+    array.shift() 
