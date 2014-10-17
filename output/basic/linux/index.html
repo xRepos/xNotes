@@ -65,6 +65,20 @@
 stack
 </code></pre>
 
+<h2 id="udev">udev</h2>
+
+<p>udev primarily manages device nodes in the /dev directory, Unlike traditional Unix systems, where the device nodes in the /dev directory have been a static set of files, the Linux udev device manager dynamically provides only the nodes for the devices actually present on a system.</p>
+
+<pre><code>$ ps -e | grep udevd
+  304 ?        00:00:00 systemd-udevd
+
+
+
+$ ps -e | grep systemd
+  304 ?        00:00:00 systemd-udevd
+ 1317 ?        00:00:00 systemd-logind
+</code></pre>
+
 <h2 id="pam">PAM</h2>
 
 <p>pam - Pluggable Authentication Modules for Linux</p>
@@ -202,7 +216,7 @@ umount: it seems /dev/&lt;device&gt; is mounted multiple times
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1></h1>
-            <ul class="toc"><li><a href="#usr-vs-usrlocal">/usr vs /usr/local</a></li><li><a href="#show-login-name">Show Login Name</a></li><li><a href="#pam">PAM</a></li><li><a href="#install-package">Install Package</a></li><li><a href="#manual">Manual</a></li><li><a href="#hostname">Hostname</a></li><li><a href="#check-all-installed-packages">Check all installed packages</a></li><li><a href="#list-all-block-devices-and-partitions">List All Block Devices and Partitions</a></li><li><a href="#format-a-device">Format a Device</a></li><li><a href="#check-fs">Check FS</a></li><li><a href="#mount--umount">Mount / Umount</a></li><li><a href="#umount-it-seems-device-is-mounted-multiple-times">umount: it seems [device] is mounted multiple times</a></li></ul>
+            <ul class="toc"><li><a href="#usr-vs-usrlocal">/usr vs /usr/local</a></li><li><a href="#show-login-name">Show Login Name</a></li><li><a href="#udev">udev</a></li><li><a href="#pam">PAM</a></li><li><a href="#install-package">Install Package</a></li><li><a href="#manual">Manual</a></li><li><a href="#hostname">Hostname</a></li><li><a href="#check-all-installed-packages">Check all installed packages</a></li><li><a href="#list-all-block-devices-and-partitions">List All Block Devices and Partitions</a></li><li><a href="#format-a-device">Format a Device</a></li><li><a href="#check-fs">Check FS</a></li><li><a href="#mount--umount">Mount / Umount</a></li><li><a href="#umount-it-seems-device-is-mounted-multiple-times">umount: it seems [device] is mounted multiple times</a></li></ul>
             </div>
         </div>
         

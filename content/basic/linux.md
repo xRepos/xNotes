@@ -26,6 +26,28 @@ Show Login Name
     $ echo $LOGNAME
     stack
 
+udev
+----
+
+
+udev primarily manages device nodes in the /dev directory, Unlike traditional Unix systems, where the device nodes in the /dev directory have been a static set of files, the Linux udev device manager dynamically provides only the nodes for the devices actually present on a system.
+
+
+    $ ps -e | grep udevd
+      304 ?        00:00:00 systemd-udevd
+
+
+
+    $ ps -e | grep systemd
+      304 ?        00:00:00 systemd-udevd
+     1317 ?        00:00:00 systemd-logind
+
+
+
+
+
+
+
 
 PAM
 ---
