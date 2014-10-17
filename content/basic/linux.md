@@ -44,8 +44,22 @@ udev primarily manages device nodes in the /dev directory, Unlike traditional Un
 
 
 
+Enviroment Variables
+--------------------
 
+List all variables
 
+    $ env
+    TERM=xterm-256color
+    SHELL=/bin/sh
+    JAVA_HOME=...
+    HADOOP_HOME=...
+
+    $ printenv
+
+Remove variable
+
+    $ unset <VAR_NAME>
 
 
 
