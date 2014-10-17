@@ -26,6 +26,13 @@ Show Login Name
     $ echo $LOGNAME
     stack
 
+
+PAM
+---
+
+pam - Pluggable Authentication Modules for Linux
+
+
 Install Package
 ---------------
 
