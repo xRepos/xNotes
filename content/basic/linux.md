@@ -20,6 +20,12 @@ Linux
 /usr/local is for software built locally 
 
 
+Show Login Name
+---------------
+
+    $ echo $LOGNAME
+    stack
+
 Install Package
 ---------------
 
