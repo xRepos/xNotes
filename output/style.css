@@ -22,6 +22,47 @@ body {
 
 }
 
+.front-page-box { 
+  border: 1px solid #DDD;
+  background-color: #FFF;
+  padding: 0 10px;
+  margin: 10px 0;
+}
+
+.box-heading {
+
+  font-size: 24px;
+  font-weight: bold;
+  color: #888;
+}
+
+.box-body {
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+.box-item {
+  display: block;
+  line-height: 50px;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 10px 0;
+
+  border-bottom: 1px solid #EEE;
+
+}
+
+.box-item-minor-block {
+  margin: 10px 0;
+}
+
+.box-item-minor {
+  font-size: 18px;
+  font-weight: bold;
+
+}
+
+
 .footer {
   height: 200px;
   background:
@@ -240,4 +281,6 @@ code {
   height: 400px;
   background-color: #666;
 }
+
+
 

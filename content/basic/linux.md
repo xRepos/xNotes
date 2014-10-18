@@ -69,6 +69,28 @@ PAM
 pam - Pluggable Authentication Modules for Linux
 
 
+ulimit
+------
+
+Per user limit
+
+Check limits
+
+    $ ulimit -a
+
+Check limits by PID
+
+    $ cat /proc/<pid>/limits
+
+Set limits
+
+    $ ulimit -n 64000 -u 64000
+
+* nofile: number of open files
+* nproc: number of processes
+
+
+
 Install Package
 ---------------
 

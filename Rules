@@ -13,9 +13,29 @@
 #   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #   because “*” matches zero or more characters.
 
+route '/stylesheet/' do
+    
+    '/style.css'
+ 
+end
+
+route '/coderay/' do
+  '/coderay.css'
+end
+
+route '*' do
+  if item.binary?
+    # Write item with identifier /foo/ to /foo.ext
+    item.identifier.chop + '.' + item[:extension]
+  else
+    # Write item with identifier /foo/ to /foo/index.html
+    item.identifier + 'index.html'
+  end
+end
 
 
 compile '/stylesheet/' do
+  
   # don’t filter or layout
 end
 
@@ -26,6 +46,9 @@ end
 compile '*' do
   if item.binary?
     # don’t filter binary items
+
+  elsif item[:extension] == 'html'
+
   else
     filter :kramdown
     filter :colorize_syntax
@@ -43,22 +66,6 @@ end
 #  end
 #end
 
-route '/stylesheet/' do
-  '/style.css'
-end
 
-route '/coderay/' do
-  '/coderay.css'
-end
-
-route '*' do
-  if item.binary?
-    # Write item with identifier /foo/ to /foo.ext
-    item.identifier.chop + '.' + item[:extension]
-  else
-    # Write item with identifier /foo/ to /foo/index.html
-    item.identifier + 'index.html'
-  end
-end
 
 layout '*', :erb

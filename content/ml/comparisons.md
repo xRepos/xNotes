@@ -16,3 +16,6 @@ Logistic regression‐discriminative model: directly learn p(y|X)
 * May need large number of training examples
 
 
+
+ANOVA uses categorical independent variables and a continuous dependent variable
+discriminant analysis has continuous independent variables and a categorical dependent variable
