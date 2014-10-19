@@ -1,12 +1,14 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
     <link rel="icon" type="image/png" href="/images/H.png">
     <link rel="stylesheet" href="/coderay.css">
     <link rel="stylesheet" href="/style.css">
+    <title>xNotes</title>
 </head>
 <body>
 <div class="navbar navbar-inverse" role="navigation">
@@ -33,6 +35,8 @@
 
 <div class="container">
 
+    
+
 
     <div class="row">
         <div class="col-md-6">
@@ -42,27 +46,70 @@
                 <div class="box-heading">MEAN Stack</div>
                 <div class="box-body">
 
-                    <div class="box-item"><!--<img src="/images/mongodb-logo-web.png" height="50"/>--><a
-                            href="">MongoDB</a></div>
-                    <div class="box-item"><a href="/webapp/express">Express.js</a></div>
-                    <div class="box-item"><a href="/webapp/angularjs">Angular.js</a></div>
-                    <div class="box-item"><a href="">Node.js</a></div>
+                    <div class="box-item">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="pull-right">
+                                <img class="techlogo"  src="/images/mongodb.png" height="40"/>
+                            </div>
+                            </div>
+                            <div class="col-md-7">
+                                <a href=""><span class="badge badge-large badge-db">MongoDB</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-item">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="pull-right">
+                                <img class="techlogo"  src="/images/express.png" height="24"/>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <a href="/webapp/express"><span class="badge badge-large badge-lib">Express.js</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-item">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="pull-right">
+                                    <img class="techlogo" src="/images/angularjs.png" height="34"/>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <a href="/webapp/angularjs"><span class="badge badge-large badge-lib">Angular.js</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-item">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="pull-right">
+                                <img class="techlogo" src="/images/nodejs.png" height="30"/>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <a href="/webapp/nodejs"><span class="badge badge-large badge-lib">Node.js</span></a>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="box-item-minor-block">
                         <div class="row ">
                             <div class="col-md-4">
-                                <div class="box-item-minor"><a href="/programming/javascript">Javascript</a></div>
-                                <div class="box-item-minor"><a href="/webapp/jquery">jQuery</a></div>
+                                <div class="box-item-minor"><a href="/programming/javascript"><span class="badge badge-lang">Javascript</span></a></div>
+                                <div class="box-item-minor"><a href="/webapp/jquery"><span class="badge badge-lib">jQuery</span></a></div>
                             </div>
 
                             <div class="col-md-4">
-                                <div class="box-item-minor"><a href="/webapp/html">HTML/CSS</a></div>
-                                <div class="box-item-minor"><a href="/webapp/bootstrap">Bootstrap</a></div>
+                                <div class="box-item-minor"><a href="/webapp/html"><span class="badge badge-lang">HTML/CSS</span></a></div>
+                                <div class="box-item-minor"><a href="/webapp/bootstrap"><span class="badge badge-lib">Bootstrap</span></a></div>
                             </div>
 
                             <div class="col-md-4">
-                                <div class="box-item-minor"><a href="/webapp/lookup">Quick Lookup</a></div>
-                                <div class="box-item-minor">D3.js</div>
+                                <div class="box-item-minor"><a href="/webapp/lookup"><span class="badge badge-misc">Quick Lookup</span></a></div>
+                                <div class="box-item-minor"><span class="badge badge-lib">D3.js</span></div>
                             </div>
                         </div>
                     </div>
@@ -75,12 +122,52 @@
             <div class="front-page-box">
                 <div class="box-heading">Hadoop Ecosystem</div>
                 <div class="box-body">
-                    <div class="box-item">Apache Hadoop</div>
-                    <div class="box-item">Apache Spark</div>
-                    <div class="box-item"><a href="/bigdata/pig">Apache Pig</a></div>
-                    <div class="box-item"><a href="/programming/java">Java</a></div>
+                    <div class="box-item">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="pull-right">
+                                    <img class="techlogo" src="/images/hadoop.jpg" height="34"/>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <a href="/webapp/angularjs"><span class="badge badge-large badge-lib">Apache Hadoop</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-item">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="pull-right">
+                                    <img class="techlogo" src="/images/spark.png" height="34"/>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <a href="/webapp/angularjs"><span class="badge badge-large badge-lib">Apache Spark</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-item">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="pull-right">
+                                    <img class="techlogo" src="/images/pig.gif" height="34"/>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <a href="/bigdata/pig"><span class="badge badge-large badge-lang">Apache Pig<span></a>
+                            </div>
+                        </div>
 
-  
+                        </div>
+                    
+                    <div class="box-item-minor-block">
+                        <div class="row ">
+                            <div class="col-md-4">
+                                <div class="box-item-minor"><a href="/programming/java"><span class="badge badge-lang">Java</span></a></div>
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -94,43 +181,46 @@
         <div class="box-heading">Others</div>
             <div class="box-body">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <strong>Linux & Cloud</strong>
-                        <div><a href="/basic/linux">Linux</a></div>
-                        <div><a href="/webapp/heroku">Heroku</a></div>
-                        <div>OpenStack</div>
-                        <div>Amazon AWS</div>
+                        <div><a href="/basic/linux"><span class="badge badge-os">Linux</span></a></div>
+                        <div><span class="badge badge-os">OpenStack</span></div>
+                        <div><a href="/webapp/heroku"><span class="badge badge-service">Heroku</span></a></div>                        
+                        <div><span class="badge badge-service">Amazon AWS</span></div>
                         
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <strong>Tools</strong>
-                        <div><a href="/basic/vim">Vim</a></div>
-                        <div><a href="/database/mysql">MySQL</a></div>
-                        <div><a href="/tools/git">Git</a></div>
-                        <div><a href="/tools/nanoc">Nanoc</a></div>
-                        <div><a href="/tools/webstorm">WebStorm</a></div>
-                        <div><a href="/tools/wordpress">WordPress</a></div>
-                        <div><a href="/tools/maven">Maven</a></div>
-                        <div><a href="/tools/sonar">Sonar</a></div>
-                        <div><a href="/tools/homebrew">HomeBrew</a></div>
+                        <div><a href="/basic/vim"><span class="badge badge-tool">Vim</span></a></div>
+                        <div><a href="/database/mysql"><span class="badge badge-db">MySQL</span></a></div>
+                        <div><a href="/tools/git"><span class="badge badge-tool">Git</span></a></div>
+                        <div><a href="/tools/nanoc"><span class="badge badge-tool">Nanoc</span></a></div>
+                        <div><a href="/tools/webstorm"><span class="badge badge-tool">WebStorm</span></a></div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <div><a href="/tools/wordpress"><span class="badge badge-tool">WordPress</span></a></div>
+                        <div><a href="/tools/maven"><span class="badge badge-tool">Maven</span></a></div>
+                        <div><a href="/tools/sonar"><span class="badge badge-tool">Sonar</span></a></div>
+                        <div><a href="/tools/homebrew"><span class="badge badge-tool">HomeBrew</span></a></div>
                         
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <strong>Knowledge</strong>
                         
-                        <div><a href="/basic/standards">Standards</a></div>
-                        <div><a href="/basic/knowledge">Knowledge</a></div>
-                        <div><a href="/ml">Data Mining</a></div>
+                        <div><a href="/basic/standards"><span class="badge badge-misc">Standards</span></a></div>
+                        <div><a href="/basic/knowledge"><span class="badge badge-misc">Knowledge</span></a></div>
+                        <div><a href="/ml"><span class="badge badge-misc">Data Mining</span></a></div>
                         
 
                         <strong>Homegrown</strong>
             
 
             
-                        <div><a href="/homegrown/data">Data</a></div>
-                        <div><a href="/homegrown/code">Code</a></div>
+                        <div><a href="/homegrown/data"><span class="badge badge-misc">Data</span></a></div>
+                        <div><a href="/homegrown/code"><span class="badge badge-misc">Code</a></span></div>
                    
                     </div>
                 </div>

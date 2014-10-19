@@ -22,11 +22,30 @@ body {
 
 }
 
+.headline {
+  background-color: #ADD8E6;
+  padding: 20px 50px;
+  border: 1px solid #B2DFEE;
+  border-radius: 0px;
+}
+
+.headline-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #68838B;
+}
+
+.headline-subtitle {
+  font-size: 24px;
+color: #6CA6CD;
+}
+
 .front-page-box { 
   border: 1px solid #DDD;
-  background-color: #FFF;
+  background-color: #FDFDFD;
   padding: 0 10px;
   margin: 10px 0;
+  border-top: 5px solid #4682B4;
 }
 
 .box-heading {
@@ -62,6 +81,49 @@ body {
 
 }
 
+.techlogo {
+  -webkit-filter: grayscale(1) ;
+}
+
+.badge {
+  font-size: 16px;
+  padding: 6px 10px;
+  margin: 5px 0;
+  border-radius: 15px;
+}
+
+.badge-large {
+  font-size: 20px;
+  border-radius: 17px;
+}
+
+.badge-lang {
+  background-color: #8B668B;
+}
+
+.badge-lib {
+  background-color: #6CA6CD;
+}
+
+.badge-db {
+  background-color: #CD853F;
+}
+
+.badge-tool {
+  background-color: #6E8B3D;
+}
+
+.badge-os {
+  background-color: #68838B;
+}
+
+.badge-service {
+  background-color: #8B795E
+}
+
+.badge-misc {
+  background-color: grey;
+}
 
 .footer {
   height: 200px;

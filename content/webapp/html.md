@@ -34,3 +34,14 @@ Open Link in New Tab
 
     #!html
     <a href="..." target="_blank">...</a>
+
+CSS Grayscale
+-------------
+
+
+    #!css
+    img {
+      -webkit-filter: grayscale(0.5) blur(10px);
+    }
+
+Set grayscale to 1 to show grayscale image(no color), 0 to hide grayscale effect
