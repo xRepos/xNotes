@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Linux</title>
+    <title>SSH</title>
     <meta name="description" content="">
     <link rel="icon" type="image/png" href="/images/H.png">
     <meta name="msvalidate.01" content="E902E175A677AB76CA7F4DA627124A62" />
@@ -41,21 +41,39 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="main">
-          <h1 id="linux">Linux</h1>
+          <h1 id="ssh">SSH</h1>
+
+<h2 id="the-so-called-password-less-ssh">The So-called Password-less SSH</h2>
+
+<p>I was confused by this for a long time…</p>
+
+<p>The key concept here is the <code>Keypair</code>, it is called a “pair” so there must be two files: one public and one private. Local machine has the private one, and remote machine has the public one, if somehow they match, you are connected!</p>
 
 <ul>
-<li><a href="cmd">Commands</a></li>
-  <li><a href="variable">Variables</a></li>
-  <li><a href="shotcut">Shortcuts</a></li>
-  <li><a href="ssh">SSH</a></li>
-  <li><a href="fs">File System</a></li>
-  <li><a href="concept">Concepts</a></li>
-</ul>
+<li>Remote: the public keys are stored in <code>~/.ssh/authroized_keys</code>. Yes the “keys”, it can have not only your public key but also tons of others.</li>
+  <li>Local: use <code>ssh -i myPrivateKey foo@baz</code> to specify which private key to use(in this case <code>myPrivateKey</code>)
+    <ul>
+<li>if you are using Amazon AWS, OpenStack or others of the kind, you probably will get a file like <code>Keypair.pem</code> from the platform, it is actually a private key.</li>
+      <li>if you are using <code>ssh-keygen</code>, 2 files will be generated, the one without <code>.pub</code> is the private key</li>
+    </ul>
+</li>
+</ul><p>And here is the magic: if you do not specify which private key file to use(“-i”), ssh will look for the file <code>~/.ssh/id_rsa</code>!</p>
+
+<h2 id="specify-identityfile-for-host">Specify IdentityFile for Host</h2>
+
+<p>To specify an IdentityFile other than the default, edit <code>~/.ssh/config</code></p>
+
+<pre><code>Host heroku.com
+    HostName heroku.com
+    IdentityFile /path/to/another/private-key
+</code></pre>
+
+<p>when you use git to talk to the remote repository <code>git@heroku.com:myapp.git</code>, it will use the specified key instead.</p>
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
-              <h1>Linux</h1>
-            
+              <h1>SSH</h1>
+            <ul class="toc"><li><a href="#the-so-called-password-less-ssh">The So-called Password-less SSH</a></li><li><a href="#specify-identityfile-for-host">Specify IdentityFile for Host</a></li></ul>
             </div>
         </div>
         

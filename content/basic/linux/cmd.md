@@ -1,11 +1,125 @@
 ---
-title: Bash
+title: Commands
 description: A few tips on bash scripts or commands
 ---
 
 
-Bash
-====
+Commands
+========
+
+
+Manual
+------
+
+* Section 1: user commands 
+* Section 2: system calls 
+* Section 3: library functions
+* Section 4: special files
+* Section 5: file formats
+* Section 6: games
+* Section 7: conventions and miscellany
+* Section 8: administration and privileged commands
+* Section L: math library functions
+* Section N: tcl functions
+
+e.g.
+
+    $ man 8 mount
+
+udev
+----
+
+
+udev primarily manages device nodes in the /dev directory, Unlike traditional Unix systems, where the device nodes in the /dev directory have been a static set of files, the Linux udev device manager dynamically provides only the nodes for the devices actually present on a system.
+
+
+    $ ps -e | grep udevd
+      304 ?        00:00:00 systemd-udevd
+
+
+
+    $ ps -e | grep systemd
+      304 ?        00:00:00 systemd-udevd
+     1317 ?        00:00:00 systemd-logind
+
+
+
+
+
+ulimit
+------
+
+Per user limit
+
+Check limits
+
+    $ ulimit -a
+
+Check limits by PID
+
+    $ cat /proc/<pid>/limits
+
+Set limits
+
+    $ ulimit -n 64000 -u 64000
+
+* nofile: number of open files
+* nproc: number of processes
+
+Mount / Umount
+--------------
+
+Assume a device is added as ``/mnt/vdc``. Create new folder as ``/dev/vdc``
+
+    $ sudo mkdir /dev/vdc 
+
+Edit ``/etc/fstab``.
+
+    # <file system> <mount point>   <type>  <options>       <dump>  <pass>
+    /dev/vdc        /mnt/vdc        auto    defaults        0       0
+
+Mount all
+
+    $ sudo mount -a
+
+Check by ``df``
+
+    $ df
+    Filesystem     1K-blocks    Used Available Use% Mounted on
+    /dev/vdc           65390      36     65354   1% /mnt/vdc
+
+
+To remount
+
+    $ mount -o remount /dev/vdc
+
+umount: it seems [device] is mounted multiple times
+---------------------------------------------------
+
+Error: 
+
+    $ umount /dev/[device] 
+    umount: it seems /dev/<device> is mounted multiple times
+
+Solution: use sudo
+
+    $ sudo umount /dev/[device]
+
+
+
+Install Package
+---------------
+
+Ubuntu:
+
+    $ dpkg -i filename.deb
+
+Check all installed packages
+-----------------------------
+
+    $ dpkg --get-selections
+    $ dpkg --get-selections | grep mongo
+
 
 which vs whereis
 ----------------
@@ -245,3 +359,40 @@ Example: add HADOOP_CLASSPATH if ``hadoop`` exists
         HADOOP_CLASSPATH=`hadoop classpath`
         CLASSPATH=$HADOOP_CLASSPATH:$CLASSPATH
     }
+
+Format a Device
+---------------
+
+Use ``mkfs.ext2``, ``mkfs.ext3``, ``mkfs.ext4`` etc
+
+    $ sudo mkfs.ext3 /dev/<device>
+
+Check FS
+--------
+
+    # df -hT | awk '{print $1,$2,$NF}' | grep "^/dev"
+    /dev/sda3 ext4 /
+    /dev/sda2 ext2 /boot
+    /dev/sda6 ext4 /tmp
+    /dev/sdb1 ext4 /data1
+    /dev/sdc1 ext4 /data2
+    /dev/sdd1 ext4 /data3
+
+Hostname
+--------
+
+* ``/etc/hostname``: the hostname of the machine
+* ``/etc/hosts``: list of hosts
+* ``host <host_name>``: DNS lookup
+
+Unknown Host Error in ``sudo``: make sure the names match
+
+    $ cat /etc/hosts
+    127.0.1.1   example-hostname
+
+    $ cat /etc/hostname
+    example-hostname
+
+    $ host example-hostname
+    example-hostname.foo.bar.example.com has address 10.64.209.136
+

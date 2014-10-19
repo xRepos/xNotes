@@ -32,3 +32,33 @@ Variables
 * ``TERM`` - indicates the terminal type being used. This should be set correctly for editors like Vim to work correctly.
 
 * ``SHELL`` - Determines the type of shell that the user sees on logging in.
+
+
+
+
+Show Login Name
+---------------
+
+    $ echo $LOGNAME
+    stack
+
+
+
+
+
+Enviroment Variables
+--------------------
+
+List all variables
+
+    $ env
+    TERM=xterm-256color
+    SHELL=/bin/sh
+    JAVA_HOME=...
+    HADOOP_HOME=...
+
+    $ printenv
+
+Remove variable
+
+    $ unset <VAR_NAME>

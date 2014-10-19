@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bash</title>
+    <meta name="description" content="A few tips on bash scripts or commands">
+    <link rel="icon" type="image/png" href="/images/H.png">
+    <meta name="msvalidate.01" content="E902E175A677AB76CA7F4DA627124A62" />
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="nanoc 3.7.1"> 
+  </head>
+
+
+    <body>
+    <div class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">xNotes</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            
+        
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9" id="main">
+          <h1 id="bash">Bash</h1>
+
+<h2 id="which-vs-whereis">which vs whereis</h2>
+
+<ul>
+<li>
+    <p><code>which</code>: based on PATH</p>
+
+    <pre><code>  $ which hadoop
+  /Users/myname/lib/hadoop
+</code></pre>
+  </li>
+  <li>
+    <p><code>whereis</code>: based on standard binary directories</p>
+
+    <pre><code>  $ whereis hadoop
+  hadoop: /usr/bin/hadoop /etc/hadoop /usr/lib/hadoop /usr/share/man/man1/hadoop.1.gz
+</code></pre>
+  </li>
+</ul><h2 id="nohup">Nohup</h2>
+<p>Run command in background and redirect output to file.</p>
+
+<pre><code>nohup command &gt; output &amp; 
+</code></pre>
+
+<p>Quote from Wikipedia: nohup is a POSIX command to ignore the HUP (hangup) signal, enabling the command to keep running after the user who issues the command has logged out. The HUP (hangup) signal is by convention the way a terminal warns depending processes of logout. Then use</p>
+
+<pre><code>tail output 
+</code></pre>
+
+<p>to print the last few lines of the output.</p>
+
+<h2 id="always-search-current-folder-first">Always Search Current Folder First</h2>
+
+<p>Add to <code>~/.bashrc</code> or <code>~/.bash_profile</code></p>
+
+<pre><code>export PATH=`pwd`:$PATH
+</code></pre>
+
+<h2 id="style-your-prompt">Style Your Prompt</h2>
+
+<p>Add to <code>~/.bashrc</code> or <code>~/.bash_profile</code></p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-bash">function prompt {
+  local       BLACK="\[\033[0;30m\]"
+  local         RED="\[\033[0;31m\]"
+  local   LIGHT_RED="\[\033[1;31m\]"
+  local       GREEN="\[\033[0;32m\]"
+  local LIGHT_GREEN="\[\033[1;32m\]"
+  local      YELLOW="\[\033[0;33m\]"
+  local        BLUE="\[\033[0;34m\]"
+  local     MAGENTA="\[\033[0;35m\]"
+  local        CYAN="\[\033[0;36m\]"
+  local       WHITE="\[\033[1;37m\]"
+  local  LIGHT_GRAY="\[\033[0;37m\]"
+
+  PS1="\n${RED}\u@\h: ${GREEN}\w ${BLACK}\n\$ "
+  
+}
+prompt</code></pre></div></div>
+
+<p>It should look like:</p>
+
+<pre><code>&lt;user(red)&gt;@&lt;host(green)&gt;: &lt;working folder&gt;
+$ 
+</code></pre>
+
+<h2 id="show-current-git-branch">Show Current Git Branch</h2>
+
+<p>Add to <code>~/.bashrc</code> or <code>~/.bash_profile</code></p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-bash">function parse_git_branch {
+  git branch --no-color 2&gt; /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}</code></pre></div></div>
+
+<p>Then change the last line in <code>prompt</code> function to</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-bash">PS1="\n${RED}\u@\h:${BLUE}\$(parse_git_branch) ${GREEN}\w ${BLACK}\n\$ "</code></pre></div></div>
+
+<h2 id="start-and-stop-daemons">Start and Stop Daemons</h2>
+
+<h3 id="pattern">Pattern</h3>
+
+<pre><code>#!/bin/bash
+usage="Usage: server.sh (start|stop)"
+
+# command is 'start' or 'stop'
+command=$1
+
+case $command in
+    (start)
+        ...
+        ;;
+
+    (stop)
+        ...
+        ;;
+
+    (*)
+        echo $usage
+        exit 1
+        ;;
+esac
+</code></pre>
+
+<h3 id="get-pid">Get PID</h3>
+
+<p>Simple Case: Use pgrep to get pid</p>
+
+<pre><code>pid_mongod=`pgrep mongod`
+</code></pre>
+
+<p>Complicated Case: Multiple programs under the same name is running, like Hadoop daemons and Solr daemon are all simply shown as java:</p>
+
+<pre><code>pid_solr=`ps -eo pid,args | grep 'java -jar start.jar'| grep -v grep | cut -c1-6`
+</code></pre>
+
+<p>Step by Step:</p>
+
+<ul>
+<li>ps -e: show all the pids</li>
+  <li>
+    <p>ps -o pid,args: specify the fields to show:</p>
+
+    <p>$ ps -eo pid,args
+  12498 -bash
+  14132 java -jar start.jar
+  17489 grep java -jar start.jar
+  …</p>
+  </li>
+  <li>
+    <p>grep ‘java -jar start.jar’: only leave the specified commands:</p>
+
+    <p>$ ps -eo pid,args | grep ‘java -jar start.jar’
+  14132 java -jar start.jar
+  17489 grep java -jar start.jar</p>
+  </li>
+  <li>
+    <p>grep -v grep: exclude the grep itself:</p>
+
+    <p>$ ps -eo pid,args | grep ‘java -jar start.jar’| grep -v grep
+  14132 java -jar start.jar</p>
+  </li>
+  <li>
+    <p>cut -c1-6: cut the first 6 characters:</p>
+
+    <p>$ ps -eo pid,args | grep ‘java -jar start.jar’| grep -v grep | cut -c1-6
+  14132</p>
+  </li>
+</ul><p>Other ways to get pid: <code>echo $$</code> or <code>echo $!</code>.</p>
+
+<h3 id="start-daemon">Start Daemon</h3>
+
+<pre><code>if kill -0 $pid_mongod &gt; /dev/null 2&gt;&amp;1; then
+    echo Database is already running ...
+else
+    echo Starting Database ...
+    bin/mongod &amp;
+fi
+</code></pre>
+
+<p>Step by Step:</p>
+
+<ul>
+<li>kill -0 $pid_mongod: -0 for testing if the pid is available to kill. It will return 0 if you can kill <pid>, 1 if <pid> is invalid or you do not have access.</pid></pid>
+</li>
+  <li>… &gt; /dev/null 2&gt;&amp;1: redirect the output to /dev/null, a blackhole. 2 stands for STDERR, 1 for STDOUT. This command means redirect STDOUT to /dev/null, and redirect STDERR to STDOUT(which is /dev/null), so both STDOUT and STDERR will be quiet. Remember the &amp; before destination.</li>
+  <li>
+    <p>bin/mongod &amp;: if it is not running, start the daemon. Remember the &amp; for running in the background.
+Wait before it is up:</p>
+
+    <p>while true; do
+      sleep 1
+      if pgrep mongod; then
+          break
+      fi
+  done</p>
+  </li>
+</ul><h3 id="stop-daemon">Stop Daemon</h3>
+
+<p>Similar to the previous section.</p>
+
+<div class="CodeRay"><div class="code"><pre><code class="language-sh">if kill -0 $pid_mongod &gt; /dev/null 2&gt;&amp;1; then
+    echo Stopping mongod Server ...
+    kill -9 $pid_mongod
+else
+    echo No mongod Server to stop ...
+fi</code></pre></div></div>
+
+<h2 id="count-number-of-columns">Count Number of Columns</h2>
+
+<p>Use <code>awk</code>:</p>
+
+<pre><code>$ cat file | head -1 | awk -F"," '{print NF}'
+</code></pre>
+
+<h2 id="create-symbolic-link">Create Symbolic Link</h2>
+
+<pre><code>$ ln -s 0.1.0-SNAPSHOT/ snapshot
+$ ls -l
+... snapshot -&gt; 0.1.0-SNAPSHOT/
+</code></pre>
+
+<h2 id="cron">Cron</h2>
+
+<p><code>/etc/crontab</code> schedules <code>/etc/cron.hourly</code>, <code>/etc/cron.daily</code>, <code>/etc/cron.weekly</code>, <code>/etc/cron.monthly</code>.</p>
+
+<p>Scripts in those folders will be executed.</p>
+
+<p>By default cron jobs logs can be found in <code>/var/log/syslog</code></p>
+
+<pre><code>$ grep CRON /var/log/syslog
+</code></pre>
+
+<h2 id="add-timestamp-to-filename">Add Timestamp to Filename</h2>
+
+<p>To show timestamp in a specific format, use the format string like <code>+"%Y%m%d"</code></p>
+
+<pre><code>$ date +"%Y%m%d"
+20140220
+</code></pre>
+
+<p>For more format strings, check <code>$ date --help</code>. To use timestamp in a filename:</p>
+
+<pre><code>$ echo "hello" &gt; `date +"%Y%m%d"`.log
+$ cat 20140220.log
+hello
+</code></pre>
+
+<h2 id="redirect-stderr-to-stdout">Redirect StdErr to StdOut</h2>
+
+<pre><code>$ do whatever &gt; /home/ubuntu/`date +"%Y%m%d"`.log 2&gt;&amp;1
+</code></pre>
+
+<p>2&gt;&amp;1 indicates that the standard error (2&gt;) is redirected to the same file descriptor that is pointed by standard output (&amp;1).</p>
+
+<h2 id="check-if-command-exists">Check If Command Exists</h2>
+
+<pre><code>$ command -v foo &gt;/dev/null 2&gt;&amp;1
+$ type foo &gt;/dev/null 2&gt;&amp;1
+$ hash foo 2&gt;/dev/null
+</code></pre>
+
+<p>Example: add HADOOP_CLASSPATH if <code>hadoop</code> exists</p>
+
+<pre><code>command -v hadoop &gt; /dev/null &amp;&amp; {
+    HADOOP_CLASSPATH=`hadoop classpath`
+    CLASSPATH=$HADOOP_CLASSPATH:$CLASSPATH
+}
+</code></pre>
+        </div>
+        <div class="col-md-3 hidden-sm hidden-xs">
+          <div id="side">
+              <h1>Bash</h1>
+            <ul class="toc"><li><a href="#which-vs-whereis">which vs whereis</a></li><li><a href="#nohup">Nohup</a></li><li><a href="#always-search-current-folder-first">Always Search Current Folder First</a></li><li><a href="#style-your-prompt">Style Your Prompt</a></li><li><a href="#show-current-git-branch">Show Current Git Branch</a></li><li><a href="#start-and-stop-daemons">Start and Stop Daemons</a></li><li><a href="#count-number-of-columns">Count Number of Columns</a></li><li><a href="#create-symbolic-link">Create Symbolic Link</a></li><li><a href="#cron">Cron</a></li><li><a href="#add-timestamp-to-filename">Add Timestamp to Filename</a></li><li><a href="#redirect-stderr-to-stdout">Redirect StdErr to StdOut</a></li><li><a href="#check-if-command-exists">Check If Command Exists</a></li></ul>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+    </div>
+
+    <link rel="stylesheet" href="/coderay.css">
+    <link rel="stylesheet" href="/style.css">
+    
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-25038072-5', 'hivetrix.com');
+    ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
