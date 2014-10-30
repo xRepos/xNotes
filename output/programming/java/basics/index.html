@@ -14,7 +14,7 @@
 </script>
 
     <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc 3.7.1"> 
+    <meta name="generator" content="nanoc 3.7.3"> 
   </head>
 
 
@@ -41,78 +41,87 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="main">
-          <h1 id="basics">Basics</h1>
+          
+<h1 id="basics">Basics</h1>
 
 <h2 id="garbage-collection">Garbage Collection</h2>
 
 <ul>
-<li>G1 Garbage Collector
+  <li>G1 Garbage Collector
     <ul>
-<li>Garbage First. G1 is planned to be the long-term replacement for the CMS GC. </li>
+      <li>Garbage First. G1 is planned to be the long-term replacement for the CMS GC. </li>
       <li>-XX:+UseG1GC</li>
       <li>Tutorial: <a href="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/index.html">http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/index.html</a>
 </li>
     </ul>
-</li>
+  </li>
   <li>Concurrent Mark Sweep (CMS) Collector
     <ul>
-<li>Also known as the low latency collection. This is 1 of 2 non-compacting collector.</li>
+      <li>Also known as the low latency collection. This is 1 of 2 non-compacting collector.</li>
       <li>-XX:+UseConcMarkSweepGC</li>
     </ul>
-</li>
+  </li>
   <li>Parallel Compacting Collector
     <ul>
-<li>Young and old generation are both collected in parallel and compacted. </li>
+      <li>Young and old generation are both collected in parallel and compacted. </li>
       <li>-XX:+UseParallelOldGC</li>
     </ul>
-</li>
+  </li>
   <li>Parallel Collector
     <ul>
-<li>Collects new in parallel, but old by serial algorithm. </li>
+      <li>Collects new in parallel, but old by serial algorithm. </li>
       <li>-XX:+UseParallelGC</li>
     </ul>
-</li>
+  </li>
   <li>Serial Collector
     <ul>
-<li>Single CPU collector for both young and old generations. Good for embedded systems without a lot of processing power. By default ergonomics does not use this unless you have less than 2 processors and less than 2GB of memory. </li>
+      <li>Single CPU collector for both young and old generations. Good for embedded systems without a lot of processing power. By default ergonomics does not use this unless you have less than 2 processors and less than 2GB of memory. </li>
       <li>-XX:+UseSerialGC </li>
     </ul>
-</li>
-</ul><h3 id="concurrent-vs-parallel">Concurrent vs. Parallel</h3>
+  </li>
+</ul>
+
+<h3 id="concurrent-vs-parallel">Concurrent vs. Parallel</h3>
 
 <ul>
-<li>Concurrent: runs along with application threads</li>
+  <li>Concurrent: runs along with application threads</li>
   <li>Parallel: stop the world, multi-threaded </li>
-</ul><h2 id="interpreter-vs-jit-compiler">Interpreter vs. JIT Compiler</h2>
+</ul>
+
+<h2 id="interpreter-vs-jit-compiler">Interpreter vs. JIT Compiler</h2>
 
 <p><code>javac</code> compiles Java code to bytecode; to execute the bytecode, there are 2 options:</p>
 
 <ul>
-<li>Interpreter:
+  <li>Interpreter:
     <ul>
-<li>Read the next byte code to be executed</li>
+      <li>Read the next byte code to be executed</li>
       <li>Look at what the byte code is and find the native machine instruction(s) that correspond to it</li>
       <li>Execute the native machine instruction(s)</li>
       <li>Go to step 1</li>
     </ul>
-</li>
+  </li>
   <li>Just-In-Time compiler:
     <ul>
-<li>Read all the byte codes for the method that needs to be executed</li>
+      <li>Read all the byte codes for the method that needs to be executed</li>
       <li>Convert all those byte codes to native machine instructions</li>
       <li>Execute the generated native machine instructions</li>
     </ul>
-</li>
-</ul><h2 id="permgen-vs-metaspace">PermGen vs. Metaspace</h2>
+  </li>
+</ul>
+
+<h2 id="permgen-vs-metaspace">PermGen vs. Metaspace</h2>
 
 <p><code>java.lang.OutOfMemoryError: PermGen space</code> is very often caused by a memory leak related to classloaders, and creation of new classloaders, which generally happens during hot deployments of code.</p>
 
 <p>The permanent generation contains information about classes, such as bytecode, names and JIT information. It is stored in a separate space, because it is mostly static and garbage collection can be much more optimized by separating it.</p>
 
 <ul>
-<li>PermGen: Java Heap; Java 7 partially removed, Java 8 totally removed, replaced by Metaspace</li>
+  <li>PermGen: Java Heap; Java 7 partially removed, Java 8 totally removed, replaced by Metaspace</li>
   <li>Metaspace: native memory(C heap)</li>
 </ul>
+
+
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">

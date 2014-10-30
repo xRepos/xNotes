@@ -29,3 +29,25 @@ To specify an IdentityFile other than the default, edit ``~/.ssh/config``
         IdentityFile /path/to/another/private-key
 
 when you use git to talk to the remote repository ``git@heroku.com:myapp.git``, it will use the specified key instead.
+
+WARNING: UNPROTECTED PRIVATE KEY FILE!
+--------------------------------------
+
+Error:
+
+    $ ssh <something>
+    The authenticity of host '10.xxx.xxx.xxx (10.xxx.xxx.xxx)' can't be established.
+    RSA key fingerprint is xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx.
+    Are you sure you want to continue connecting (yes/no)? yes
+    Warning: Permanently added '10.xxx.xxx.xxx' (RSA) to the list of known hosts.
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    Permissions 0644 for '/path/to/key.pem' are too open.
+    It is required that your private key files are NOT accessible by others.
+    This private key will be ignored.
+    bad permissions: ignore key: /path/to/key.pem
+
+Solution
+
+    $ chmod 600 /path/to/key.pem

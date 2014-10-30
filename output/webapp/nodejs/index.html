@@ -14,7 +14,7 @@
 </script>
 
     <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc 3.7.1"> 
+    <meta name="generator" content="nanoc 3.7.3"> 
   </head>
 
 
@@ -41,70 +41,25 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="main">
-          <h1 id="nodejs-index">Node.js Index</h1>
+          
+<h1 id="nodejs-index">Node.js Index</h1>
 
 <ul>
-<li><a href="mongodb">Node.js + MongoDB</a></li>
+  <li><a href="mongodb">Node.js + MongoDB</a></li>
   <li><a href="socketio">Node.js + Socket.io</a></li>
   <li><a href="moment">Moment.js</a></li>
-</ul><h2 id="stringify">Stringify</h2>
+  <li><a href="web-crawling">Web Crawling</a></li>
+</ul>
+
+<h2 id="stringify">Stringify</h2>
 
 <p>To pretty print(indent by 4 spaces):</p>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript">JSON.stringify(data, <span class="predefined-constant">null</span>, <span class="string"><span class="delimiter">"</span><span class="content">    </span><span class="delimiter">"</span></span>)</code></pre></div></div>
 
-<p>or </p>
+<p>or</p>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript">JSON.stringify(data, <span class="predefined-constant">null</span>, <span class="integer">4</span>)</code></pre></div></div>
-
-<h2 id="web-crawling-and-parsing">Web Crawling and Parsing</h2>
-
-<p>Here is a quick way for crawling and parsing. Use <code>request</code> to get the raw html and <code>cheerio</code> to parse, after that everything works like jQuery.</p>
-
-<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> request = require(<span class="string"><span class="delimiter">'</span><span class="content">request</span><span class="delimiter">'</span></span>);
-<span class="keyword">var</span> cheerio = require(<span class="string"><span class="delimiter">'</span><span class="content">cheerio</span><span class="delimiter">'</span></span>);
-<span class="keyword">var</span> url = <span class="string"><span class="delimiter">'</span><span class="content">http://foo.com</span><span class="delimiter">'</span></span>;
- 
-request(url, <span class="keyword">function</span>(err, res, body){
-  <span class="predefined">$</span> = cheerio.load(body);
-  console.log(body);
-});</code></pre></div></div>
-
-<p>Or use <code>http</code></p>
-
-<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> http = require(<span class="string"><span class="delimiter">'</span><span class="content">http</span><span class="delimiter">'</span></span>);
-http.request({    
-    <span class="key">host</span>: <span class="string"><span class="delimiter">'</span><span class="content">search.twitter.com</span><span class="delimiter">'</span></span>, 
-    <span class="key">path</span>: <span class="string"><span class="delimiter">'</span><span class="content">/search.json?</span><span class="delimiter">'</span></span> + qs.stringify({ <span class="key">q</span>: search }) 
-}, <span class="keyword">function</span> (res) {}</code></pre></div></div>
-
-<p>If plain text</p>
-
-<div class="CodeRay"><div class="code"><pre><code class="language-javascript">http.get(url, <span class="keyword">function</span>(res){
-    <span class="keyword">var</span> buffer = [];
-    res.on(<span class="string"><span class="delimiter">'</span><span class="content">data</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(data) {
-        buffer.push(data);
-    }).on(<span class="string"><span class="delimiter">"</span><span class="content">end</span><span class="delimiter">"</span></span>, <span class="keyword">function</span>() {
-        parsePage(buffer.join(<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>));
-    })
-});</code></pre></div></div>
-
-<p>If gziped</p>
-
-<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> zlib = require(<span class="string"><span class="delimiter">'</span><span class="content">zlib</span><span class="delimiter">'</span></span>);
-
-http.get(url, <span class="keyword">function</span>(res){
-  
-    <span class="keyword">var</span> buffer = [];
-    <span class="keyword">var</span> gunzip = zlib.createGunzip();            
-    res.pipe(gunzip);
-
-    gunzip.on(<span class="string"><span class="delimiter">'</span><span class="content">data</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(data) {
-        buffer.push(data);
-    }).on(<span class="string"><span class="delimiter">"</span><span class="content">end</span><span class="delimiter">"</span></span>, <span class="keyword">function</span>() {
-        parsePage(buffer.join(<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>));
-    })
-});</code></pre></div></div>
 
 <h2 id="commandline-arguments">Commandline Arguments</h2>
 
@@ -185,31 +140,6 @@ console.log(data);
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript">fs.writeFile(<span class="string"><span class="delimiter">"</span><span class="content">filename.json</span><span class="delimiter">"</span></span>, JSON.stringify(data));</code></pre></div></div>
 
-<h2 id="route">Route</h2>
-<p>In <code>app.js</code></p>
-
-<div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> routes = require(<span class="string"><span class="delimiter">'</span><span class="content">./routes</span><span class="delimiter">'</span></span>);
-
-app.get(<span class="string"><span class="delimiter">'</span><span class="content">/loadData/:name</span><span class="delimiter">'</span></span>, routes.loadData);</code></pre></div></div>
-
-<p>In <code>routes/index.js</code></p>
-
-<div class="CodeRay"><div class="code"><pre><code class="language-javascript">exports.<span class="function">loadData</span> = <span class="keyword">function</span>(req, res) {
-    console.log(req.route.params.name)
-    <span class="comment">// or</span>
-    console.log(req.params.name)
-}</code></pre></div></div>
-
-<p>In browser</p>
-
-<pre><code>http://127.0.0.1:3000/loaddata/foo
-</code></pre>
-
-<p>In terminal</p>
-
-<pre><code>foo
-</code></pre>
-
 <h2 id="req-lookup">Req Lookup</h2>
 
 <h3 id="params">Params</h3>
@@ -248,16 +178,18 @@ app.get(<span class="string"><span class="delimiter">'</span><span class="conten
 <h2 id="global-object">Global Object</h2>
 
 <ul>
-<li>Browser: <code>window</code>
+  <li>Browser: <code>window</code>
 </li>
   <li>Server: <code>process</code>
     <ul>
-<li>
+      <li>
 <code>process.env</code>: env defined and exported in <code>~/.bash_profile</code> or <code>~/.bashrc</code>
 </li>
     </ul>
-</li>
-</ul><h2 id="module">Module</h2>
+  </li>
+</ul>
+
+<h2 id="module">Module</h2>
 
 <h3 id="load-a-module">Load a module:</h3>
 
@@ -282,12 +214,12 @@ console.log(bar.foo); <span class="comment">// 10</span></code></pre></div></div
 
 <h2 id="npm-install">npm install</h2>
 
-<p>Save to <code>package.json</code> - <code>dependencies</code> section: </p>
+<p>Save to <code>package.json</code> - <code>dependencies</code> section:</p>
 
 <pre><code>$ npm install --save &lt;package-name&gt;
 </code></pre>
 
-<p>Save to <code>package.json</code> - <code>devDependencies</code> section: </p>
+<p>Save to <code>package.json</code> - <code>devDependencies</code> section:</p>
 
 <pre><code>$ npm install --save-dev &lt;package-name&gt;
 </code></pre>
@@ -297,11 +229,12 @@ console.log(bar.foo); <span class="comment">// 10</span></code></pre></div></div
 <p>Get num of CPUs:</p>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> numCPUs = require(<span class="string"><span class="delimiter">'</span><span class="content">os</span><span class="delimiter">'</span></span>).cpus().length;</code></pre></div></div>
+
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
               <h1>Node.js</h1>
-            <ul class="toc"><li><a href="#stringify">Stringify</a></li><li><a href="#web-crawling-and-parsing">Web Crawling and Parsing</a></li><li><a href="#commandline-arguments">Commandline Arguments</a></li><li><a href="#file-upload">File Upload</a></li><li><a href="#readwrite-file">Read/Write File</a></li><li><a href="#route">Route</a></li><li><a href="#req-lookup">Req Lookup</a></li><li><a href="#global-object">Global Object</a></li><li><a href="#module">Module</a></li><li><a href="#npm-install">npm install</a></li><li><a href="#quick-lookup">Quick Lookup</a></li></ul>
+            <ul class="toc"><li><a href="#stringify">Stringify</a></li><li><a href="#commandline-arguments">Commandline Arguments</a></li><li><a href="#file-upload">File Upload</a></li><li><a href="#readwrite-file">Read/Write File</a></li><li><a href="#req-lookup">Req Lookup</a></li><li><a href="#global-object">Global Object</a></li><li><a href="#module">Module</a></li><li><a href="#npm-install">npm install</a></li><li><a href="#quick-lookup">Quick Lookup</a></li></ul>
             </div>
         </div>
         

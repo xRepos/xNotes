@@ -14,7 +14,7 @@
 </script>
 
     <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc 3.7.1"> 
+    <meta name="generator" content="nanoc 3.7.3"> 
   </head>
 
 
@@ -41,7 +41,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="main">
-          <h1 id="mysql">MySQL</h1>
+          
+<h1 id="mysql">MySQL</h1>
 
 <p>Install MySQL Server</p>
 
@@ -64,6 +65,7 @@
 </code></pre>
 
 <h2 id="grant">Grant</h2>
+
 <pre><code>mysql&gt; CREATEUSER'monty'@'localhost' IDENTIFIED BY'some_pass';
 mysql&gt; GRANTALL PRIVILEGES ON*.*TO'monty'@'localhost'    
     -&gt;     WITHGRANTOPTION;
@@ -92,6 +94,7 @@ Starting mysqld:                                           [FAILED]
 
 $ sudo /sbin/service mysqld start
 </code></pre>
+
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">

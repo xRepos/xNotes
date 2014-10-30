@@ -14,7 +14,7 @@
 </script>
 
     <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc 3.7.1"> 
+    <meta name="generator" content="nanoc 3.7.3"> 
   </head>
 
 
@@ -41,19 +41,23 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="main">
-          <h1 id="information-value">Information Value</h1>
+          
+<h1 id="information-value">Information Value</h1>
 
 <h2 id="calculation-of-weight-of-evidencewoe">Calculation of Weight of Evidence(WOE)</h2>
 
 <p>Weight of evidence(WOE):</p>
 
-<script type="math/tex; mode=display"> WOE_i=\log({\verb+% pos+_i \over \verb+% neg+_i})</script><p>where <script type="math/tex"> i=1,2, ... k</script>, and <script type="math/tex">k</script> is the number of bins.</p>
+<script type="math/tex; mode=display"> WOE_i=\log({\verb+% pos+_i \over \verb+% neg+_i})</script>
+
+<p>where <script type="math/tex"> i=1,2, ... k</script>, and <script type="math/tex">k</script> is the number of bins.</p>
 
 <h2 id="calculation-of-information-valueiv">Calculation of Information Value(IV)</h2>
 
 <p>Information Value(IV):</p>
 
 <script type="math/tex; mode=display"> IV = \sum_{i=1}^k \{(\verb+% pos+_i - \verb+% neg+_i) \times WOE_i \}</script>
+
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">

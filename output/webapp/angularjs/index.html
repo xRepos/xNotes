@@ -14,7 +14,7 @@
 </script>
 
     <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc 3.7.1"> 
+    <meta name="generator" content="nanoc 3.7.3"> 
   </head>
 
 
@@ -41,7 +41,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="main">
-          <h1 id="angularjs">Angular.js</h1>
+          
+<h1 id="angularjs">Angular.js</h1>
 
 <h2 id="loading-data-in-a-service">Loading Data in a Service</h2>
 
@@ -61,10 +62,12 @@
 <p>A few notes:</p>
 
 <ul>
-<li>There is no need to use promise( <code>$q</code> ) to load data “synchronously”, and there is no need to use $watch to monitor the data, if we are using <code>ng-repeat</code> or <code>ng-model</code> angular will automatically watch the changes. The returned value must be an object, not a primitive.</li>
+  <li>There is no need to use promise( <code>$q</code> ) to load data “synchronously”, and there is no need to use $watch to monitor the data, if we are using <code>ng-repeat</code> or <code>ng-model</code> angular will automatically watch the changes. The returned value must be an object, not a primitive.</li>
   <li>There is no need to parse the JSON file,  <code>$http</code> will do it for us, the data received in  success is already a JSON object if the file is json.</li>
   <li>Do not understand why, but it only works if we append the data to a object( <code>item.foo = data;</code> ) but not if we assign the data directly to the item(this DOES NOT work:  <code>item = data</code> )</li>
-</ul><h2 id="reuse-bootstrap-modal">Reuse Bootstrap Modal</h2>
+</ul>
+
+<h2 id="reuse-bootstrap-modal">Reuse Bootstrap Modal</h2>
 
 <p>To reuse the same Modal for displaying different data, put the button and the Modal under the same controller, and use ng-click  to set the data.</p>
 
@@ -124,20 +127,24 @@
 <p>There are two modes of $location in Angularjs. If not set correctly the result might be unexpected.</p>
 
 <ul>
-<li>HTML5: <code>http://foo.com/bar?baz=23#qux</code>
+  <li>HTML5: <code>http://foo.com/bar?baz=23#qux</code>
 </li>
   <li>Hashbang: <code>http://foo.com/#!/bar?baz=23#qux</code>
 </li>
-</ul><p>The result should be:</p>
+</ul>
+
+<p>The result should be:</p>
 
 <ul>
-<li>
+  <li>
 <code>$location.path()</code>: /bar</li>
   <li>
 <code>$location.search()</code>: baz=23#</li>
   <li>
 <code>$location.hash()</code>: qux</li>
-</ul><p>To use HTML5 model:</p>
+</ul>
+
+<p>To use HTML5 model:</p>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="predefined">$locationProvider</span>.html5Mode(<span class="predefined-constant">true</span>);</code></pre></div></div>
 
@@ -253,9 +260,11 @@
 <p>Add controls to the tabs:</p>
 
 <ul>
-<li>class(<code>ng-class</code>) set to <code>active</code> only if the <code>activeTab</code> is the current tab</li>
+  <li>class(<code>ng-class</code>) set to <code>active</code> only if the <code>activeTab</code> is the current tab</li>
   <li>upon click(<code>ng-click</code>), set the <code>activeTab</code> to the current tab</li>
-</ul><p>Code:</p>
+</ul>
+
+<p>Code:</p>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-html"><span class="tag">&lt;li</span> <span class="attribute-name">ng-class</span>=<span class="string"><span class="delimiter">"</span><span class="content">{'active':activeTab=='tabName1'}</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
     <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">"</span><span class="content">#</span><span class="delimiter">"</span></span> <span class="attribute-name">ng-click</span>=<span class="string"><span class="delimiter">"</span><span class="content">activeTab='tabName1'</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>tabName1<span class="tag">&lt;/a&gt;</span>
@@ -351,9 +360,11 @@
 <span class="tag">&lt;/select&gt;</span></code></pre></div></div>
 
 <h2 id="http">$http</h2>
+
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="predefined">$http</span>.get(<span class="string"><span class="delimiter">'</span><span class="content">/data.json</span><span class="delimiter">'</span></span>).success(<span class="keyword">function</span>(data, status) {
 
 });</code></pre></div></div>
+
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">

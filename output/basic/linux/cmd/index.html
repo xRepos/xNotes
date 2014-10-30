@@ -14,7 +14,7 @@
 </script>
 
     <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc 3.7.1"> 
+    <meta name="generator" content="nanoc 3.7.3"> 
   </head>
 
 
@@ -41,12 +41,13 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="main">
-          <h1 id="commands">Commands</h1>
+          
+<h1 id="commands">Commands</h1>
 
 <h2 id="manual">Manual</h2>
 
 <ul>
-<li>Section 1: user commands </li>
+  <li>Section 1: user commands </li>
   <li>Section 2: system calls </li>
   <li>Section 3: library functions</li>
   <li>Section 4: special files</li>
@@ -56,7 +57,9 @@
   <li>Section 8: administration and privileged commands</li>
   <li>Section L: math library functions</li>
   <li>Section N: tcl functions</li>
-</ul><p>e.g.</p>
+</ul>
+
+<p>e.g.</p>
 
 <pre><code>$ man 8 mount
 </code></pre>
@@ -95,9 +98,11 @@ $ ps -e | grep systemd
 </code></pre>
 
 <ul>
-<li>nofile: number of open files</li>
+  <li>nofile: number of open files</li>
   <li>nproc: number of processes</li>
-</ul><h2 id="mount--umount">Mount / Umount</h2>
+</ul>
+
+<h2 id="mount--umount">Mount / Umount</h2>
 
 <p>Assume a device is added as <code>/mnt/vdc</code>. Create new folder as <code>/dev/vdc</code></p>
 
@@ -156,7 +161,7 @@ $ dpkg --get-selections | grep mongo
 <h2 id="which-vs-whereis">which vs whereis</h2>
 
 <ul>
-<li>
+  <li>
     <p><code>which</code>: based on PATH</p>
 
     <pre><code>  $ which hadoop
@@ -170,7 +175,10 @@ $ dpkg --get-selections | grep mongo
   hadoop: /usr/bin/hadoop /etc/hadoop /usr/lib/hadoop /usr/share/man/man1/hadoop.1.gz
 </code></pre>
   </li>
-</ul><h2 id="nohup">Nohup</h2>
+</ul>
+
+<h2 id="nohup">Nohup</h2>
+
 <p>Run command in background and redirect output to file.</p>
 
 <pre><code>nohup command &gt; output &amp; 
@@ -271,7 +279,7 @@ esac
 <p>Step by Step:</p>
 
 <ul>
-<li>ps -e: show all the pids</li>
+  <li>ps -e: show all the pids</li>
   <li>
     <p>ps -o pid,args: specify the fields to show:</p>
 
@@ -300,7 +308,9 @@ esac
     <p>$ ps -eo pid,args | grep ‘java -jar start.jar’| grep -v grep | cut -c1-6
   14132</p>
   </li>
-</ul><p>Other ways to get pid: <code>echo $$</code> or <code>echo $!</code>.</p>
+</ul>
+
+<p>Other ways to get pid: <code>echo $$</code> or <code>echo $!</code>.</p>
 
 <h3 id="start-daemon">Start Daemon</h3>
 
@@ -315,7 +325,7 @@ fi
 <p>Step by Step:</p>
 
 <ul>
-<li>kill -0 $pid_mongod: -0 for testing if the pid is available to kill. It will return 0 if you can kill <pid>, 1 if <pid> is invalid or you do not have access.</pid></pid>
+  <li>kill -0 $pid_mongod: -0 for testing if the pid is available to kill. It will return 0 if you can kill <pid>, 1 if <pid> is invalid or you do not have access.</pid></pid>
 </li>
   <li>… &gt; /dev/null 2&gt;&amp;1: redirect the output to /dev/null, a blackhole. 2 stands for STDERR, 1 for STDOUT. This command means redirect STDOUT to /dev/null, and redirect STDERR to STDOUT(which is /dev/null), so both STDOUT and STDERR will be quiet. Remember the &amp; before destination.</li>
   <li>
@@ -329,7 +339,9 @@ Wait before it is up:</p>
       fi
   done</p>
   </li>
-</ul><h3 id="stop-daemon">Stop Daemon</h3>
+</ul>
+
+<h3 id="stop-daemon">Stop Daemon</h3>
 
 <p>Similar to the previous section.</p>
 
@@ -423,13 +435,15 @@ $ hash foo 2&gt;/dev/null
 <h2 id="hostname">Hostname</h2>
 
 <ul>
-<li>
+  <li>
 <code>/etc/hostname</code>: the hostname of the machine</li>
   <li>
 <code>/etc/hosts</code>: list of hosts</li>
   <li>
 <code>host &lt;host_name&gt;</code>: DNS lookup</li>
-</ul><p>Unknown Host Error in <code>sudo</code>: make sure the names match</p>
+</ul>
+
+<p>Unknown Host Error in <code>sudo</code>: make sure the names match</p>
 
 <pre><code>$ cat /etc/hosts
 127.0.1.1   example-hostname
@@ -440,6 +454,8 @@ example-hostname
 $ host example-hostname
 example-hostname.foo.bar.example.com has address 10.64.209.136
 </code></pre>
+
+
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">

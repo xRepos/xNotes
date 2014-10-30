@@ -14,7 +14,7 @@
 </script>
 
     <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc 3.7.1"> 
+    <meta name="generator" content="nanoc 3.7.3"> 
   </head>
 
 
@@ -41,14 +41,15 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="main">
-          <h1 id="webstorm">WebStorm</h1>
+          
+<h1 id="webstorm">WebStorm</h1>
 
 <h2 id="filewatcher">FileWatcher</h2>
 
 <p>Two mistakes:</p>
 
 <ol>
-<li>
+  <li>
     <p>I used <code>less</code> instead of <code>lessc</code> to compile <code>.less</code> files. Then suddenly, suddenly I realized, <code>less</code> in command line, has nothing to do with CSS… it is just a file viewer like <code>more</code>… that explains why the “compiled” css file looks exactly the same as its origin less file.</p>
   </li>
   <li>
@@ -57,9 +58,12 @@
     <pre><code> env: node: No such file or directory
 </code></pre>
   </li>
-</ol><p>The solution is add <code>PATH=/usr/local/bin</code> to <code>Environment variables</code> in FileWatcher</p>
+</ol>
+
+<p>The solution is add <code>PATH=/usr/local/bin</code> to <code>Environment variables</code> in FileWatcher</p>
 
 <p>Extra note about the FileWatcher: in command line we use <code>lessc style.less &gt; style.css</code> to write to file. In FileWatcher, set only <code>style.less</code> in Arguments , and leave <code>style.css</code> in  <code>Output paths to refresh</code></p>
+
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">

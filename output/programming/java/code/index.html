@@ -14,7 +14,7 @@
 </script>
 
     <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc 3.7.1"> 
+    <meta name="generator" content="nanoc 3.7.3"> 
   </head>
 
 
@@ -41,7 +41,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="main">
-          <h1 id="java">Java</h1>
+          
+<h1 id="java">Java</h1>
 
 <h2 id="show-env-and-properties">Show env and Properties</h2>
 
@@ -70,11 +71,13 @@
 <h3 id="parsedouble-vs-valueof">parseDouble vs valueOf</h3>
 
 <ul>
-<li>
+  <li>
 <code>Double.parseDouble(String s)</code> returns <code>double</code> (the primitive)</li>
   <li>
 <code>Double.valueOf(String s)</code> returns <code>Double</code> (the object)</li>
-</ul><p>Some tests</p>
+</ul>
+
+<p>Some tests</p>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-java"><span class="predefined-type">System</span>.out.println(<span class="predefined-type">Double</span>.valueOf(<span class="string"><span class="delimiter">"</span><span class="content">Infinity</span><span class="delimiter">"</span></span>));
 <span class="comment">//Infinity</span>
@@ -159,7 +162,8 @@ Solution: add</p>
 </code></pre>
 
 <h2 id="maven">Maven</h2>
-<p>### Install Third-Party Packages on Maven</p>
+
+<h3 id="install-third-party-packages-on-maven">Install Third-Party Packages on Maven</h3>
 
 <pre><code>$ mvn install:install-file -Dfile=&lt;path-to-file&gt;
     -DgroupId=&lt;group-id&gt; -DartifactId=&lt;artifact-id&gt; 
@@ -184,6 +188,8 @@ jsonMapper.readValue(jsonMapper.writeValueAsString(oldObject), NewClass.class);<
 
 Joiner.on(<span class="string"><span class="delimiter">"</span><span class="content">,</span><span class="delimiter">"</span></span>).join(arr);
 Splitter.on(delimiter).split(line);</code></pre></div></div>
+
+
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">

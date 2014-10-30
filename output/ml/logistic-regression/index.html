@@ -14,7 +14,7 @@
 </script>
 
     <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc 3.7.1"> 
+    <meta name="generator" content="nanoc 3.7.3"> 
   </head>
 
 
@@ -45,24 +45,39 @@
 
 <p>Sigmoid/Logistic function</p>
 
-<script type="math/tex; mode=display"> g(z) = {1 \over 1+e^{-z}} </script><p>Hypothesis</p>
+<script type="math/tex; mode=display"> g(z) = {1 \over 1+e^{-z}} </script>
 
-<script type="math/tex; mode=display"> h_\theta(x) = g(\theta^Tx) = {1 \over 1 + e^{-\theta^Tx}}</script><ul>
-<li>
+<p>Hypothesis</p>
+
+<script type="math/tex; mode=display"> h_\theta(x) = g(\theta^Tx) = {1 \over 1 + e^{-\theta^Tx}}</script>
+
+<ul>
+  <li>
 <script type="math/tex">y=1</script> if <script type="math/tex">h_\theta(x) \ge 0.5</script> (i.e. <script type="math/tex">\theta^T x \ge 0</script>)</li>
   <li>
 <script type="math/tex">y=0</script> if <script type="math/tex">% <![CDATA[
 h_\theta(x) < 0.5 %]]></script> (i.e. <script type="math/tex">% <![CDATA[
 \theta^T x < 0 %]]></script>)</li>
-</ul><p>Logistic Regression Cost Function</p>
+</ul>
 
-<script type="math/tex; mode=display"> J(\theta) = - {1 \over m} [\sum_{i=1}^m y^{(i)} \log h_\theta(x^{(i)}) + (1-y^{(i)}) \log(1-h_\theta(x^{(i)}))] </script><p>Gradient Descent</p>
+<p>Logistic Regression Cost Function</p>
 
-<script type="math/tex; mode=display">min_\theta J(\theta)</script><p>Repeat: simultaneously update all <script type="math/tex">\theta_j</script></p>
+<script type="math/tex; mode=display"> J(\theta) = - {1 \over m} [\sum_{i=1}^m y^{(i)} \log h_\theta(x^{(i)}) + (1-y^{(i)}) \log(1-h_\theta(x^{(i)}))] </script>
 
-<script type="math/tex; mode=display">\theta_j:=\theta_j - \alpha {\partial \over \partial \theta_j} J(\theta) </script><script type="math/tex; mode=display">\theta_j:= \theta_j - \alpha \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} </script><p>Regularization</p>
+<p>Gradient Descent</p>
+
+<script type="math/tex; mode=display">min_\theta J(\theta)</script>
+
+<p>Repeat: simultaneously update all <script type="math/tex">\theta_j</script></p>
+
+<script type="math/tex; mode=display">\theta_j:=\theta_j - \alpha {\partial \over \partial \theta_j} J(\theta) </script>
+
+<script type="math/tex; mode=display">\theta_j:= \theta_j - \alpha \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} </script>
+
+<p>Regularization</p>
 
 <script type="math/tex; mode=display"> J(\theta) = - {1 \over m} [\sum_{i=1}^m y^{(i)} \log h_\theta(x^{(i)}) + (1-y^{(i)}) \log(1-h_\theta(x^{(i)}))] + {\lambda \over 2m} \sum_{i=1}^n \theta_j^2 </script>
+
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">

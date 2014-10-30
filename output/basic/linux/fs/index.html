@@ -14,7 +14,7 @@
 </script>
 
     <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc 3.7.1"> 
+    <meta name="generator" content="nanoc 3.7.3"> 
   </head>
 
 
@@ -41,19 +41,22 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="main">
-          <h1 id="file-system">File System</h1>
+          
+<h1 id="file-system">File System</h1>
 
 <p>/var: contains files to which the system writes data during the course of its operation.</p>
 
 <ul>
-<li>/var/cache (contains cached data from application programs), </li>
+  <li>/var/cache (contains cached data from application programs), </li>
   <li>/var/games (contains variable data relating to games in /usr), </li>
   <li>/var/lib (contains dynamic data libraries and files), </li>
   <li>/var/lock (contains lock files created by programs to indicate that they are using a particular file or device), </li>
   <li>/var/log (contains log files), </li>
   <li>/var/run (contains PIDs and other system information that is valid until the system is booted again) and </li>
   <li>/var/spool (contains mail, news and printer queues).</li>
-</ul><h2 id="usr-vs-usrlocal">/usr vs /usr/local</h2>
+</ul>
+
+<h2 id="usr-vs-usrlocal">/usr vs /usr/local</h2>
 
 <p>/usr is for software built elsewhere and then installed on the machine (mostly from your distributions package management system) </p>
 
@@ -75,6 +78,7 @@ major minor  #blocks  name
 <pre><code>$ sudo file -s /dev/vda
 /dev/vda: Linux rev 1.0 ext4 filesystem data, UUID=6f54f78f-3f47-488c-ab1b-b1b8a596c2d3, volume name "c3image-rootfs" (needs journal recovery) (extents) (large files) (huge files)
 </code></pre>
+
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">

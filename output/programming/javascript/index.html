@@ -14,7 +14,7 @@
 </script>
 
     <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc 3.7.1"> 
+    <meta name="generator" content="nanoc 3.7.3"> 
   </head>
 
 
@@ -41,7 +41,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="main">
-          <h1 id="javascript">Javascript</h1>
+          
+<h1 id="javascript">Javascript</h1>
 
 <h2 id="set-default-value-inside-function">Set default value inside function</h2>
 
@@ -63,11 +64,13 @@ Math.min.apply(Math, [<span class="integer">1</span>,<span class="integer">2</sp
 <h2 id="in-vs-hasownproperty">in vs. hasOwnProperty()</h2>
 
 <ul>
-<li>
+  <li>
 <code>in</code>: check prototype chain, all inherited properties will be included.</li>
   <li>
 <code>hasOwnProperty()</code>: only check its own properties.</li>
-</ul><h2 id="merge-options-with-default">Merge Options with Default</h2>
+</ul>
+
+<h2 id="merge-options-with-default">Merge Options with Default</h2>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> <span class="function">getMergedOptions</span> = <span class="keyword">function</span>(options, defaults) {
     <span class="keyword">var</span> options = options || {}, 
@@ -87,29 +90,35 @@ Math.min.apply(Math, [<span class="integer">1</span>,<span class="integer">2</sp
 <h3 id="literal-vs-constructor">Literal vs. Constructor</h3>
 
 <ul>
-<li>Literal: <code>re = /.../g</code>
+  <li>Literal: <code>re = /.../g</code>
 </li>
   <li>Constructor: <code>re = new RegExp("...")</code>
     <ul>
-<li>can use string concat: <code>re = new RegExp("..." + some_variable + "...")</code>
+      <li>can use string concat: <code>re = new RegExp("..." + some_variable + "...")</code>
 </li>
     </ul>
-</li>
-</ul><h3 id="local-vs-global">Local vs. Global</h3>
+  </li>
+</ul>
+
+<h3 id="local-vs-global">Local vs. Global</h3>
 
 <ul>
-<li>
+  <li>
 <code>re = /.../</code>: <code>re.match(str)</code> will return a list of captures of the FIRST match</li>
   <li>
 <code>re = /.../g</code>: <code>re.match(str)</code> will return a list of matches but NOT captures</li>
-</ul><h3 id="match-vs-exec">match vs. exec</h3>
+</ul>
+
+<h3 id="match-vs-exec">match vs. exec</h3>
 
 <ul>
-<li>
+  <li>
 <code>match</code>: as stated above</li>
   <li>
 <code>exec</code>: return captures, exec multiple times</li>
-</ul><p>Example</p>
+</ul>
+
+<p>Example</p>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> match;
 <span class="keyword">while</span> ((match = re.exec(str)) !== <span class="predefined-constant">null</span>) {
@@ -119,19 +128,21 @@ Math.min.apply(Math, [<span class="integer">1</span>,<span class="integer">2</sp
 <h3 id="use-jquery">Use jQuery</h3>
 
 <ul>
-<li>Match Text: 
+  <li>Match Text: 
     <ul>
-<li><code>re.exec($(selector).text())</code></li>
+      <li><code>re.exec($(selector).text())</code></li>
       <li><code>$(selector).text().match(re)</code></li>
     </ul>
-</li>
+  </li>
   <li>Match HTML:
     <ul>
-<li><code>re.exec($(selector).html())</code></li>
+      <li><code>re.exec($(selector).html())</code></li>
       <li><code>$(selector).html().match(re)</code></li>
     </ul>
-</li>
-</ul><h2 id="date">Date</h2>
+  </li>
+</ul>
+
+<h2 id="date">Date</h2>
 
 <div class="CodeRay"><div class="code"><pre><code class="language-javascript"><span class="keyword">var</span> date = <span class="keyword">new</span> Date();
 
@@ -151,6 +162,7 @@ date.setDate(date.getDate() - <span class="integer">1</span>)
 <span class="keyword">new</span> Date() - <span class="keyword">new</span> Date(<span class="integer">0</span>)</code></pre></div></div>
 
 <h2 id="queue">Queue</h2>
+
 <p>insert, front   </p>
 
 <pre><code>array.unshift() 
@@ -168,8 +180,9 @@ date.setDate(date.getDate() - <span class="integer">1</span>)
 
 <p>delete, front</p>
 
-<pre><code>array.shift()
+<pre><code>array.shift() 
 </code></pre>
+
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">

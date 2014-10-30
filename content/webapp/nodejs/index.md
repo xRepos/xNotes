@@ -9,6 +9,8 @@ Node.js Index
 * [Node.js + MongoDB](mongodb)
 * [Node.js + Socket.io](socketio)
 * [Moment.js](moment)
+* [Web Crawling](web-crawling)
+
 
 Stringify
 ---------
@@ -18,65 +20,12 @@ To pretty print(indent by 4 spaces):
     #!javascript
     JSON.stringify(data, null, "    ")
 
-or 
+or
 
     #!javascript
     JSON.stringify(data, null, 4)
 
-Web Crawling and Parsing
-------------------------
 
-Here is a quick way for crawling and parsing. Use ``request`` to get the raw html and ``cheerio`` to parse, after that everything works like jQuery.
-
-    #!javascript
-    var request = require('request');
-    var cheerio = require('cheerio');
-    var url = 'http://foo.com';
-     
-    request(url, function(err, res, body){
-      $ = cheerio.load(body);
-      console.log(body);
-    });
-
-Or use ``http``
-
-    #!javascript
-    var http = require('http');
-    http.request({    
-        host: 'search.twitter.com', 
-        path: '/search.json?' + qs.stringify({ q: search }) 
-    }, function (res) {}
-
-If plain text
-
-    #!javascript
-    http.get(url, function(res){
-        var buffer = [];
-        res.on('data', function(data) {
-            buffer.push(data);
-        }).on("end", function() {
-            parsePage(buffer.join(''));
-        })
-    });
-
-If gziped
-
-    #!javascript
-
-    var zlib = require('zlib');
-
-    http.get(url, function(res){
-      
-        var buffer = [];
-        var gunzip = zlib.createGunzip();            
-        res.pipe(gunzip);
-
-        gunzip.on('data', function(data) {
-            buffer.push(data);
-        }).on("end", function() {
-            parsePage(buffer.join(''));
-        })
-    });
 
 Commandline Arguments
 ---------------------
@@ -105,7 +54,7 @@ HTML
 Where “id” is used for jQuery selector to find this div, and “name” is used for looking for the file(there could be multiple files, identified by names).
 
 Server
-    
+
     #!javascript
     exports.uploadFile = function(req, res) {
         var html = fs.readFileSync(req.files.foo.path);
@@ -165,32 +114,7 @@ Write file, use ``JSON.stringify()``
     #!javascript
     fs.writeFile("filename.json", JSON.stringify(data));
 
-Route
------
 
-In ``app.js``
-
-    #!javascript
-    var routes = require('./routes');
-
-    app.get('/loadData/:name', routes.loadData);
-
-In ``routes/index.js``
-
-    #!javascript
-    exports.loadData = function(req, res) {
-        console.log(req.route.params.name)
-        // or
-        console.log(req.params.name)
-    }
-
-In browser
-
-    http://127.0.0.1:3000/loaddata/foo
-
-In terminal
-
-    foo
 
 
 Req Lookup
@@ -274,11 +198,11 @@ Search from file:
 npm install
 -----------
 
-Save to ``package.json`` - ``dependencies`` section: 
+Save to ``package.json`` - ``dependencies`` section:
 
     $ npm install --save <package-name>
 
-Save to ``package.json`` - ``devDependencies`` section: 
+Save to ``package.json`` - ``devDependencies`` section:
 
     $ npm install --save-dev <package-name>
 
@@ -290,4 +214,3 @@ Get num of CPUs:
 
     #!javascript
     var numCPUs = require('os').cpus().length;
-

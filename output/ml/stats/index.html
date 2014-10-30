@@ -14,7 +14,7 @@
 </script>
 
     <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc 3.7.1"> 
+    <meta name="generator" content="nanoc 3.7.3"> 
   </head>
 
 
@@ -58,7 +58,9 @@
 
 <h3 id="mean"><code>mean</code></h3>
 
-<script type="math/tex; mode=display"> mean={\Sigma_{i} x_i \over n}</script><p>trimmed mean: TODO</p>
+<script type="math/tex; mode=display"> mean={\Sigma_{i} x_i \over n}</script>
+
+<p>trimmed mean: TODO</p>
 
 <h3 id="standarddeviation"><code>standardDeviation</code></h3>
 
@@ -85,11 +87,17 @@
 <p>“ANOVA” stands for “Analysis of Variance” while “MANOVA” stands for “Multivariate Analysis of Variance.”
 2.The ANOVA method includes only one dependent variable while the MANOVA method includes multiple, dependent variables.</p>
 
-<table><tbody><tr>
-<td>Read more: Difference Between ANOVA and MANOVA</td>
+<table>
+  <tbody>
+    <tr>
+      <td>Read more: Difference Between ANOVA and MANOVA</td>
       <td>Difference Between</td>
       <td>ANOVA vs MANOVA http://www.differencebetween.net/science/mathematics-statistics/difference-between-anova-and-manova/#ixzz3AmMaeJMj</td>
-    </tr></tbody></table><p>T-test: 2 groups
+    </tr>
+  </tbody>
+</table>
+
+<p>T-test: 2 groups
 ANOVA: more than 2 groups
 Anova tests use variances to know whether the means are equal or not.</p>
 
@@ -110,29 +118,39 @@ Type II Error: False Negative</p>
 
 <p>Central Moment</p>
 
-<script type="math/tex; mode=display"> {\bf Central \, Moment} = \mu_n = {\bf E} [(X - {\bf E}[X])^n] = \int_{-\infty}^{+\infty} (x-\mu)^n f(x) \, dx </script><p>where E is the expectation operator; f(x) is probability density function.</p>
+<script type="math/tex; mode=display"> {\bf Central \, Moment} = \mu_n = {\bf E} [(X - {\bf E}[X])^n] = \int_{-\infty}^{+\infty} (x-\mu)^n f(x) \, dx </script>
+
+<p>where E is the expectation operator; f(x) is probability density function.</p>
 
 <p>For random variables that have no mean, such as the Cauchy distribution, central moments are not defined.</p>
 
 <ul>
-<li>First moment is mean: <script type="math/tex">\mu=mean</script>;</li>
+  <li>First moment is mean: <script type="math/tex">\mu=mean</script>;</li>
   <li>Zeroth central moment is 1: <script type="math/tex">\mu_0 = 1</script>
 </li>
   <li>Fisrt central moment is 0: <script type="math/tex">\mu_1=0</script>
 </li>
   <li>Second central moment is variance: <script type="math/tex">\mu_2=\sigma^2</script>, where <script type="math/tex">\sigma</script> is standard deviation</li>
   <li>The 3rd and 4th central moments are used to define the standardized moments</li>
-</ul><p>Standardized Moment</p>
+</ul>
 
-<script type="math/tex; mode=display"> {\bf Standardized \, Moment} = {\mu_k \over \sigma^k} </script><p>The first standardized moment is zero, because the first moment about the mean is zero
+<p>Standardized Moment</p>
+
+<script type="math/tex; mode=display"> {\bf Standardized \, Moment} = {\mu_k \over \sigma^k} </script>
+
+<p>The first standardized moment is zero, because the first moment about the mean is zero
 The second standardized moment is one, because the second moment about the mean is equal to the variance (the square of the standard deviation)
 The third standardized moment is the skewness
 The fourth standardized moment is the kurtosis</p>
 
-<script type="math/tex; mode=display"> {\mu_1 \over \sigma} = {0 \over \sigma} = 0 </script><h2 id="laplace-distribution">Laplace Distribution</h2>
+<script type="math/tex; mode=display"> {\mu_1 \over \sigma} = {0 \over \sigma} = 0 </script>
+
+<h2 id="laplace-distribution">Laplace Distribution</h2>
 <p>pdf</p>
 
-<script type="math/tex; mode=display"> {f(x \mid \mu, b)} = {1 \over 2b} {\exp - {\mid x - \mu \mid \over b}} </script><p>svm</p>
+<script type="math/tex; mode=display"> {f(x \mid \mu, b)} = {1 \over 2b} {\exp - {\mid x - \mu \mid \over b}} </script>
+
+<p>svm</p>
 
 <p>http://svms.org/parameters/</p>
 
@@ -142,6 +160,7 @@ Structural Risk Minimization: SVM</p>
 <p>NN: local minima, SVM is global and unique</p>
 
 <p>SVM have a simple geometric interpretation and give a sparse solution</p>
+
         </div>
         <div class="col-md-3 hidden-sm hidden-xs">
           <div id="side">
